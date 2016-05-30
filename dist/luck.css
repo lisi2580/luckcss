@@ -460,6 +460,129 @@ a.badge:hover {
   background-color: gray;
   color: #fff; }
 
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+.flex-direction-row {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row; }
+
+.flex-direction-column {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+
+.flex-jc-space-around {
+  -ms-flex-pack: distribute;
+      justify-content: space-around; }
+
+.flex-jc-space-between {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+
+.flex-jc-start {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start; }
+
+.flex-jc-center {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+.flex-jc-end {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end; }
+
+.flex-wrap {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+
+.flex-nowrap {
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap; }
+
+.flex-ai-start {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+              -ms-grid-row-align: flex-start;
+          align-items: flex-start; }
+
+.flex-ai-end {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+              -ms-grid-row-align: flex-end;
+          align-items: flex-end; }
+
+.flex-ai-center {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+              -ms-grid-row-align: center;
+          align-items: center; }
+
+.flex-ai-baseline {
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+              -ms-grid-row-align: baseline;
+          align-items: baseline; }
+
+.flex-ai-stretch {
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+              -ms-grid-row-align: stretch;
+          align-items: stretch; }
+
+.flex-ac-start {
+  -ms-flex-line-pack: start;
+      align-content: flex-start; }
+
+.flex-ac-end {
+  -ms-flex-line-pack: end;
+      align-content: flex-end; }
+
+.flex-ac-center {
+  -ms-flex-line-pack: center;
+      align-content: center; }
+
+.flex-ac-space-between {
+  -ms-flex-line-pack: justify;
+      align-content: space-between; }
+
+.flex-ac-space-around {
+  -ms-flex-line-pack: distribute;
+      align-content: space-around; }
+
+.flex-ac-stretch {
+  -ms-flex-line-pack: stretch;
+      align-content: stretch; }
+
+.flex-align-self-start {
+  -ms-flex-item-align: start;
+      align-self: flex-start; }
+
+.flex-align-self-end {
+  -ms-flex-item-align: end;
+      align-self: flex-end; }
+
+.flex-align-self-center {
+  -ms-flex-item-align: center;
+      align-self: center; }
+
+.flex-align-self-baseline {
+  -ms-flex-item-align: baseline;
+      align-self: baseline; }
+
+.flex-align-self-stretch {
+  -ms-flex-item-align: stretch;
+      align-self: stretch; }
+
 .clear:before, .clear:after {
   content: " ";
   display: table; }
@@ -1002,55 +1125,6 @@ a.badge:hover {
 
 .inline {
   display: inline; }
-
-.flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex; }
-
-.flex-row {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row; }
-
-.flex-column {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column; }
-
-.flex-space-around {
-  -ms-flex-pack: distribute;
-      justify-content: space-around; }
-
-.flex-space-between {
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between; }
-
-.flex-start {
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start; }
-
-.flex-center {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center; }
-
-.flex-end {
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end; }
-
-.flex-wrap {
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap; }
-
-.flex-nowrap {
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap; }
 
 .left {
   float: left; }
