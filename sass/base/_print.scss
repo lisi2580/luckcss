@@ -1,0 +1,133 @@
+// All Elements
+*,
+*:before,
+*:after {
+  background: transparent;
+  color: #000;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+// Links
+a, a:visited { text-decoration: underline; }
+a[href]:after { content: " (" attr(href) ")"; }
+a[href^="#"]:after, a[href^="javascript:"]:after { content: ""; }
+
+// Code and Blockquotes
+pre, blockquote { page-break-inside: avoid; }
+
+// Tables
+thead { display: table-header-group; }
+tr { page-break-inside: avoid; }
+
+// Images
+img { page-break-inside: avoid; max-width: 100%;}
+
+// Typography
+p, h2, h3 { orphans: 3; widows: 3; }
+h2, h3 { page-break-after: avoid; }
+abbr[title]:after { content: " (" attr(title) ")"; }
+
+// Print Helpers
+@media print {
+
+  // General Resets
+  .no-float-print {
+    float: none;
+  }
+  .no-padding-print {
+    padding: 0;
+  }
+  .no-margin-print {
+    margin: 0;
+  }
+
+  // Display Types
+  .none-print {
+    display: none;
+  }
+  .block-print {
+    display: block;
+  }
+  .inline-block-print {
+    display: inline-block;
+  }
+  .inline-print {
+    display: inline;
+  }
+
+  // Text Alignments
+  .text-left-print {
+    text-align: left;
+  }
+  .text-right-print {
+    text-align: right;
+  }
+  .text-center-print {
+    text-align: center;
+  }
+  .text-justify-print {
+    text-align: justify;
+  }
+
+  // Grid Resets
+  .no-col-print {
+    width: auto;
+    float: none;
+  }
+  .no-push-print, .no-pull-print {
+    left: 0;
+  }
+
+  // Padding Helpers
+  @for $i from 0 to $layout-meter-lenght {
+    //margin shortcut //margin快捷类
+    .mg-#{$i*$layout-meter}-print {
+      margin: $i*$layout-meter;
+    }
+    .mg-top-#{$i*$layout-meter}-print {
+      margin-top: $i*$layout-meter;
+    }
+    .mg-right-#{$i*$layout-meter}-print {
+      margin-right: $i*$layout-meter;
+    }
+    .mg-bottom-#{$i*$layout-meter}-print {
+      margin-bottom: $i*$layout-meter;
+    }
+    .mg-left-#{$i*$layout-meter}-print {
+      margin-left: $i*$layout-meter;
+    }
+    .mg-horizontal-#{$i*$layout-meter}-print {
+      margin-left: $i*$layout-meter;
+      margin-right: $i*$layout-meter;
+    }
+    .mg-vertical-#{$i*$layout-meter}-print {
+      margin-top: $i*$layout-meter;
+      margin-bottom: $i*$layout-meter;
+    }
+    //padding shortcut //padding快捷类
+    .pd-#{$i*$layout-meter}-print {
+      padding: $i*$layout-meter;
+    }
+    .pd-top-#{$i*$layout-meter}-print {
+      padding-top: $i*$layout-meter;
+    }
+    .pd-right-#{$i*$layout-meter}-print {
+      padding-right: $i*$layout-meter;
+    }
+    .pd-bottom-#{$i*$layout-meter}-print {
+      padding-bottom: $i*$layout-meter;
+    }
+    .pd-left-#{$i*$layout-meter}-print {
+      padding-left: $i*$layout-meter;
+    }
+    .pd-horizontal-#{$i*$layout-meter}-print {
+      padding-left: $i*$layout-meter;
+      padding-right: $i*$layout-meter;
+    }
+    .pd-vertical-#{$i*$layout-meter}-print {
+      padding-top: $i*$layout-meter;
+      padding-bottom: $i*$layout-meter;
+    }
+  }
+}

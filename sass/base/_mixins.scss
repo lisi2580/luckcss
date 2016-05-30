@@ -1,0 +1,152 @@
+// ==========================================================================
+// Base – Mixins
+// ==========================================================================
+
+// Breakpoint sizes [断点
+// Example usage @include breakpoint(x) { ... }; - where x is the device
+@mixin breakpoint($bp) {
+  @if $bp == xl {
+    @media only screen and (min-width: $breakpoint-xl) {
+      @content;
+    }
+  } @else if $bp == l {
+    @media only screen and (min-width: $breakpoint-l) {
+      @content;
+    }
+  } @else if $bp == m {
+    @media only screen and (min-width: $breakpoint-m) {
+      @content;
+    }
+  }
+}
+
+// Font sizes (primary sizing in `rem` units with a fallback of `px`)
+// Example usage @include font-size(18);
+@mixin font-size($size) {
+  $remValue: $size / 16;
+  $pxValue: ($size);
+  font-size: $pxValue + px;
+  font-size: $remValue + rem;
+}
+
+// Line height sizes (primary sizing in `rem` units with a fallback of `px`)
+// Example usage @include line-height(22);
+@mixin line-height($size) {
+  $remValue: $size / 16;
+  $pxValue: ($size);
+  line-height: $pxValue + px;
+  line-height: $remValue + rem;
+}
+
+// Background Color with Opacity
+// Example Usage: @include bg-rgba(#111, 50%);
+@mixin background-alpha($color, $alpha) {
+  $opacity: $alpha / 100%;
+  $rgba: rgba($color, $opacity);
+  background: $color;
+  background: rgba($color, $opacity);
+}
+
+// Animations
+// Example Usage @mixin animate(1s);
+@mixin animate($duration: 1s) {
+  animation-duration: $duration;
+  animation-fill-mode: both;
+}
+
+//超出显示省略号
+@mixin nowrap($width:100%) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: $width;
+}
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  // IE8 filter
+  $opacity-ie: ($opacity * 100);
+  filter: alpha(opacity=$opacity-ie);
+}
+
+@mixin border-radius($border-color: $bordercolor,$border-radius: $border-radius-base,$border-before-radius: $border-radius-l) {
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  @media screen and (-webkit-min-device-pixel-ratio: 2) {
+    position: relative;
+    border: 0;
+    &:before {
+      content: "";
+      width: 200%;
+      height: 200%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: 1px solid $border-color;
+      -webkit-transform: scale(.5);
+      -webkit-transform-origin: 0 0;
+      padding: 1px;
+      -webkit-box-sizing: border-box;
+      border-radius: $border-before-radius;
+      pointer-events: none;
+    }
+  }
+}
+
+// Typography
+
+// [converter] $parent hack
+@mixin text-color-variant($parent, $color) {
+  #{$parent} {
+    color: $color;
+  }
+  a#{$parent}:hover,
+  a#{$parent}:focus {
+    color: darken($color, 10%);
+  }
+}
+
+//background
+@mixin bg-variant($parent, $color) {
+  #{$parent} {
+    background-color: $color;
+  }
+  a#{$parent}:hover,
+  a#{$parent}:focus {
+    background-color: darken($color, 10%);
+  }
+}
+
+@mixin button-variant($parent,$background-color, $color,$button-active-color-change) {
+
+  .button-#{$parent} {
+    background-color: $background-color;
+    color: $color;
+    border: solid 0 $background-color;
+  }
+
+  .button-#{$parent}:hover,
+  .button-#{$parent}:focus {
+    background-color: lighten($background-color, 10%);
+    color: $color;
+  }
+
+  .button-#{$parent}:active,
+  .button-#{$parent}.active {
+    background-color: darken($background-color, $button-active-color-change);
+    color: $color;
+  }
+
+  .button-#{$parent}.profile {
+    background: $color-white;
+    color: $background-color;
+    border-width: 1px !important;
+  }
+}
+
+@mixin badge-variant($parent,$background-color,$color) {
+  .badge-#{$parent} {
+    background-color: $background-color;
+    color: $color;
+  }
+}
