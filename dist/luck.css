@@ -4,141 +4,6 @@
 gaopeng.aaron.li
 0.1
 ========================================================================== */
-fieldset {
-  border: 1px solid #c0c0c0;
-  margin: 0 2px;
-  padding: 0.35em 0.625em 0.75em; }
-
-legend {
-  box-sizing: border-box;
-  color: inherit;
-  display: table;
-  max-width: 100%;
-  padding: 0;
-  white-space: normal; }
-
-label,
-button,
-input,
-optgroup,
-select,
-textarea {
-  color: #000;
-  font: inherit;
-  margin: 0; }
-
-[type="text"],
-[type="email"],
-[type="password"],
-[type="tel"],
-[type="number"],
-[type="date"] {
-  height: 36px;
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  -webkit-appearance: none;
-  -moz-appearance: textfield;
-  border-radius: 0; }
-  [type="text"]:focus,
-  [type="email"]:focus,
-  [type="password"]:focus,
-  [type="tel"]:focus,
-  [type="number"]:focus,
-  [type="date"]:focus {
-    background-color: #fff;
-    border-color: #ff4222;
-    outline: 0; }
-
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
-  height: auto; }
-
-[type="date"]::-webkit-inner-spin-button {
-  display: none;
-  -webkit-appearance: none; }
-
-[type="checkbox"],
-[type="radio"] {
-  box-sizing: border-box;
-  padding: 0; }
-
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
-  height: auto; }
-
-[type="search"] {
-  -webkit-appearance: textfield;
-  outline-offset: -2px; }
-
-[type="search"]::-webkit-search-cancel-button,
-[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none; }
-
-textarea {
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  overflow: auto; }
-  textarea:focus {
-    background-color: #fff;
-    border-color: #ff4222;
-    outline: 0; }
-
-select {
-  text-transform: none;
-  height: 36px;
-  padding: 0 10px;
-  background-color: #fff;
-  border: 1px solid #ccc; }
-  select:focus {
-    background-color: #fff;
-    border-color: #ff4222;
-    outline: 0; }
-
-optgroup {
-  font-weight: 700; }
-
-button {
-  overflow: visible;
-  text-transform: none;
-  cursor: pointer; }
-
-button,
-html [type="button"],
-[type="reset"],
-[type="submit"] {
-  -webkit-appearance: button; }
-
-button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
-  border-style: none;
-  padding: 0; }
-
-button:-moz-focusring,
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
-  outline: 1px dotted ButtonText; }
-
-button[disabled],
-html input[disabled] {
-  cursor: not-allowed; }
-
-::-webkit-input-placeholder {
-  color: #999; }
-
-:-moz-placeholder {
-  color: #999; }
-
-::-moz-placeholder {
-  color: #999; }
-
-:-ms-input-placeholder {
-  color: #999; }
-
 .button::-moz-focus-inner {
   border: 0;
   padding: 0; }
@@ -335,7 +200,6 @@ html input[disabled] {
   border: 1px solid #ededed; }
 
 .border-radius {
-  border: 1px solid #ededed;
   border-radius: 2px; }
   @media screen and (-webkit-min-device-pixel-ratio: 2) {
     .border-radius {
@@ -348,7 +212,6 @@ html input[disabled] {
         position: absolute;
         top: 0;
         left: 0;
-        border: 1px solid #ededed;
         -webkit-transform: scale(0.5);
         -webkit-transform-origin: 0 0;
         padding: 1px;
