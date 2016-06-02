@@ -1,4 +1,3 @@
-
 /* 1px hack */
 
 .border-t {border-top: 1px solid $bordercolor;}
@@ -16,16 +15,16 @@
 .border-radius{
     @include border-radius;
 }
-/* @media screen and (-webkit-min-device-pixel-ratio : 2) {
+@media screen and (-webkit-min-device-pixel-ratio : 2) {
     .border{position: relative; border: 0;}
     .border-t,.border-b,.border-l,.border-r,.border-tb{border: 0;}
     .border-t{
-        background-position: left top; 
-        background-image: $border-t;
+        background-position: left top;
+        background: $border-t;
     }
     .border-b{
         background-position: left bottom;
-        background-image: $border-b;
+        background: $border-b;
     }
     .border-t,
     .border-b,
@@ -38,7 +37,7 @@
         background-position: top, bottom;
     }
     .border-l{
-        background-position: left top; 
+        background-position: left top;
         background-image: $border-l;
     }
     .border-r{
@@ -56,10 +55,10 @@
         height: 100%;
         position: absolute;
         top: 0;
-        left: 0; 
+        left: 0;
         background-image: $border-t,$border-r,$border-b,$border-l;
         -webkit-background-size: 100% 1px,1px 100% ,100% 1px, 1px 100%;
-                background-size: 100% 1px,1px 100% ,100% 1px, 1px 100%;
+        background-size: 100% 1px,1px 100% ,100% 1px, 1px 100%;
         background-size: 100% 1px,1px 100% ,100% 1px, 1px 100%;
         background-repeat: no-repeat;
         background-position: top, right, bottom, left;
@@ -69,4 +68,3 @@
         pointer-events: none;
     }
 }
- */
