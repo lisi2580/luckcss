@@ -29,13 +29,11 @@
   cursor: pointer;
 }
 
-
-
 .button:hover,
 .button:focus {
   //background-color: $button-hover-background;
   //color: $button-hover-color;
-  outline: none;
+  outline: 0;
   text-decoration: none;
 }
 
@@ -44,6 +42,7 @@
 .button.active {
   background-color: $button-active-background;
   color: $button-active-color;
+  outline: 0;
 }
 
 //按钮批量生成
