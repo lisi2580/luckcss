@@ -64,7 +64,7 @@
         background-position: top, right, bottom, left;
         padding: 1px;
         -webkit-box-sizing: border-box;
-        z-index: $z-index-border;
+        z-index: 10;
         pointer-events: none;
     }
 }

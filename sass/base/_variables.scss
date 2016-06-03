@@ -2,121 +2,45 @@
 // 变量
 // ==========================================================================
 
-
+// xs s m l xl
 
 //Global color [通用颜色
 
-
 $color-white:#fff;//白色
-$color-grey-1:                                  darken($color-white,10%);
-$color-grey-2:                                  darken($color-white,20%);
-$color-grey-3:                                  #333;//darken($color-white,30%);
-$color-grey-4:                                  darken($color-white,40%);
-$color-grey-5:                                  darken($color-white,50%);
-$color-grey-6:                                  #666;//darken($color-white,60%);
-$color-grey-7:                                  darken($color-white,70%);
-$color-grey-8:                                  darken($color-white,80%);
-$color-grey-9:                                  #999;//darken($color-white,90%);
-$color-black:                                   #000;
-
-$color-grey-bg:								                	#f5f5f5;
-$color-grey-bg-2:							                	#fcfcfc;
-
+$color-grey:                                    darken(#fff,50%);
 $color-red:                                     #ff4222;
-$color-red-3:                                    darken($color-red,30%);
 $color-blue:                                    #1b97ff;
-$color-blue-3:                                  darken($color-blue,30%);
 $color-green:                                   #29cc6d;
 $color-yellow:                                  #ffffcc;
 $color-orange:                                  #ff9900;
 $color-navy:                                    #314c83;
 $color-pink:                                    #F7665e;
 $color-brown:                                   #ae9a69;
+$color-black:                                   #000;
 
-// Global Typography [通用排版
-$base-background-color:                         $color-white !default;
-$base-font-family:                              sans-serif !default;
-$base-font-size:                                14 !default;
-$base-line-height:                              22 !default;
-$base-font-weight:                              400 !default;
-$base-font-color:                               $color-grey-3 !default;
-$base-link-color:                               $color-grey-3 !default;
-$base-link-color-hover:                         $color-grey-3  !default;
 
-// Font Weights [字体宽度
-$font-100:                                      100 !default;
-$font-200:                                      200 !default;
-$font-300:                                      300 !default;
-$font-400:                                      400 !default;
-$font-500:                                      500 !default;
-$font-600:                                      600 !default;
-$font-700:                                      700 !default;
-$font-800:                                      800 !default;
-$font-900:                                      900 !default;
+//字体颜色
+$font-color-1:                                  #333;
+$font-clolr-2:                                  #666;
+$font-clolr-3:                                  #999;
+//背景颜色
+$bg-color-1:						            #f5f5f5;
+$bg-color-2:	 					            #e6e6e6;
+
 // font size
-$font-size-xs:							                		$base-font-size - 2px;
-$font-size-base:                                $base-font-size + 0px;
-$font-size-s:								                  	$base-font-size + 2px;
-$font-size-m:								                  	$base-font-size + 4px;
-$font-size-l:								                  	$base-font-size + 6px;
-$font-size-xl:							                  	$base-font-size + 12px;
-$font-size-xxl:							                  	$base-font-size + 18px;
-
-// Headings [标题
-$base-heading-font-family:                      sans-serif !default;
-$base-h1-font-size:                             32 !default;
-$base-h1-line-height:                           38 !default;
-$base-h1-font-weight:                           700 !default;
-$base-h1-color:                                 #000 !default;
-$base-h2-font-size:                             26 !default;
-$base-h2-line-height:                           32 !default;
-$base-h2-font-weight:                           700 !default;
-$base-h2-color:                                 #000 !default;
-$base-h3-font-size:                             22 !default;
-$base-h3-line-height:                           28 !default;
-$base-h3-font-weight:                           700 !default;
-$base-h3-color:                                 #000 !default;
-$base-h4-font-size:                             18 !default;
-$base-h4-line-height:                           24 !default;
-$base-h4-font-weight:                           700 !default;
-$base-h4-color:                                 #000 !default;
-$base-h5-font-size:                             16 !default;
-$base-h5-line-height:                           22 !default;
-$base-h5-font-weight:                           700 !default;
-$base-h5-color:                                 #000 !default;
-$base-h6-font-size:                             14 !default;
-$base-h6-line-height:                           20 !default;
-$base-h6-font-weight:                           700 !default;
-$base-h6-color:                                 #000 !default;
-
-// Blockquotes [引用
-$base-blockquote-font-family:                   sans-serif !default;
-$base-blockquote-font-size:                     22 !default;
-$base-blockquote-line-height:                   28 !default;
-
-// Code [代码
-$base-code-font-family:                         monospace, monospace !default;
-$base-code-font-size:                           13 !default;
-$base-code-line-height:                         18 !default;
-$base-code-color:                               #000 !default;
-$base-code-background-color:                    transparent !default;
-$base-code-border-color:                        #d7d7d7 !default;
-
-// Forms [表单
-$base-input-height:                             36px !default;
-$base-input-placeholder-color:                  #999 !default;
-$base-input-color:                              #000 !default;
-$base-input-background-color:                   #fff !default;
-$base-input-background-color-focus:             #fff !default;
-$base-input-border-color:                       #ccc !default;
-$base-input-border-color-focus:                 $color-red;
-$base-select-box-height:                        36px;
+$font-size-base:          14px;
+$font-size-h1:            floor(($font-size-base * 2.6)); // ~36px
+$font-size-h2:            floor(($font-size-base * 2.15)); // ~30px
+$font-size-h3:            ceil(($font-size-base * 1.7)); // ~24px
+$font-size-h4:            ceil(($font-size-base * 1.25)); // ~18px
+$font-size-h5:            $font-size-base;
+$font-size-h6:            ceil(($font-size-base * 0.85)); // ~12px
 
 // Grid Containers [网格
 $container:                                     100% !default;
 $container-m:                                   720px !default;
 $container-l:                                   960px !default;
-$container-xl:                                  1120px !default;
+$container-xl:                                  1200px !default;
 
 // Grid Gutters [网格排水沟
 $grid-gutter:                                   0px !default;
@@ -137,67 +61,37 @@ $layout-meter:                                  2px;
 $layout-meter-lenght:                           40;
 
 //button [按钮
-$button-xs-height:                              20px;
-$button-height:                                 30px;
-$button-s-height:                               25px;
-$button-l-height:                               40px;
-$button-xl-height:                              60px;
+$button-height:         30px;
+$button-padding:        0 11px;
+$button-min-width:      55px;
+$button-size:           14px;
+$button-border-radius:  4px;
+$button-hot-area:       7px;
+$button-bg-color:       #fdfdfd;
+$button-bg-image:       -webkit-gradient(linear,left top, left bottom, color-stop(.5, #fff), to(#fafafa));
+$button-border-color:   #cacccd;
 
-$button-xs-line-height:                         20px;
-$button-line-height:                            30px;
-$button-s-line-height:                          25px;
-$button-l-line-height:                          40px;
-$button-xl-line-height:                         60px;
-
-$button-xs-font-size:                           11px;
-$button-s-font-size:                            12px;
-$button-l-font-size:                            16px;
-$button-xl-font-size:                           20px;
-
-$button-xs-padding-horizontal:                  6px;
-$button-padding-horizontal:                     12px;
-$button-s-padding-horizontal:                   10px;
-$button-l-padding-horizontal:                   15px;
-$button-xl-padding-horizontal:                  18px;
-
-$button-font-size:                              1rem;
-$button-border-weight:                          0px;
-$button-border-color:                           rgba(0,0,0,.2);
-$button-border-radius:                          4px;
-$button-background:                             #fff;
-$button-color:                                  #333;
-$button-hover-background:                       #fff;
-$button-hover-color:                            #333;
-$button-active-background:                      darken($button-background,20%);
-$button-active-color:                           darken($button-color,20%);
-
-$button-disabled-background:                    #f5f5f5;
-$button-disabled-color:                         #999;
-
-$button-link-color:                             $base-link-color;
-$button-link-hover-color:                       $base-link-color-hover;
-$button-link-hover-text-decoration:             underline;
-$button-link-disabled-color:                    #999;
 
 
 //border [边框
-//$border-weight:                                 1px;
-$border-radius-base:                            2px;
-$border-radius-m:                               4px;
-$border-radius-l:                               6px;
-$border-radius-xl:                              8px;
-$bordercolor:                                   #ededed;
-$z-index-border:                                10;
-$border-t:                                      $bordercolor;
-$border-b:                                      $bordercolor;
-$border-l:                                      $bordercolor;
-$border-r:                                      $bordercolor;
+$border-weight:                                 1px;
+$border-radius-xs:                              2px;
+$border-radius-s:                               4px;
+$border-radius-m:                               8px;
+$border-radius-l:                               12px;
+$border-radius-lg:                              18px;
+
+
+$bordercolor:           #ededed;
+$border-t:              -webkit-gradient(linear, left bottom, left top, color-stop(.5, rgba(0, 0, 0, 0)), color-stop(.5, $bordercolor));
+$border-b:              -webkit-gradient(linear, left top, left bottom, color-stop(.5, rgba(0, 0, 0, 0)), color-stop(.5, $bordercolor));
+$border-l:              -webkit-gradient(linear, right top, left top, color-stop(.5, rgba(0, 0, 0, 0)), color-stop(.5, $bordercolor));
+$border-r:              -webkit-gradient(linear, left top, right top, color-stop(.5, rgba(0, 0, 0, 0)), color-stop(.5, $bordercolor));
 
 
 // 徽章
 // ========================================================================
-
-$badge-background:                              #00a8e6;
+$badge-background:                              #000;
 $badge-padding-horizontal:                      5px;
 $badge-font-size:                               10px;
 $badge-font-weight:                             bold;
@@ -205,11 +99,7 @@ $badge-line-height:                             14px;
 $badge-color:                                   #fff;
 $badge-text-transform:                          none;
 $badge-hover-color:                             #fff;
-
 $badge-notification-font-size:                  12px;
 $badge-notification-line-height:                18px;
 
-$badge-success-background:                      #8cc14c;
-$badge-warning-background:                      #faa732;
-$badge-danger-background:                       #da314b;
 
