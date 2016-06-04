@@ -42,4 +42,4 @@ a.badge:hover { color: $badge-hover-color; }
 @include badge-variant("red", $color-red, $color-white);
 @include badge-variant("orange", $color-orange, $color-white);
 @include badge-variant("blue", $color-blue, $color-white);
-@include badge-variant("grey", $color-grey-5, $color-white);
+@include badge-variant("grey", $color-grey, $color-white);

@@ -6,100 +6,110 @@
 
 //Global color [通用颜色
 
-$color-white:#fff;//白色
-$color-grey:                                    darken(#fff,50%);
-$color-red:                                     #ff4222;
-$color-blue:                                    #1b97ff;
-$color-green:                                   #29cc6d;
-$color-yellow:                                  #ffffcc;
-$color-orange:                                  #ff9900;
-$color-navy:                                    #314c83;
-$color-pink:                                    #F7665e;
-$color-brown:                                   #ae9a69;
-$color-black:                                   #000;
-
+$color-white: #fff; //白色
+$color-grey: darken(#fff, 50%);
+$color-red: #ff4222;
+$color-blue: #1b97ff;
+$color-green: #29cc6d;
+$color-yellow: #ffffcc;
+$color-orange: #ff9900;
+$color-navy: #314c83;
+$color-pink: #F7665e;
+$color-brown: #ae9a69;
+$color-black: #000;
 
 //字体颜色
-$font-color-1:                                  #333;
-$font-clolr-2:                                  #666;
-$font-clolr-3:                                  #999;
+$font-color-1: #333;
+$font-clolr-2: #666;
+$font-clolr-3: #999;
 //背景颜色
-$bg-color-1:						            #f5f5f5;
-$bg-color-2:	 					            #e6e6e6;
+$bg-color-1: #f5f5f5;
+$bg-color-2: #e6e6e6;
 
 // font size
-$font-size-base:          14px;
-$font-size-h1:            floor(($font-size-base * 2.6)); // ~36px
-$font-size-h2:            floor(($font-size-base * 2.15)); // ~30px
-$font-size-h3:            ceil(($font-size-base * 1.7)); // ~24px
-$font-size-h4:            ceil(($font-size-base * 1.25)); // ~18px
-$font-size-h5:            $font-size-base;
-$font-size-h6:            ceil(($font-size-base * 0.85)); // ~12px
+$font-size-base: 14px;
+$font-size-h1: floor(($font-size-base * 2.6)); // ~36px
+$font-size-h2: floor(($font-size-base * 2.15)); // ~30px
+$font-size-h3: ceil(($font-size-base * 1.7)); // ~24px
+$font-size-h4: ceil(($font-size-base * 1.25)); // ~18px
+$font-size-h5: $font-size-base;
+$font-size-h6: ceil(($font-size-base * 0.85)); // ~12px
 
 // Grid Containers [网格
-$container:                                     100% !default;
-$container-m:                                   720px !default;
-$container-l:                                   960px !default;
-$container-xl:                                  1200px !default;
+$container: 100% !default;
+$container-m: 720px !default;
+$container-l: 960px !default;
+$container-xl: 1200px !default;
 
 // Grid Gutters [网格排水沟
-$grid-gutter:                                   0px !default;
-$grid-gutter-m:                                 0px !default;
-$grid-gutter-l:                                 0px !default;
-$grid-gutter-xl:                                0px !default;
+$grid-gutter: 0px !default;
+$grid-gutter-m: 0px !default;
+$grid-gutter-l: 0px !default;
+$grid-gutter-xl: 0px !default;
 
 // Responsive Breakpoints [响应式断点
-$breakpoint-m:                                  ($container-m + 20) !default;
-$breakpoint-l:                                  ($container-l + 20) !default;
-$breakpoint-xl:                                 ($container-xl + 20) !default;
+$breakpoint-m: ($container-m + 20) !default;
+$breakpoint-l: ($container-l + 20) !default;
+$breakpoint-xl: ($container-xl + 20) !default;
 
 //animate 动画持续时间
-$duration:                                      1s;
+$duration: 1s;
 
 //shortcut-layout [快捷布局
-$layout-meter:                                  2px;
-$layout-meter-lenght:                           40;
-
-//button [按钮
-$button-height:         30px;
-$button-padding:        0 11px;
-$button-min-width:      55px;
-$button-size:           14px;
-$button-border-radius:  4px;
-$button-hot-area:       7px;
-$button-bg-color:       #fdfdfd;
-$button-bg-image:       -webkit-gradient(linear,left top, left bottom, color-stop(.5, #fff), to(#fafafa));
-$button-border-color:   #cacccd;
-
-
+$layout-meter: 2px;
+$layout-meter-lenght: 40;
 
 //border [边框
-$border-weight:                                 1px;
-$border-radius-xs:                              2px;
-$border-radius-s:                               4px;
-$border-radius-m:                               8px;
-$border-radius-l:                               12px;
-$border-radius-lg:                              18px;
+$border-weight: 1px;
+$border-radius-base: 4px !default;
+$border-radius-l: 6px !default;
+$border-radius-s: 2px !default;
 
-
-$bordercolor:           #ededed;
-$border-t:              -webkit-gradient(linear, left bottom, left top, color-stop(.5, rgba(0, 0, 0, 0)), color-stop(.5, $bordercolor));
-$border-b:              -webkit-gradient(linear, left top, left bottom, color-stop(.5, rgba(0, 0, 0, 0)), color-stop(.5, $bordercolor));
-$border-l:              -webkit-gradient(linear, right top, left top, color-stop(.5, rgba(0, 0, 0, 0)), color-stop(.5, $bordercolor));
-$border-r:              -webkit-gradient(linear, left top, right top, color-stop(.5, rgba(0, 0, 0, 0)), color-stop(.5, $bordercolor));
-
+$bordercolor: #ededed;
+$border-t: -webkit-gradient(linear, left bottom, left top, color-stop(.5, rgba(0, 0, 0, 0)), color-stop(.5, $bordercolor));
+$border-b: -webkit-gradient(linear, left top, left bottom, color-stop(.5, rgba(0, 0, 0, 0)), color-stop(.5, $bordercolor));
+$border-l: -webkit-gradient(linear, right top, left top, color-stop(.5, rgba(0, 0, 0, 0)), color-stop(.5, $bordercolor));
+$border-r: -webkit-gradient(linear, left top, right top, color-stop(.5, rgba(0, 0, 0, 0)), color-stop(.5, $bordercolor));
 
 // 徽章
 // ========================================================================
-$badge-background:                              #000;
-$badge-padding-horizontal:                      5px;
-$badge-font-size:                               10px;
-$badge-font-weight:                             bold;
-$badge-line-height:                             14px;
-$badge-color:                                   #fff;
-$badge-text-transform:                          none;
-$badge-hover-color:                             #fff;
-$badge-notification-font-size:                  12px;
-$badge-notification-line-height:                18px;
+$badge-background: #000;
+$badge-padding-horizontal: 5px;
+$badge-font-size: 10px;
+$badge-font-weight: bold;
+$badge-line-height: 14px;
+$badge-color: #fff;
+$badge-text-transform: none;
+$badge-hover-color: #fff;
+$badge-notification-font-size: 12px;
+$badge-notification-line-height: 18px;
 
+//button [按钮
 
+$btn-font-weight: normal !default;
+$btn-default-color: #333 !default;
+$btn-default-bg: #f8f8f8 !default;
+$btn-default-border: #ccc !default;
+
+$btn-line-height-base: 1.428571429 !default; // 20/14
+$btn-line-height-l: 1.3333333 !default; // extra decimals for Win 8.1 Chrome
+$btn-line-height-s: 1.5 !default;
+
+$btn-link-disabled-color: $font-clolr-3 !default;
+
+$btn-font-size-base: 14px !default;
+$btn-font-size-l: 18px !default; // ~18px
+$btn-font-size-s: 12px !default; // ~12px
+
+$btn-border-radius-base: $border-radius-base !default;
+$btn-border-radius-l: $border-radius-l !default;
+$btn-border-radius-s: $border-radius-s !default;
+
+$btn-padding-base-vertical: 6px !default;
+$btn-padding-base-horizontal: 12px !default;
+
+$btn-padding-l-vertical: 10px !default;
+$btn-padding-l-horizontal: 16px !default;
+
+$btn-padding-s-vertical: 4px !default;
+$btn-padding-s-horizontal: 10px !default;

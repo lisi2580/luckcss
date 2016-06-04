@@ -55,13 +55,6 @@
     animation-fill-mode: both;
 }
 
-//超出显示省略号
-@mixin nowrap($width:100%) {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: $width;
-}
 
 @mixin opacity($opacity) {
     opacity: $opacity;
