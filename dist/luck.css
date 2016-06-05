@@ -2609,33 +2609,11 @@ a.badge:hover {
 .field {
   width: 100%; }
 
-.form-group {
-  overflow: hidden; }
-  .form-group label {
-    display: inline-block;
-    padding-top: 8px; }
-
-.disabled, [disabled] {
+.disabled,
+[disabled] {
   pointer-events: none;
   cursor: not-allowed;
   opacity: .5; }
-
-.checkbox,
-.radio {
-  display: inline-block;
-  position: relative; }
-  .checkbox label,
-  .radio label {
-    padding-left: 20px;
-    padding-top: 0;
-    display: inline-block; }
-  .checkbox input[type="checkbox"],
-  .checkbox input[type="radio"],
-  .radio input[type="checkbox"],
-  .radio input[type="radio"] {
-    position: absolute;
-    top: 4px;
-    left: 0; }
 
 /************************************************/
 /*垂直上下居中*/
@@ -2840,3 +2818,19 @@ a.bg-grey-2:focus {
 a.bg-black:hover,
 a.bg-black:focus {
   background-color: black; }
+
+.icon-aarow-right {
+  display: inline-block;
+  height: 6px;
+  width: 6px;
+  border-width: 2px 2px 0 0;
+  border-color: red;
+  border-style: solid;
+  position: relative;
+  top: -2px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg); }
+  .icon-aarow-right:after {
+    content: " ";
+    top: -1px;
+    margin-left: .3em; }
