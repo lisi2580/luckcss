@@ -1,187 +1,47 @@
-// Base styles
-// --------------------------------------------------
-
-
-
-@mixin button-size($padding-vertical, $padding-horizontal, $font-size, $line-height, $border-radius) {
-  padding: $padding-vertical $padding-horizontal;
-  font-size: $font-size;
-  line-height: $line-height;
-  border-radius: $border-radius;
-}
-@mixin tab-focus() {
-  // Default
-  outline: thin dotted;
-  // WebKit
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-}
-
-@mixin button-variant($color, $background, $border) {
-  color: $color;
-  background-color: $background;
-  border-color: $border;
-
-  &:focus,
-  &.focus {
-    color: $color;
-    background-color: darken($background, 10%);
-    border-color: darken($border, 25%);
-  }
-  &:hover {
-    color: $color;
-    background-color: darken($background, 10%);
-    border-color: darken($border, 12%);
-  }
-  &:active,
-  &.active,
-  .open > &.dropdown-toggle {
-    color: $color;
-    background-color: darken($background, 10%);
-    border-color: darken($border, 12%);
-
-    &:hover,
-    &:focus,
-    &.focus {
-      color: $color;
-      background-color: darken($background, 17%);
-      border-color: darken($border, 25%);
-    }
-  }
-  &:active,
-  &.active,
-  .open > &.dropdown-toggle {
-    background-image: none;
-  }
-  &.disabled,
-  &[disabled],
-  fieldset[disabled] & {
-    &:hover,
-    &:focus,
-    &.focus {
-      background-color: $background;
-      border-color: $border;
-    }
-  }
-
-  .badge {
-    color: $background;
-    background-color: $color;
-  }
-}
-.btn {
+.button {
+  position: relative;
   display: inline-block;
-  margin-bottom: 0; // For input.btn
-  font-weight: $btn-font-weight;
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-top: $btn-padding-vertical-base;
+  padding-bottom: $btn-padding-vertical-base;
+  box-sizing: border-box;
+  font-size: $btn-font-size-base;
   text-align: center;
-  vertical-align: middle;
-  touch-action: manipulation;
-  cursor: pointer;
-  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
-  border: 1px solid transparent;
-  white-space: nowrap;
-  @include button-size($btn-padding-base-vertical, $btn-padding-base-horizontal, $font-size-base, $btn-line-height-base, $btn-border-radius-base);
-  user-select: none;
+  text-decoration: none;
+  color: $btn-color-base;
+  line-height: $btn-line-height-base;
+  border-radius: $btn-border-radius-base;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  overflow: hidden;
+  border: solid 1px $btn-border-base;
 
-  &,
-  &:active,
-  &.active {
-    &:focus,
-    &.focus {
-      @include tab-focus;
-      outline: none;
-    }
-  }
-
-  &:hover,
-  &:focus,
-  &.focus {
-    color: $btn-default-color;
-    text-decoration: none;
-    outline: none;
-  }
-
-  &:active,
-  &.active {
-    outline: 0;
-    background-image: none;
-    box-shadow: (inset 0 3px 5px rgba(0,0,0,.125));
-    outline: none;
-  }
-
-  &.disabled,
-  &[disabled],
-  fieldset[disabled] & {
-    cursor: not-allowed;
+  &.disabled {
     @include opacity(.65);
-  box-shadow:none;
-  }
-
-  // [converter] extracted a& to a.btn
-}
-
-a.btn {
-  &.disabled,
-  fieldset[disabled] & {
-    pointer-events: none; // Future-proof disabling of clicks on `<a>` elements
+    background-color: $btn-default-disabled-bg-color !important;
+    color: $btn-default-disabled-color !important;
   }
 }
 
+//@include button-variant(default, $btn-default-bg, $btn-default-color, $btn-default-active-bg, $btn-default-active-color);
+@include button-variant(green, $color-green, $color-white, darken($color-green, 10%), $color-white);
+@include button-variant(blue, $color-blue, $color-white, darken($color-blue, 10%), $color-white);
+@include button-variant(red, $color-red, $color-white, darken($color-red, 10%), $color-white);
+@include button-variant(grey, $color-grey, $color-white, darken($color-grey, 10%), $color-white);
+@include button-variant(orange, $color-orange, $color-white, darken($color-orange, 10%), $color-white);
 
-.btn-default {
-  @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
+.button-xs {
+  font-size: $btn-font-size-xs;
+  line-height: $btn-line-height-xs;
+  border-radius: $btn-border-radius-xs;
+  padding-top: $btn-padding-vertical-xs;
+  padding-bottom: $btn-padding-vertical-xs;
 }
 
-
-// Link buttons
-// -------------------------
-
-// Make a button look and behave like a link
-.btn-link {
-  color: $font-color-1;
-  font-weight: normal;
-  border-radius: 0;
-
-  &,
-  &:active,
-  &.active,
-  &[disabled],
-  fieldset[disabled] & {
-    background-color: transparent;
-    box-shadow:none;
-  }
-  &,
-  &:hover,
-  &:focus,
-  &:active {
-    border-color: transparent;
-  }
-  &:hover,
-  &:focus {
-    color: darken($font-color-1, 15%);
-    text-decoration: none;
-    background-color: transparent;
-  }
-  &[disabled],
-  fieldset[disabled] & {
-    &:hover,
-    &:focus {
-      color: $btn-link-disabled-color;
-      text-decoration: none;
-    }
-  }
+.button-xl {
+  font-size: $btn-font-size-xl;
+  line-height: $btn-line-height-xl;
+  border-radius: $btn-border-radius-xl;
+  padding-top: $btn-padding-vertical-xl;
+  padding-bottom: $btn-padding-vertical-xl;
 }
-
-
-// Button Sizes
-// --------------------------------------------------
-
-.btn-l {
-  // line-height: ensure even-numbered height of button next to large input
-  @include button-size($btn-padding-vertical-xl, $btn-padding-horizontal-xl, $btn-font-size-xl, $btn-line-height-xl, $btn-border-radius-xl);
-}
-.btn-s {
-  // line-height: ensure proper height of button next to small input
-  @include button-size($btn-padding-vertical-xs, $btn-padding-horizontal-xs, $btn-font-size-xs, $btn-line-height-xs, $btn-border-radius-xs);
-}
-

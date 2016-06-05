@@ -87,29 +87,31 @@ $badge-notification-line-height: 18px;
 //button [按钮
 
 $btn-font-weight: normal !default;
-$btn-default-color: #333 !default;
-$btn-default-bg: #f8f8f8 !default;
-$btn-default-border: #ccc !default;
+$btn-color-base: #333 !default;
+$btn-bg-base: #f8f8f8 !default;
+$btn-border-base: transparent !default;
+
+$btn-default-bg: #F7F7F7;
+$btn-default-active-bg: #DEDEDE;
+$btn-default-color: #454545;
+$btn-default-disabled-bg-color: #f7f7f7;
+$btn-default-disabled-color: #C9C9C9;
+$btn-default-active-color: #A1A1A1;
 
 $btn-line-height-base: 1.428571429 !default; // 20/14
 $btn-line-height-xl: 1.3333333 !default; // extra decimals for Win 8.1 Chrome
 $btn-line-height-xs: 1.5 !default;
 
 $btn-link-disabled-color: $font-clolr-3 !default;
-
 $btn-font-size-base: 14px !default;
 $btn-font-size-xl: 18px !default; // ~18px
 $btn-font-size-xs: 12px !default; // ~12px
-
 $btn-border-radius-base: $border-radius-base !default;
 $btn-border-radius-xl: $border-radius-xl !default;
 $btn-border-radius-xs: $border-radius-xs !default;
-
-$btn-padding-base-vertical: 6px !default;
-$btn-padding-base-horizontal: 12px !default;
-
+$btn-padding-vertical-base: 6px !default;
+$btn-padding-horizontal-base: 12px !default;
 $btn-padding-vertical-xl: 10px !default;
 $btn-padding-horizontal-xl: 16px !default;
-
 $btn-padding-vertical-xs: 4px !default;
 $btn-padding-horizontal-xs: 10px !default;

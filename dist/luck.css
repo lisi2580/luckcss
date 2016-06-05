@@ -4,119 +4,142 @@
 gaopeng.aaron.li
 0.1
 ========================================================================== */
-.btn {
+.button {
+  position: relative;
   display: inline-block;
-  margin-bottom: 0;
-  font-weight: normal;
-  text-align: center;
-  vertical-align: middle;
-  -ms-touch-action: manipulation;
-      touch-action: manipulation;
-  cursor: pointer;
-  background-image: none;
-  border: 1px solid transparent;
-  white-space: nowrap;
-  padding: 6px 12px;
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  box-sizing: border-box;
   font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
   line-height: 1.42857;
   border-radius: 4px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none; }
-  .btn:focus, .btn.focus, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
-    outline: thin dotted;
-    outline: 5px auto -webkit-focus-ring-color;
-    outline-offset: -2px;
-    outline: none; }
-  .btn:hover, .btn:focus, .btn.focus {
-    color: #333;
-    text-decoration: none;
-    outline: none; }
-  .btn:active, .btn.active {
-    outline: 0;
-    background-image: none;
-    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    outline: none; }
-  .btn.disabled, .btn[disabled],
-  fieldset[disabled] .btn {
-    cursor: not-allowed;
+  -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+  border: solid 1px transparent; }
+  .button.disabled {
     opacity: 0.65;
     filter: alpha(opacity=65);
-    box-shadow: none; }
+    background-color: #f7f7f7 !important;
+    color: #C9C9C9 !important; }
 
-a.btn.disabled,
-fieldset[disabled] a.btn {
-  pointer-events: none; }
+.button-green {
+  background-color: #29cc6d;
+  color: #fff;
+  border: solid 1px transparent; }
 
-.btn-default {
-  color: #333;
-  background-color: #f8f8f8;
-  border-color: #ccc; }
-  .btn-default:focus, .btn-default.focus {
-    color: #333;
-    background-color: #dfdfdf;
-    border-color: #8c8c8c; }
-  .btn-default:hover {
-    color: #333;
-    background-color: #dfdfdf;
-    border-color: #adadad; }
-  .btn-default:active, .btn-default.active,
-  .open > .btn-default.dropdown-toggle {
-    color: #333;
-    background-color: #dfdfdf;
-    border-color: #adadad; }
-    .btn-default:active:hover, .btn-default:active:focus, .btn-default:active.focus, .btn-default.active:hover, .btn-default.active:focus, .btn-default.active.focus,
-    .open > .btn-default.dropdown-toggle:hover,
-    .open > .btn-default.dropdown-toggle:focus,
-    .open > .btn-default.dropdown-toggle.focus {
-      color: #333;
-      background-color: #cdcdcd;
-      border-color: #8c8c8c; }
-  .btn-default:active, .btn-default.active,
-  .open > .btn-default.dropdown-toggle {
-    background-image: none; }
-  .btn-default.disabled:hover, .btn-default.disabled:focus, .btn-default.disabled.focus, .btn-default[disabled]:hover, .btn-default[disabled]:focus, .btn-default[disabled].focus,
-  fieldset[disabled] .btn-default:hover,
-  fieldset[disabled] .btn-default:focus,
-  fieldset[disabled] .btn-default.focus {
-    background-color: #f8f8f8;
-    border-color: #ccc; }
-  .btn-default .badge {
-    color: #f8f8f8;
-    background-color: #333; }
+.button-green:hover,
+.button-green:focus {
+  background-color: #4ddb88;
+  color: #fff; }
 
-.btn-link {
-  color: #333;
-  font-weight: normal;
-  border-radius: 0; }
-  .btn-link, .btn-link:active, .btn-link.active, .btn-link[disabled],
-  fieldset[disabled] .btn-link {
-    background-color: transparent;
-    box-shadow: none; }
-  .btn-link, .btn-link:hover, .btn-link:focus, .btn-link:active {
-    border-color: transparent; }
-  .btn-link:hover, .btn-link:focus {
-    color: #0d0d0d;
-    text-decoration: none;
-    background-color: transparent; }
-  .btn-link[disabled]:hover, .btn-link[disabled]:focus,
-  fieldset[disabled] .btn-link:hover,
-  fieldset[disabled] .btn-link:focus {
-    color: #999;
-    text-decoration: none; }
+.button-green:active,
+.button-green.active {
+  background-color: #20a256;
+  color: #fff; }
 
-.btn-l {
-  padding: 10px 16px;
-  font-size: 18px;
-  line-height: 1.33333;
-  border-radius: 6px; }
+.button-green.profile {
+  background: #fff;
+  color: #29cc6d;
+  border: solid 1px #29cc6d; }
 
-.btn-s {
-  padding: 4px 10px;
+.button-blue {
+  background-color: #1b97ff;
+  color: #fff;
+  border: solid 1px transparent; }
+
+.button-blue:hover,
+.button-blue:focus {
+  background-color: #4eaeff;
+  color: #fff; }
+
+.button-blue:active,
+.button-blue.active {
+  background-color: #007ee7;
+  color: #fff; }
+
+.button-blue.profile {
+  background: #fff;
+  color: #1b97ff;
+  border: solid 1px #1b97ff; }
+
+.button-red {
+  background-color: #ff4222;
+  color: #fff;
+  border: solid 1px transparent; }
+
+.button-red:hover,
+.button-red:focus {
+  background-color: #ff6e55;
+  color: #fff; }
+
+.button-red:active,
+.button-red.active {
+  background-color: #ee2200;
+  color: #fff; }
+
+.button-red.profile {
+  background: #fff;
+  color: #ff4222;
+  border: solid 1px #ff4222; }
+
+.button-grey {
+  background-color: gray;
+  color: #fff;
+  border: solid 1px transparent; }
+
+.button-grey:hover,
+.button-grey:focus {
+  background-color: #999999;
+  color: #fff; }
+
+.button-grey:active,
+.button-grey.active {
+  background-color: #666666;
+  color: #fff; }
+
+.button-grey.profile {
+  background: #fff;
+  color: gray;
+  border: solid 1px gray; }
+
+.button-orange {
+  background-color: #ff9900;
+  color: #fff;
+  border: solid 1px transparent; }
+
+.button-orange:hover,
+.button-orange:focus {
+  background-color: #ffad33;
+  color: #fff; }
+
+.button-orange:active,
+.button-orange.active {
+  background-color: #cc7a00;
+  color: #fff; }
+
+.button-orange.profile {
+  background: #fff;
+  color: #ff9900;
+  border: solid 1px #ff9900; }
+
+.button-xs {
   font-size: 12px;
   line-height: 1.5;
-  border-radius: 2px; }
+  border-radius: 2px;
+  padding-top: 4px;
+  padding-bottom: 4px; }
+
+.button-xl {
+  font-size: 18px;
+  line-height: 1.33333;
+  border-radius: 6px;
+  padding-top: 10px;
+  padding-bottom: 10px; }
 
 /* 1px hack */
 .border-t {
@@ -3073,19 +3096,3 @@ a.bg-grey-bg-2:focus {
 a.bg-black:hover,
 a.bg-black:focus {
   background-color: black; }
-
-.icon-aarow-right {
-  display: inline-block;
-  height: 6px;
-  width: 6px;
-  border-width: 2px 2px 0 0;
-  border-color: #ededed;
-  border-style: solid;
-  position: relative;
-  top: -2px;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg); }
-  .icon-aarow-right:after {
-    content: " ";
-    top: -1px;
-    margin-left: .3em; }
