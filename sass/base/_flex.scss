@@ -108,7 +108,9 @@
 }
 
 $col-num:12;
+.flex-row{
 
+}
 @for $i from 1 through $col-num {
   .flex-col-#{$i} {
     flex: 0 0 $i / $col-num * 100%;
