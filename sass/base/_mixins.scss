@@ -63,7 +63,7 @@
     filter: alpha(opacity=$opacity-ie);
 }
 
-@mixin border-radius($border-color: $bordercolor, $border-radius: $border-radius-base, $border-before-radius: $border-radius-l) {
+@mixin border-radius($border-color: $bordercolor, $border-radius: $border-radius-base, $border-before-radius: $border-radius-xl) {
     //border: 1px solid $border-color;
     border-radius: $border-radius;
     @media screen and (-webkit-min-device-pixel-ratio: 2) {
