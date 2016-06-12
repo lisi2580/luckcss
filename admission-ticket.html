@@ -1,0 +1,3732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>准考证生成器</title>
+    <style>
+        body {
+            background-color: #26714f;
+        }
+        .pure-form input[type="text"],
+        .pure-form input[type="password"],
+        .pure-form input[type="email"],
+        .pure-form input[type="url"],
+        .pure-form input[type="date"],
+        .pure-form input[type="month"],
+        .pure-form input[type="time"],
+        .pure-form input[type="datetime"],
+        .pure-form input[type="datetime-local"],
+        .pure-form input[type="week"],
+        .pure-form input[type="number"],
+        .pure-form input[type="search"],
+        .pure-form input[type="tel"],
+        .pure-form input[type="color"],
+        .pure-form select,
+        .pure-form textarea {
+            padding: 0.5em 0.6em;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-shadow: inset 0 1px 3px #ddd;
+            border-radius: 4px;
+            vertical-align: middle;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        /*
+        Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+        since IE8 won't execute CSS that contains a CSS3 selector.
+        */
+        .pure-form input:not([type]) {
+            padding: 0.5em 0.6em;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-shadow: inset 0 1px 3px #ddd;
+            border-radius: 4px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        /* Chrome (as of v.32/34 on OS X) needs additional room for color to display. */
+        /* May be able to remove this tweak as color inputs become more standardized across browsers. */
+        .pure-form input[type="color"] {
+            padding: 0.2em 0.5em;
+        }
+
+        .pure-form input[type="text"]:focus,
+        .pure-form input[type="password"]:focus,
+        .pure-form input[type="email"]:focus,
+        .pure-form input[type="url"]:focus,
+        .pure-form input[type="date"]:focus,
+        .pure-form input[type="month"]:focus,
+        .pure-form input[type="time"]:focus,
+        .pure-form input[type="datetime"]:focus,
+        .pure-form input[type="datetime-local"]:focus,
+        .pure-form input[type="week"]:focus,
+        .pure-form input[type="number"]:focus,
+        .pure-form input[type="search"]:focus,
+        .pure-form input[type="tel"]:focus,
+        .pure-form input[type="color"]:focus,
+        .pure-form select:focus,
+        .pure-form textarea:focus {
+            outline: 0;
+            border-color: #129FEA;
+        }
+
+        /*
+        Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+        since IE8 won't execute CSS that contains a CSS3 selector.
+        */
+        .pure-form input:not([type]):focus {
+            outline: 0;
+            border-color: #129FEA;
+        }
+
+        .pure-form input[type="file"]:focus,
+        .pure-form input[type="radio"]:focus,
+        .pure-form input[type="checkbox"]:focus {
+            outline: thin solid #129FEA;
+            outline: 1px auto #129FEA;
+        }
+
+        .pure-form .pure-checkbox,
+        .pure-form .pure-radio {
+            margin: 0.5em 0;
+            display: block;
+        }
+
+        .pure-form input[type="text"][disabled],
+        .pure-form input[type="password"][disabled],
+        .pure-form input[type="email"][disabled],
+        .pure-form input[type="url"][disabled],
+        .pure-form input[type="date"][disabled],
+        .pure-form input[type="month"][disabled],
+        .pure-form input[type="time"][disabled],
+        .pure-form input[type="datetime"][disabled],
+        .pure-form input[type="datetime-local"][disabled],
+        .pure-form input[type="week"][disabled],
+        .pure-form input[type="number"][disabled],
+        .pure-form input[type="search"][disabled],
+        .pure-form input[type="tel"][disabled],
+        .pure-form input[type="color"][disabled],
+        .pure-form select[disabled],
+        .pure-form textarea[disabled] {
+            cursor: not-allowed;
+            background-color: #eaeded;
+            color: #cad2d3;
+        }
+
+        /*
+        Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+        since IE8 won't execute CSS that contains a CSS3 selector.
+        */
+        .pure-form input:not([type])[disabled] {
+            cursor: not-allowed;
+            background-color: #eaeded;
+            color: #cad2d3;
+        }
+
+        .pure-form input[readonly],
+        .pure-form select[readonly],
+        .pure-form textarea[readonly] {
+            background-color: #eee; /* menu hover bg color */
+            color: #777; /* menu text color */
+            border-color: #ccc;
+        }
+
+        .pure-form input:focus:invalid,
+        .pure-form textarea:focus:invalid,
+        .pure-form select:focus:invalid {
+            color: #b94a48;
+            border-color: #e9322d;
+        }
+
+        .pure-form input[type="file"]:focus:invalid:focus,
+        .pure-form input[type="radio"]:focus:invalid:focus,
+        .pure-form input[type="checkbox"]:focus:invalid:focus {
+            outline-color: #e9322d;
+        }
+
+        .pure-form select {
+            /* Normalizes the height; padding is not sufficient. */
+            height: 2.25em;
+            border: 1px solid #ccc;
+            background-color: white;
+        }
+
+        .pure-form select[multiple] {
+            height: auto;
+        }
+
+        .pure-form label {
+            margin: 0.5em 0 0.2em;
+        }
+
+        .pure-form fieldset {
+            margin: 0;
+            padding: 0.35em 0 0.75em;
+            border: 0;
+        }
+
+        .pure-form legend {
+            display: block;
+            width: 100%;
+            padding: 0.3em 0;
+            margin-bottom: 0.3em;
+            color: #333;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .pure-form-stacked input[type="text"],
+        .pure-form-stacked input[type="password"],
+        .pure-form-stacked input[type="email"],
+        .pure-form-stacked input[type="url"],
+        .pure-form-stacked input[type="date"],
+        .pure-form-stacked input[type="month"],
+        .pure-form-stacked input[type="time"],
+        .pure-form-stacked input[type="datetime"],
+        .pure-form-stacked input[type="datetime-local"],
+        .pure-form-stacked input[type="week"],
+        .pure-form-stacked input[type="number"],
+        .pure-form-stacked input[type="search"],
+        .pure-form-stacked input[type="tel"],
+        .pure-form-stacked input[type="color"],
+        .pure-form-stacked input[type="file"],
+        .pure-form-stacked select,
+        .pure-form-stacked label,
+        .pure-form-stacked textarea {
+            display: block;
+            margin: 0.25em 0;
+        }
+
+        /*
+        Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+        since IE8 won't execute CSS that contains a CSS3 selector.
+        */
+        .pure-form-stacked input:not([type]) {
+            display: block;
+            margin: 0.25em 0;
+        }
+
+        .pure-form-aligned input,
+        .pure-form-aligned textarea,
+        .pure-form-aligned select,
+            /* NOTE: pure-help-inline is deprecated. Use .pure-form-message-inline instead. */
+        .pure-form-aligned .pure-help-inline,
+        .pure-form-message-inline {
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+            vertical-align: middle;
+        }
+
+        .pure-form-aligned textarea {
+            vertical-align: top;
+        }
+
+        /* Aligned Forms */
+        .pure-form-aligned .pure-control-group {
+            margin-bottom: 0.5em;
+        }
+
+        .pure-form-aligned .pure-control-group label {
+            text-align: right;
+            display: inline-block;
+            vertical-align: middle;
+            width: 10em;
+            margin: 0 1em 0 0;
+        }
+
+        .pure-form-aligned .pure-controls {
+            margin: 1.5em 0 0 11em;
+        }
+
+        /* Rounded Inputs */
+        .pure-form input.pure-input-rounded,
+        .pure-form .pure-input-rounded {
+            border-radius: 2em;
+            padding: 0.5em 1em;
+        }
+
+        /* Grouped Inputs */
+        .pure-form .pure-group fieldset {
+            margin-bottom: 10px;
+        }
+
+        .pure-form .pure-group input,
+        .pure-form .pure-group textarea {
+            display: block;
+            padding: 10px;
+            margin: 0 0 -1px;
+            border-radius: 0;
+            position: relative;
+            top: -1px;
+        }
+
+        .pure-form .pure-group input:focus,
+        .pure-form .pure-group textarea:focus {
+            z-index: 3;
+        }
+
+        .pure-form .pure-group input:first-child,
+        .pure-form .pure-group textarea:first-child {
+            top: 1px;
+            border-radius: 4px 4px 0 0;
+            margin: 0;
+        }
+
+        .pure-form .pure-group input:first-child:last-child,
+        .pure-form .pure-group textarea:first-child:last-child {
+            top: 1px;
+            border-radius: 4px;
+            margin: 0;
+        }
+
+        .pure-form .pure-group input:last-child,
+        .pure-form .pure-group textarea:last-child {
+            top: -2px;
+            border-radius: 0 0 4px 4px;
+            margin: 0;
+        }
+
+        .pure-form .pure-group button {
+            margin: 0.35em 0;
+        }
+
+        .pure-form .pure-input-1 {
+            width: 100%;
+        }
+
+        .pure-form .pure-input-3-4 {
+            width: 75%;
+        }
+
+        .pure-form .pure-input-2-3 {
+            width: 66%;
+        }
+
+        .pure-form .pure-input-1-2 {
+            width: 50%;
+        }
+
+        .pure-form .pure-input-1-3 {
+            width: 33%;
+        }
+
+        .pure-form .pure-input-1-4 {
+            width: 25%;
+        }
+
+        /* Inline help for forms */
+        /* NOTE: pure-help-inline is deprecated. Use .pure-form-message-inline instead. */
+        .pure-form .pure-help-inline,
+        .pure-form-message-inline {
+            display: inline-block;
+            padding-left: 0.3em;
+            color: #666;
+            vertical-align: middle;
+            font-size: 0.875em;
+        }
+
+        /* Block help for forms */
+        .pure-form-message {
+            display: block;
+            color: #666;
+            font-size: 0.875em;
+        }
+
+        input[type="button"] {
+            background: #ffda0f;
+            color: #ff5400;
+            height: 40px;
+            border-radius: 20px;
+        }
+
+        .container {
+            max-width: 640px;
+        }
+        @charset "UTF-8";
+        /* ==========================================================================
+        // luck css
+        gaopeng.aaron.li
+        0.1
+        ========================================================================== */
+        /*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
+        /**
+         * 1. Change the default font family in all browsers (opinionated).
+         * 2. Prevent adjustments of font size after orientation changes in IE and iOS.
+         */
+        html {
+            font-family: sans-serif;
+            /* 1 */
+            -ms-text-size-adjust: 100%;
+            /* 2 */
+            -webkit-text-size-adjust: 100%;
+            /* 2 */ }
+
+        /**
+         * Remove the margin in all browsers (opinionated).
+         */
+        body {
+            margin: 0; }
+
+        /* HTML5 display definitions
+           ========================================================================== */
+        /**
+         * Add the correct display in IE 9-.
+         * 1. Add the correct display in Edge, IE, and Firefox.
+         * 2. Add the correct display in IE.
+         */
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        main,
+        menu,
+        nav,
+        section,
+        summary {
+            /* 1 */
+            display: block; }
+
+        /**
+         * Add the correct display in IE 9-.
+         */
+        audio,
+        canvas,
+        progress,
+        video {
+            display: inline-block; }
+
+        /**
+         * Add the correct display in iOS 4-7.
+         */
+        audio:not([controls]) {
+            display: none;
+            height: 0; }
+
+        /**
+         * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+         */
+        progress {
+            vertical-align: baseline; }
+
+        /**
+         * Add the correct display in IE 10-.
+         * 1. Add the correct display in IE.
+         */
+        template,
+        [hidden] {
+            display: none; }
+
+        /* Links
+           ========================================================================== */
+        /**
+         * 1. Remove the gray background on active links in IE 10.
+         * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+         */
+        a {
+            background-color: transparent;
+            /* 1 */
+            -webkit-text-decoration-skip: objects;
+            /* 2 */ }
+
+        /**
+         * Remove the outline on focused links when they are also active or hovered
+         * in all browsers (opinionated).
+         */
+        a:active,
+        a:hover {
+            outline-width: 0; }
+
+        /* Text-level semantics
+           ========================================================================== */
+        /**
+         * 1. Remove the bottom border in Firefox 39-.
+         * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+         */
+        abbr[title] {
+            border-bottom: none;
+            /* 1 */
+            text-decoration: underline;
+            /* 2 */
+            text-decoration: underline dotted;
+            /* 2 */ }
+
+        /**
+         * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
+         */
+        b,
+        strong {
+            font-weight: inherit; }
+
+        /**
+         * Add the correct font weight in Chrome, Edge, and Safari.
+         */
+        b,
+        strong {
+            font-weight: bolder; }
+
+        /**
+         * Add the correct font style in Android 4.3-.
+         */
+        dfn {
+            font-style: italic; }
+
+        /**
+         * Correct the font size and margin on `h1` elements within `section` and
+         * `article` contexts in Chrome, Firefox, and Safari.
+         */
+        h1 {
+            font-size: 2em;
+            margin: 0.67em 0; }
+
+        /**
+         * Add the correct background and color in IE 9-.
+         */
+        mark {
+            background-color: #ff0;
+            color: #000; }
+
+        /**
+         * Add the correct font size in all browsers.
+         */
+        small {
+            font-size: 80%; }
+
+        /**
+         * Prevent `sub` and `sup` elements from affecting the line height in
+         * all browsers.
+         */
+        sub,
+        sup {
+            font-size: 75%;
+            line-height: 0;
+            position: relative;
+            vertical-align: baseline; }
+
+        sub {
+            bottom: -0.25em; }
+
+        sup {
+            top: -0.5em; }
+
+        /* Embedded content
+           ========================================================================== */
+        /**
+         * Remove the border on images inside links in IE 10-.
+         */
+        img {
+            border-style: none; }
+
+        /**
+         * Hide the overflow in IE.
+         */
+        svg:not(:root) {
+            overflow: hidden; }
+
+        /* Grouping content
+           ========================================================================== */
+        /**
+         * 1. Correct the inheritance and scaling of font size in all browsers.
+         * 2. Correct the odd `em` font sizing in all browsers.
+         */
+        code,
+        kbd,
+        pre,
+        samp {
+            font-family: monospace, monospace;
+            /* 1 */
+            font-size: 1em;
+            /* 2 */ }
+
+        /**
+         * Add the correct margin in IE 8.
+         */
+        figure {
+            margin: 1em 40px; }
+
+        /**
+         * 1. Add the correct box sizing in Firefox.
+         * 2. Show the overflow in Edge and IE.
+         */
+        hr {
+            box-sizing: content-box;
+            /* 1 */
+            height: 0;
+            /* 1 */
+            overflow: visible;
+            /* 2 */ }
+
+        /* Forms
+           ========================================================================== */
+        /**
+         * 1. Change font properties to `inherit` in all browsers (opinionated).
+         * 2. Remove the margin in Firefox and Safari.
+         */
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit;
+            /* 1 */
+            margin: 0;
+            /* 2 */ }
+
+        /**
+         * Restore the font weight unset by the previous rule.
+         */
+        optgroup {
+            font-weight: bold; }
+
+        /**
+         * Show the overflow in IE.
+         * 1. Show the overflow in Edge.
+         */
+        button,
+        input {
+            /* 1 */
+            overflow: visible; }
+
+        /**
+         * Remove the inheritance of text transform in Edge, Firefox, and IE.
+         * 1. Remove the inheritance of text transform in Firefox.
+         */
+        button,
+        select {
+            /* 1 */
+            text-transform: none; }
+
+        /**
+         * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+         *    controls in Android 4.
+         * 2. Correct the inability to style clickable types in iOS and Safari.
+         */
+        button,
+        html [type="button"],
+        [type="reset"],
+        [type="submit"] {
+            -webkit-appearance: button;
+            /* 2 */ }
+
+        /**
+         * Remove the inner border and padding in Firefox.
+         */
+        button::-moz-focus-inner,
+        [type="button"]::-moz-focus-inner,
+        [type="reset"]::-moz-focus-inner,
+        [type="submit"]::-moz-focus-inner {
+            border-style: none;
+            padding: 0; }
+
+        /**
+         * Restore the focus styles unset by the previous rule.
+         */
+        button:-moz-focusring,
+        [type="button"]:-moz-focusring,
+        [type="reset"]:-moz-focusring,
+        [type="submit"]:-moz-focusring {
+            outline: 1px dotted ButtonText; }
+
+        /**
+         * Change the border, margin, and padding in all browsers (opinionated).
+         */
+        fieldset {
+            border: 1px solid #c0c0c0;
+            margin: 0 2px;
+            padding: 0.35em 0.625em 0.75em; }
+
+        /**
+         * 1. Correct the text wrapping in Edge and IE.
+         * 2. Correct the color inheritance from `fieldset` elements in IE.
+         * 3. Remove the padding so developers are not caught out when they zero out
+         *    `fieldset` elements in all browsers.
+         */
+        legend {
+            box-sizing: border-box;
+            /* 1 */
+            color: inherit;
+            /* 2 */
+            display: table;
+            /* 1 */
+            max-width: 100%;
+            /* 1 */
+            padding: 0;
+            /* 3 */
+            white-space: normal;
+            /* 1 */ }
+
+        /**
+         * Remove the default vertical scrollbar in IE.
+         */
+        textarea {
+            overflow: auto; }
+
+        /**
+         * 1. Add the correct box sizing in IE 10-.
+         * 2. Remove the padding in IE 10-.
+         */
+        [type="checkbox"],
+        [type="radio"] {
+            box-sizing: border-box;
+            /* 1 */
+            padding: 0;
+            /* 2 */ }
+
+        /**
+         * Correct the cursor style of increment and decrement buttons in Chrome.
+         */
+        [type="number"]::-webkit-inner-spin-button,
+        [type="number"]::-webkit-outer-spin-button {
+            height: auto; }
+
+        /**
+         * 1. Correct the odd appearance in Chrome and Safari.
+         * 2. Correct the outline style in Safari.
+         */
+        [type="search"] {
+            -webkit-appearance: textfield;
+            /* 1 */
+            outline-offset: -2px;
+            /* 2 */ }
+
+        /**
+         * Remove the inner padding and cancel buttons in Chrome and Safari on OS X.
+         */
+        [type="search"]::-webkit-search-cancel-button,
+        [type="search"]::-webkit-search-decoration {
+            -webkit-appearance: none; }
+
+        /**
+         * Correct the text style of placeholders in Chrome, Edge, and Safari.
+         */
+        ::-webkit-input-placeholder {
+            color: inherit;
+            opacity: 0.54; }
+
+        /**
+         * 1. Correct the inability to style clickable types in iOS and Safari.
+         * 2. Change font properties to `inherit` in Safari.
+         */
+        ::-webkit-file-upload-button {
+            -webkit-appearance: button;
+            /* 1 */
+            font: inherit;
+            /* 2 */ }
+
+        .button {
+            display: inline-block;
+            padding-left: 14px;
+            padding-right: 14px;
+            padding-top: 6px;
+            padding-bottom: 6px;
+            box-sizing: border-box;
+            font-size: 14px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            line-height: 1.42857;
+            border-radius: 4px;
+            -webkit-tap-highlight-color: transparent;
+            overflow: hidden;
+            border: solid 1px transparent; }
+        .button.disabled {
+            opacity: 0.65;
+            filter: alpha(opacity=65);
+            background-color: #f7f7f7 !important;
+            color: #C9C9C9 !important; }
+
+        .button-default {
+            background-color: #F7F7F7;
+            color: #454545;
+            border: solid 1px transparent; }
+
+        .button-default:hover,
+        .button-default:focus {
+            background-color: white;
+            color: #454545; }
+
+        .button-default:active,
+        .button-default.active {
+            background-color: #DEDEDE;
+            color: #A1A1A1; }
+
+        .button-default.profile {
+            background: #fff;
+            color: #F7F7F7;
+            border: solid 1px #F7F7F7; }
+
+        .button-green {
+            background-color: #29cc6d;
+            color: #fff;
+            border: solid 1px transparent; }
+
+        .button-green:hover,
+        .button-green:focus {
+            background-color: #4ddb88;
+            color: #fff; }
+
+        .button-green:active,
+        .button-green.active {
+            background-color: #20a256;
+            color: #fff; }
+
+        .button-green.profile {
+            background: #fff;
+            color: #29cc6d;
+            border: solid 1px #29cc6d; }
+
+        .button-blue {
+            background-color: #1b97ff;
+            color: #fff;
+            border: solid 1px transparent; }
+
+        .button-blue:hover,
+        .button-blue:focus {
+            background-color: #4eaeff;
+            color: #fff; }
+
+        .button-blue:active,
+        .button-blue.active {
+            background-color: #007ee7;
+            color: #fff; }
+
+        .button-blue.profile {
+            background: #fff;
+            color: #1b97ff;
+            border: solid 1px #1b97ff; }
+
+        .button-red {
+            background-color: #ff4222;
+            color: #fff;
+            border: solid 1px transparent; }
+
+        .button-red:hover,
+        .button-red:focus {
+            background-color: #ff6e55;
+            color: #fff; }
+
+        .button-red:active,
+        .button-red.active {
+            background-color: #ee2200;
+            color: #fff; }
+
+        .button-red.profile {
+            background: #fff;
+            color: #ff4222;
+            border: solid 1px #ff4222; }
+
+        .button-grey {
+            background-color: gray;
+            color: #fff;
+            border: solid 1px transparent; }
+
+        .button-grey:hover,
+        .button-grey:focus {
+            background-color: #999999;
+            color: #fff; }
+
+        .button-grey:active,
+        .button-grey.active {
+            background-color: #666666;
+            color: #fff; }
+
+        .button-grey.profile {
+            background: #fff;
+            color: gray;
+            border: solid 1px gray; }
+
+        .button-orange {
+            background-color: #ff9900;
+            color: #fff;
+            border: solid 1px transparent; }
+
+        .button-orange:hover,
+        .button-orange:focus {
+            background-color: #ffad33;
+            color: #fff; }
+
+        .button-orange:active,
+        .button-orange.active {
+            background-color: #cc7a00;
+            color: #fff; }
+
+        .button-orange.profile {
+            background: #fff;
+            color: #ff9900;
+            border: solid 1px #ff9900; }
+
+        .button-xs {
+            font-size: 12px;
+            line-height: 1.5;
+            border-radius: 2px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 4px;
+            padding-right: 4px; }
+
+        .button-xl {
+            font-size: 18px;
+            line-height: 1.33333;
+            border-radius: 6px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 16px;
+            padding-right: 16px; }
+
+        .flex {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex; }
+
+        .flex-direction-row {
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row; }
+
+        .flex-direction-column {
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column; }
+
+        .flex-jc-space-around {
+            -ms-flex-pack: distribute;
+            justify-content: space-around; }
+
+        .flex-jc-space-between {
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between; }
+
+        .flex-jc-start {
+            -webkit-box-pack: start;
+            -ms-flex-pack: start;
+            justify-content: flex-start; }
+
+        .flex-jc-center {
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center; }
+
+        .flex-jc-end {
+            -webkit-box-pack: end;
+            -ms-flex-pack: end;
+            justify-content: flex-end; }
+
+        .flex-wrap {
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap; }
+
+        .flex-nowrap {
+            -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap; }
+
+        .flex-ai-start {
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            -ms-grid-row-align: flex-start;
+            align-items: flex-start; }
+
+        .flex-ai-end {
+            -webkit-box-align: end;
+            -ms-flex-align: end;
+            -ms-grid-row-align: flex-end;
+            align-items: flex-end; }
+
+        .flex-ai-center {
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -ms-grid-row-align: center;
+            align-items: center; }
+
+        .flex-ai-baseline {
+            -webkit-box-align: baseline;
+            -ms-flex-align: baseline;
+            -ms-grid-row-align: baseline;
+            align-items: baseline; }
+
+        .flex-ai-stretch {
+            -webkit-box-align: stretch;
+            -ms-flex-align: stretch;
+            -ms-grid-row-align: stretch;
+            align-items: stretch; }
+
+        .flex-ac-start {
+            -ms-flex-line-pack: start;
+            align-content: flex-start; }
+
+        .flex-ac-end {
+            -ms-flex-line-pack: end;
+            align-content: flex-end; }
+
+        .flex-ac-center {
+            -ms-flex-line-pack: center;
+            align-content: center; }
+
+        .flex-ac-space-between {
+            -ms-flex-line-pack: justify;
+            align-content: space-between; }
+
+        .flex-ac-space-around {
+            -ms-flex-line-pack: distribute;
+            align-content: space-around; }
+
+        .flex-ac-stretch {
+            -ms-flex-line-pack: stretch;
+            align-content: stretch; }
+
+        .flex-align-self-start {
+            -ms-flex-item-align: start;
+            align-self: flex-start; }
+
+        .flex-align-self-end {
+            -ms-flex-item-align: end;
+            align-self: flex-end; }
+
+        .flex-align-self-center {
+            -ms-flex-item-align: center;
+            align-self: center; }
+
+        .flex-align-self-baseline {
+            -ms-flex-item-align: baseline;
+            align-self: baseline; }
+
+        .flex-align-self-stretch {
+            -ms-flex-item-align: stretch;
+            align-self: stretch; }
+
+        .flex-col-auto {
+            -webkit-box-flex: 1;
+            -ms-flex: 1;
+            flex: 1; }
+
+        .flex-col-1 {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 8.33333%;
+            flex: 0 0 8.33333%; }
+
+        .flex-col-2 {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 16.66667%;
+            flex: 0 0 16.66667%; }
+
+        .flex-col-3 {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 25%;
+            flex: 0 0 25%; }
+
+        .flex-col-4 {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 33.33333%;
+            flex: 0 0 33.33333%; }
+
+        .flex-col-5 {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 41.66667%;
+            flex: 0 0 41.66667%; }
+
+        .flex-col-6 {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 50%;
+            flex: 0 0 50%; }
+
+        .flex-col-7 {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 58.33333%;
+            flex: 0 0 58.33333%; }
+
+        .flex-col-8 {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 66.66667%;
+            flex: 0 0 66.66667%; }
+
+        .flex-col-9 {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 75%;
+            flex: 0 0 75%; }
+
+        .flex-col-10 {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 83.33333%;
+            flex: 0 0 83.33333%; }
+
+        .flex-col-11 {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 91.66667%;
+            flex: 0 0 91.66667%; }
+
+        .flex-col-12 {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 100%;
+            flex: 0 0 100%; }
+
+        .clear:before, .clear:after {
+            content: " ";
+            display: table; }
+
+        .clear:after {
+            clear: both; }
+
+        .row:before, .row:after {
+            content: "";
+            display: table; }
+
+        .row:after {
+            clear: both; }
+
+        .row {
+            position: relative;
+            margin-left: 0px;
+            margin-right: 0px; }
+
+        .container {
+            padding-left: 0px;
+            padding-right: 0px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            max-width: 640px; }
+
+        .container-full {
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: auto;
+            margin-right: auto; }
+
+        .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+            padding-left: 0px;
+            padding-right: 0px;
+            position: relative;
+            float: left; }
+
+        .col-1 {
+            width: 8.33333%; }
+
+        .col-2 {
+            width: 16.66667%; }
+
+        .col-3 {
+            width: 25%; }
+
+        .col-4 {
+            width: 33.33333%; }
+
+        .col-5 {
+            width: 41.66667%; }
+
+        .col-6 {
+            width: 50%; }
+
+        .col-7 {
+            width: 58.33333%; }
+
+        .col-8 {
+            width: 66.66667%; }
+
+        .col-9 {
+            width: 75%; }
+
+        .col-10 {
+            width: 83.33333%; }
+
+        .col-11 {
+            width: 91.66667%; }
+
+        .col-12 {
+            width: 100%; }
+
+        .push-1 {
+            left: 8.33333%; }
+
+        .push-2 {
+            left: 16.66667%; }
+
+        .push-3 {
+            left: 25%; }
+
+        .push-4 {
+            left: 33.33333%; }
+
+        .push-5 {
+            left: 41.66667%; }
+
+        .push-6 {
+            left: 50%; }
+
+        .push-7 {
+            left: 58.33333%; }
+
+        .push-8 {
+            left: 66.66667%; }
+
+        .push-9 {
+            left: 75%; }
+
+        .push-10 {
+            left: 83.33333%; }
+
+        .push-11 {
+            left: 91.66667%; }
+
+        .pull-1 {
+            left: -8.33333%; }
+
+        .pull-2 {
+            left: -16.66667%; }
+
+        .pull-3 {
+            left: -25%; }
+
+        .pull-4 {
+            left: -33.33333%; }
+
+        .pull-5 {
+            left: -41.66667%; }
+
+        .pull-6 {
+            left: -50%; }
+
+        .pull-7 {
+            left: -58.33333%; }
+
+        .pull-8 {
+            left: -66.66667%; }
+
+        .pull-9 {
+            left: -75%; }
+
+        .pull-10 {
+            left: -83.33333%; }
+
+        .pull-11 {
+            left: -91.66667%; }
+
+        .animate {
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both; }
+
+        .animate-infinite {
+            -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite; }
+
+        @-webkit-keyframes fadeIn {
+            0% {
+                opacity: 0; }
+            100% {
+                opacity: 1; } }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0; }
+            100% {
+                opacity: 1; } }
+
+        .fade-in {
+            -webkit-animation-name: fadeIn;
+            animation-name: fadeIn; }
+
+        @-webkit-keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                -webkit-transform: translate3d(0, -30px, 0);
+                transform: translate3d(0, -30px, 0); }
+            100% {
+                opacity: 1;
+                -webkit-transform: none;
+                transform: none; } }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                -webkit-transform: translate3d(0, -30px, 0);
+                transform: translate3d(0, -30px, 0); }
+            100% {
+                opacity: 1;
+                -webkit-transform: none;
+                transform: none; } }
+
+        .fade-in-down {
+            -webkit-animation-name: fadeInDown;
+            animation-name: fadeInDown; }
+
+        @-webkit-keyframes fadeInDownBig {
+            0% {
+                opacity: 0;
+                -webkit-transform: translate3d(0, -100%, 0);
+                transform: translate3d(0, -100%, 0); }
+            100% {
+                opacity: 1;
+                -webkit-transform: none;
+                transform: none; } }
+
+        @keyframes fadeInDownBig {
+            0% {
+                opacity: 0;
+                -webkit-transform: translate3d(0, -100%, 0);
+                transform: translate3d(0, -100%, 0); }
+            100% {
+                opacity: 1;
+                -webkit-transform: none;
+                transform: none; } }
+
+        .fade-in-down-big {
+            -webkit-animation-name: fadeInDownBig;
+            animation-name: fadeInDownBig; }
+
+        @-webkit-keyframes fadeInLeft {
+            0% {
+                opacity: 0;
+                -webkit-transform: translate3d(-30px, 0, 0);
+                transform: translate3d(-30px, 0, 0); }
+            100% {
+                opacity: 1;
+                -webkit-transform: none;
+                transform: none; } }
+
+        @keyframes fadeInLeft {
+            0% {
+                opacity: 0;
+                -webkit-transform: translate3d(-30px, 0, 0);
+                transform: translate3d(-30px, 0, 0); }
+            100% {
+                opacity: 1;
+                -webkit-transform: none;
+                transform: none; } }
+
+        .fade-in-left {
+            -webkit-animation-name: fadeInLeft;
+            animation-name: fadeInLeft; }
+
+        @-webkit-keyframes fadeInLeftBig {
+            0% {
+                opacity: 0;
+                -webkit-transform: translate3d(-100%, 0, 0);
+                transform: translate3d(-100%, 0, 0); }
+            100% {
+                opacity: 1;
+                -webkit-transform: none;
+                transform: none; } }
+
+        @keyframes fadeInLeftBig {
+            0% {
+                opacity: 0;
+                -webkit-transform: translate3d(-100%, 0, 0);
+                transform: translate3d(-100%, 0, 0); }
+            100% {
+                opacity: 1;
+                -webkit-transform: none;
+                transform: none; } }
+
+        .fade-in-left-big {
+            -webkit-animation-name: fadeInLeftBig;
+            animation-name: fadeInLeftBig; }
+
+        @-webkit-keyframes fadeInRight {
+            0% {
+                opacity: 0;
+                -webkit-transform: translate3d(30px, 0, 0);
+                transform: translate3d(30px, 0, 0); }
+            100% {
+                opacity: 1;
+                -webkit-transform: none;
+                transform: none; } }
+
+        @keyframes fadeInRight {
+            0% {
+                opacity: 0;
+                -webkit-transform: translate3d(30px, 0, 0);
+                transform: translate3d(30px, 0, 0); }
+            100% {
+                opacity: 1;
+                -webkit-transform: none;
+                transform: none; } }
+
+        .fade-in-right {
+            -webkit-animation-name: fadeInRight;
+            animation-name: fadeInRight; }
+
+        @-webkit-keyframes fadeInRightBig {
+            0% {
+                opacity: 0;
+                -webkit-transform: translate3d(100%, 0, 0);
+                transform: translate3d(100%, 0, 0); }
+            100% {
+                opacity: 1;
+                -webkit-transform: none;
+                transform: none; } }
+
+        @keyframes fadeInRightBig {
+            0% {
+                opacity: 0;
+                -webkit-transform: translate3d(100%, 0, 0);
+                transform: translate3d(100%, 0, 0); }
+            100% {
+                opacity: 1;
+                -webkit-transform: none;
+                transform: none; } }
+
+        .fade-in-right-big {
+            -webkit-animation-name: fadeInRightBig;
+            animation-name: fadeInRightBig; }
+
+        @-webkit-keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                -webkit-transform: translate3d(0, 30px, 0);
+                transform: translate3d(0, 30px, 0); }
+            100% {
+                opacity: 1;
+                -webkit-transform: none;
+                transform: none; } }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                -webkit-transform: translate3d(0, 30px, 0);
+                transform: translate3d(0, 30px, 0); }
+            100% {
+                opacity: 1;
+                -webkit-transform: none;
+                transform: none; } }
+
+        .fade-in-up {
+            -webkit-animation-name: fadeInUp;
+            animation-name: fadeInUp; }
+
+        @-webkit-keyframes fadeInUpBig {
+            0% {
+                opacity: 0;
+                -webkit-transform: translate3d(0, 100%, 0);
+                transform: translate3d(0, 100%, 0); }
+            100% {
+                opacity: 1;
+                -webkit-transform: none;
+                transform: none; } }
+
+        @keyframes fadeInUpBig {
+            0% {
+                opacity: 0;
+                -webkit-transform: translate3d(0, 100%, 0);
+                transform: translate3d(0, 100%, 0); }
+            100% {
+                opacity: 1;
+                -webkit-transform: none;
+                transform: none; } }
+
+        .fade-in-up-big {
+            -webkit-animation-name: fadeInUpBig;
+            animation-name: fadeInUpBig; }
+
+        /* Keyframes: Shake
+         ========================================================================== */
+        @-webkit-keyframes shake {
+            0%, 100% {
+                -webkit-transform: translateX(0); }
+            10% {
+                -webkit-transform: translateX(-9px); }
+            20% {
+                -webkit-transform: translateX(8px); }
+            30% {
+                -webkit-transform: translateX(-7px); }
+            40% {
+                -webkit-transform: translateX(6px); }
+            50% {
+                -webkit-transform: translateX(-5px); }
+            60% {
+                -webkit-transform: translateX(4px); }
+            70% {
+                -webkit-transform: translateX(-3px); }
+            80% {
+                -webkit-transform: translateX(2px); }
+            90% {
+                -webkit-transform: translateX(-1px); } }
+
+        @keyframes shake {
+            0%, 100% {
+                -webkit-transform: translateX(0);
+                transform: translateX(0); }
+            10% {
+                -webkit-transform: translateX(-9px);
+                transform: translateX(-9px); }
+            20% {
+                -webkit-transform: translateX(8px);
+                transform: translateX(8px); }
+            30% {
+                -webkit-transform: translateX(-7px);
+                transform: translateX(-7px); }
+            40% {
+                -webkit-transform: translateX(6px);
+                transform: translateX(6px); }
+            50% {
+                -webkit-transform: translateX(-5px);
+                transform: translateX(-5px); }
+            60% {
+                -webkit-transform: translateX(4px);
+                transform: translateX(4px); }
+            70% {
+                -webkit-transform: translateX(-3px);
+                transform: translateX(-3px); }
+            80% {
+                -webkit-transform: translateX(2px);
+                transform: translateX(2px); }
+            90% {
+                -webkit-transform: translateX(-1px);
+                transform: translateX(-1px); } }
+
+        .horizontal-shake {
+            -webkit-animation-name: shake;
+            animation-name: shake; }
+
+        .test {
+            outline: dotted 1px red; }
+
+        .no-margin {
+            margin: 0; }
+
+        .no-padding {
+            padding: 0; }
+
+        .no-float {
+            float: none; }
+
+        .no-background {
+            background: transparent; }
+
+        .no-border {
+            border: 0; }
+
+        .no-select {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            cursor: default; }
+
+        .font-size-base {
+            font-size: 14px; }
+
+        .font-size-h6 {
+            font-size: 12px; }
+
+        .font-size-h5 {
+            font-size: 14px; }
+
+        .font-size-h4 {
+            font-size: 18px; }
+
+        .font-size-h3 {
+            font-size: 24px; }
+
+        .font-size-h2 {
+            font-size: 30px; }
+
+        .font-size-h1 {
+            font-size: 36px; }
+
+        .font-normal {
+            font-style: normal; }
+
+        .font-bold {
+            font-weight: bold; }
+
+        .font-italic {
+            font-style: italic; }
+
+        .uppercase {
+            text-transform: uppercase; }
+
+        .lowercase {
+            text-transform: lowercase; }
+
+        .capitalize {
+            text-transform: capitalize; }
+
+        .text-left {
+            text-align: left; }
+
+        .text-right {
+            text-align: right; }
+
+        .text-center {
+            text-align: center; }
+
+        .text-justify {
+            text-align: justify; }
+
+        .relative {
+            position: relative; }
+
+        .absolute {
+            position: absolute; }
+
+        .static {
+            position: static; }
+
+        .fixed {
+            position: fixed; }
+
+        .none {
+            display: none; }
+
+        .block {
+            display: block; }
+
+        .inline-block {
+            display: inline-block; }
+
+        .inline {
+            display: inline; }
+
+        .left {
+            float: left; }
+
+        .right {
+            float: right; }
+
+        .center {
+            float: none;
+            margin-left: auto;
+            margin-right: auto; }
+
+        /*forfor*/
+        .mg-0px {
+            margin: 0px; }
+
+        .mg-top-0px {
+            margin-top: 0px; }
+
+        .mg-right-0px {
+            margin-right: 0px; }
+
+        .mg-bottom-0px {
+            margin-bottom: 0px; }
+
+        .mg-left-0px {
+            margin-left: 0px; }
+
+        .mg-horizontal-0px {
+            margin-left: 0px;
+            margin-right: 0px; }
+
+        .mg-vertical-0px {
+            margin-top: 0px;
+            margin-bottom: 0px; }
+
+        .pd-0px {
+            padding: 0px; }
+
+        .pd-top-0px {
+            padding-top: 0px; }
+
+        .pd-right-0px {
+            padding-right: 0px; }
+
+        .pd-bottom-0px {
+            padding-bottom: 0px; }
+
+        .pd-left-0px {
+            padding-left: 0px; }
+
+        .pd-horizontal-0px {
+            padding-left: 0px;
+            padding-right: 0px; }
+
+        .pd-vertical-0px {
+            padding-top: 0px;
+            padding-bottom: 0px; }
+
+        .mg-2px {
+            margin: 2px; }
+
+        .mg-top-2px {
+            margin-top: 2px; }
+
+        .mg-right-2px {
+            margin-right: 2px; }
+
+        .mg-bottom-2px {
+            margin-bottom: 2px; }
+
+        .mg-left-2px {
+            margin-left: 2px; }
+
+        .mg-horizontal-2px {
+            margin-left: 2px;
+            margin-right: 2px; }
+
+        .mg-vertical-2px {
+            margin-top: 2px;
+            margin-bottom: 2px; }
+
+        .pd-2px {
+            padding: 2px; }
+
+        .pd-top-2px {
+            padding-top: 2px; }
+
+        .pd-right-2px {
+            padding-right: 2px; }
+
+        .pd-bottom-2px {
+            padding-bottom: 2px; }
+
+        .pd-left-2px {
+            padding-left: 2px; }
+
+        .pd-horizontal-2px {
+            padding-left: 2px;
+            padding-right: 2px; }
+
+        .pd-vertical-2px {
+            padding-top: 2px;
+            padding-bottom: 2px; }
+
+        .mg-4px {
+            margin: 4px; }
+
+        .mg-top-4px {
+            margin-top: 4px; }
+
+        .mg-right-4px {
+            margin-right: 4px; }
+
+        .mg-bottom-4px {
+            margin-bottom: 4px; }
+
+        .mg-left-4px {
+            margin-left: 4px; }
+
+        .mg-horizontal-4px {
+            margin-left: 4px;
+            margin-right: 4px; }
+
+        .mg-vertical-4px {
+            margin-top: 4px;
+            margin-bottom: 4px; }
+
+        .pd-4px {
+            padding: 4px; }
+
+        .pd-top-4px {
+            padding-top: 4px; }
+
+        .pd-right-4px {
+            padding-right: 4px; }
+
+        .pd-bottom-4px {
+            padding-bottom: 4px; }
+
+        .pd-left-4px {
+            padding-left: 4px; }
+
+        .pd-horizontal-4px {
+            padding-left: 4px;
+            padding-right: 4px; }
+
+        .pd-vertical-4px {
+            padding-top: 4px;
+            padding-bottom: 4px; }
+
+        .mg-6px {
+            margin: 6px; }
+
+        .mg-top-6px {
+            margin-top: 6px; }
+
+        .mg-right-6px {
+            margin-right: 6px; }
+
+        .mg-bottom-6px {
+            margin-bottom: 6px; }
+
+        .mg-left-6px {
+            margin-left: 6px; }
+
+        .mg-horizontal-6px {
+            margin-left: 6px;
+            margin-right: 6px; }
+
+        .mg-vertical-6px {
+            margin-top: 6px;
+            margin-bottom: 6px; }
+
+        .pd-6px {
+            padding: 6px; }
+
+        .pd-top-6px {
+            padding-top: 6px; }
+
+        .pd-right-6px {
+            padding-right: 6px; }
+
+        .pd-bottom-6px {
+            padding-bottom: 6px; }
+
+        .pd-left-6px {
+            padding-left: 6px; }
+
+        .pd-horizontal-6px {
+            padding-left: 6px;
+            padding-right: 6px; }
+
+        .pd-vertical-6px {
+            padding-top: 6px;
+            padding-bottom: 6px; }
+
+        .mg-8px {
+            margin: 8px; }
+
+        .mg-top-8px {
+            margin-top: 8px; }
+
+        .mg-right-8px {
+            margin-right: 8px; }
+
+        .mg-bottom-8px {
+            margin-bottom: 8px; }
+
+        .mg-left-8px {
+            margin-left: 8px; }
+
+        .mg-horizontal-8px {
+            margin-left: 8px;
+            margin-right: 8px; }
+
+        .mg-vertical-8px {
+            margin-top: 8px;
+            margin-bottom: 8px; }
+
+        .pd-8px {
+            padding: 8px; }
+
+        .pd-top-8px {
+            padding-top: 8px; }
+
+        .pd-right-8px {
+            padding-right: 8px; }
+
+        .pd-bottom-8px {
+            padding-bottom: 8px; }
+
+        .pd-left-8px {
+            padding-left: 8px; }
+
+        .pd-horizontal-8px {
+            padding-left: 8px;
+            padding-right: 8px; }
+
+        .pd-vertical-8px {
+            padding-top: 8px;
+            padding-bottom: 8px; }
+
+        .mg-10px {
+            margin: 10px; }
+
+        .mg-top-10px {
+            margin-top: 10px; }
+
+        .mg-right-10px {
+            margin-right: 10px; }
+
+        .mg-bottom-10px {
+            margin-bottom: 10px; }
+
+        .mg-left-10px {
+            margin-left: 10px; }
+
+        .mg-horizontal-10px {
+            margin-left: 10px;
+            margin-right: 10px; }
+
+        .mg-vertical-10px {
+            margin-top: 10px;
+            margin-bottom: 10px; }
+
+        .pd-10px {
+            padding: 10px; }
+
+        .pd-top-10px {
+            padding-top: 10px; }
+
+        .pd-right-10px {
+            padding-right: 10px; }
+
+        .pd-bottom-10px {
+            padding-bottom: 10px; }
+
+        .pd-left-10px {
+            padding-left: 10px; }
+
+        .pd-horizontal-10px {
+            padding-left: 10px;
+            padding-right: 10px; }
+
+        .pd-vertical-10px {
+            padding-top: 10px;
+            padding-bottom: 10px; }
+
+        .mg-12px {
+            margin: 12px; }
+
+        .mg-top-12px {
+            margin-top: 12px; }
+
+        .mg-right-12px {
+            margin-right: 12px; }
+
+        .mg-bottom-12px {
+            margin-bottom: 12px; }
+
+        .mg-left-12px {
+            margin-left: 12px; }
+
+        .mg-horizontal-12px {
+            margin-left: 12px;
+            margin-right: 12px; }
+
+        .mg-vertical-12px {
+            margin-top: 12px;
+            margin-bottom: 12px; }
+
+        .pd-12px {
+            padding: 12px; }
+
+        .pd-top-12px {
+            padding-top: 12px; }
+
+        .pd-right-12px {
+            padding-right: 12px; }
+
+        .pd-bottom-12px {
+            padding-bottom: 12px; }
+
+        .pd-left-12px {
+            padding-left: 12px; }
+
+        .pd-horizontal-12px {
+            padding-left: 12px;
+            padding-right: 12px; }
+
+        .pd-vertical-12px {
+            padding-top: 12px;
+            padding-bottom: 12px; }
+
+        .mg-14px {
+            margin: 14px; }
+
+        .mg-top-14px {
+            margin-top: 14px; }
+
+        .mg-right-14px {
+            margin-right: 14px; }
+
+        .mg-bottom-14px {
+            margin-bottom: 14px; }
+
+        .mg-left-14px {
+            margin-left: 14px; }
+
+        .mg-horizontal-14px {
+            margin-left: 14px;
+            margin-right: 14px; }
+
+        .mg-vertical-14px {
+            margin-top: 14px;
+            margin-bottom: 14px; }
+
+        .pd-14px {
+            padding: 14px; }
+
+        .pd-top-14px {
+            padding-top: 14px; }
+
+        .pd-right-14px {
+            padding-right: 14px; }
+
+        .pd-bottom-14px {
+            padding-bottom: 14px; }
+
+        .pd-left-14px {
+            padding-left: 14px; }
+
+        .pd-horizontal-14px {
+            padding-left: 14px;
+            padding-right: 14px; }
+
+        .pd-vertical-14px {
+            padding-top: 14px;
+            padding-bottom: 14px; }
+
+        .mg-16px {
+            margin: 16px; }
+
+        .mg-top-16px {
+            margin-top: 16px; }
+
+        .mg-right-16px {
+            margin-right: 16px; }
+
+        .mg-bottom-16px {
+            margin-bottom: 16px; }
+
+        .mg-left-16px {
+            margin-left: 16px; }
+
+        .mg-horizontal-16px {
+            margin-left: 16px;
+            margin-right: 16px; }
+
+        .mg-vertical-16px {
+            margin-top: 16px;
+            margin-bottom: 16px; }
+
+        .pd-16px {
+            padding: 16px; }
+
+        .pd-top-16px {
+            padding-top: 16px; }
+
+        .pd-right-16px {
+            padding-right: 16px; }
+
+        .pd-bottom-16px {
+            padding-bottom: 16px; }
+
+        .pd-left-16px {
+            padding-left: 16px; }
+
+        .pd-horizontal-16px {
+            padding-left: 16px;
+            padding-right: 16px; }
+
+        .pd-vertical-16px {
+            padding-top: 16px;
+            padding-bottom: 16px; }
+
+        .mg-18px {
+            margin: 18px; }
+
+        .mg-top-18px {
+            margin-top: 18px; }
+
+        .mg-right-18px {
+            margin-right: 18px; }
+
+        .mg-bottom-18px {
+            margin-bottom: 18px; }
+
+        .mg-left-18px {
+            margin-left: 18px; }
+
+        .mg-horizontal-18px {
+            margin-left: 18px;
+            margin-right: 18px; }
+
+        .mg-vertical-18px {
+            margin-top: 18px;
+            margin-bottom: 18px; }
+
+        .pd-18px {
+            padding: 18px; }
+
+        .pd-top-18px {
+            padding-top: 18px; }
+
+        .pd-right-18px {
+            padding-right: 18px; }
+
+        .pd-bottom-18px {
+            padding-bottom: 18px; }
+
+        .pd-left-18px {
+            padding-left: 18px; }
+
+        .pd-horizontal-18px {
+            padding-left: 18px;
+            padding-right: 18px; }
+
+        .pd-vertical-18px {
+            padding-top: 18px;
+            padding-bottom: 18px; }
+
+        .mg-20px {
+            margin: 20px; }
+
+        .mg-top-20px {
+            margin-top: 20px; }
+
+        .mg-right-20px {
+            margin-right: 20px; }
+
+        .mg-bottom-20px {
+            margin-bottom: 20px; }
+
+        .mg-left-20px {
+            margin-left: 20px; }
+
+        .mg-horizontal-20px {
+            margin-left: 20px;
+            margin-right: 20px; }
+
+        .mg-vertical-20px {
+            margin-top: 20px;
+            margin-bottom: 20px; }
+
+        .pd-20px {
+            padding: 20px; }
+
+        .pd-top-20px {
+            padding-top: 20px; }
+
+        .pd-right-20px {
+            padding-right: 20px; }
+
+        .pd-bottom-20px {
+            padding-bottom: 20px; }
+
+        .pd-left-20px {
+            padding-left: 20px; }
+
+        .pd-horizontal-20px {
+            padding-left: 20px;
+            padding-right: 20px; }
+
+        .pd-vertical-20px {
+            padding-top: 20px;
+            padding-bottom: 20px; }
+
+        .mg-22px {
+            margin: 22px; }
+
+        .mg-top-22px {
+            margin-top: 22px; }
+
+        .mg-right-22px {
+            margin-right: 22px; }
+
+        .mg-bottom-22px {
+            margin-bottom: 22px; }
+
+        .mg-left-22px {
+            margin-left: 22px; }
+
+        .mg-horizontal-22px {
+            margin-left: 22px;
+            margin-right: 22px; }
+
+        .mg-vertical-22px {
+            margin-top: 22px;
+            margin-bottom: 22px; }
+
+        .pd-22px {
+            padding: 22px; }
+
+        .pd-top-22px {
+            padding-top: 22px; }
+
+        .pd-right-22px {
+            padding-right: 22px; }
+
+        .pd-bottom-22px {
+            padding-bottom: 22px; }
+
+        .pd-left-22px {
+            padding-left: 22px; }
+
+        .pd-horizontal-22px {
+            padding-left: 22px;
+            padding-right: 22px; }
+
+        .pd-vertical-22px {
+            padding-top: 22px;
+            padding-bottom: 22px; }
+
+        .mg-24px {
+            margin: 24px; }
+
+        .mg-top-24px {
+            margin-top: 24px; }
+
+        .mg-right-24px {
+            margin-right: 24px; }
+
+        .mg-bottom-24px {
+            margin-bottom: 24px; }
+
+        .mg-left-24px {
+            margin-left: 24px; }
+
+        .mg-horizontal-24px {
+            margin-left: 24px;
+            margin-right: 24px; }
+
+        .mg-vertical-24px {
+            margin-top: 24px;
+            margin-bottom: 24px; }
+
+        .pd-24px {
+            padding: 24px; }
+
+        .pd-top-24px {
+            padding-top: 24px; }
+
+        .pd-right-24px {
+            padding-right: 24px; }
+
+        .pd-bottom-24px {
+            padding-bottom: 24px; }
+
+        .pd-left-24px {
+            padding-left: 24px; }
+
+        .pd-horizontal-24px {
+            padding-left: 24px;
+            padding-right: 24px; }
+
+        .pd-vertical-24px {
+            padding-top: 24px;
+            padding-bottom: 24px; }
+
+        .mg-26px {
+            margin: 26px; }
+
+        .mg-top-26px {
+            margin-top: 26px; }
+
+        .mg-right-26px {
+            margin-right: 26px; }
+
+        .mg-bottom-26px {
+            margin-bottom: 26px; }
+
+        .mg-left-26px {
+            margin-left: 26px; }
+
+        .mg-horizontal-26px {
+            margin-left: 26px;
+            margin-right: 26px; }
+
+        .mg-vertical-26px {
+            margin-top: 26px;
+            margin-bottom: 26px; }
+
+        .pd-26px {
+            padding: 26px; }
+
+        .pd-top-26px {
+            padding-top: 26px; }
+
+        .pd-right-26px {
+            padding-right: 26px; }
+
+        .pd-bottom-26px {
+            padding-bottom: 26px; }
+
+        .pd-left-26px {
+            padding-left: 26px; }
+
+        .pd-horizontal-26px {
+            padding-left: 26px;
+            padding-right: 26px; }
+
+        .pd-vertical-26px {
+            padding-top: 26px;
+            padding-bottom: 26px; }
+
+        .mg-28px {
+            margin: 28px; }
+
+        .mg-top-28px {
+            margin-top: 28px; }
+
+        .mg-right-28px {
+            margin-right: 28px; }
+
+        .mg-bottom-28px {
+            margin-bottom: 28px; }
+
+        .mg-left-28px {
+            margin-left: 28px; }
+
+        .mg-horizontal-28px {
+            margin-left: 28px;
+            margin-right: 28px; }
+
+        .mg-vertical-28px {
+            margin-top: 28px;
+            margin-bottom: 28px; }
+
+        .pd-28px {
+            padding: 28px; }
+
+        .pd-top-28px {
+            padding-top: 28px; }
+
+        .pd-right-28px {
+            padding-right: 28px; }
+
+        .pd-bottom-28px {
+            padding-bottom: 28px; }
+
+        .pd-left-28px {
+            padding-left: 28px; }
+
+        .pd-horizontal-28px {
+            padding-left: 28px;
+            padding-right: 28px; }
+
+        .pd-vertical-28px {
+            padding-top: 28px;
+            padding-bottom: 28px; }
+
+        .mg-30px {
+            margin: 30px; }
+
+        .mg-top-30px {
+            margin-top: 30px; }
+
+        .mg-right-30px {
+            margin-right: 30px; }
+
+        .mg-bottom-30px {
+            margin-bottom: 30px; }
+
+        .mg-left-30px {
+            margin-left: 30px; }
+
+        .mg-horizontal-30px {
+            margin-left: 30px;
+            margin-right: 30px; }
+
+        .mg-vertical-30px {
+            margin-top: 30px;
+            margin-bottom: 30px; }
+
+        .pd-30px {
+            padding: 30px; }
+
+        .pd-top-30px {
+            padding-top: 30px; }
+
+        .pd-right-30px {
+            padding-right: 30px; }
+
+        .pd-bottom-30px {
+            padding-bottom: 30px; }
+
+        .pd-left-30px {
+            padding-left: 30px; }
+
+        .pd-horizontal-30px {
+            padding-left: 30px;
+            padding-right: 30px; }
+
+        .pd-vertical-30px {
+            padding-top: 30px;
+            padding-bottom: 30px; }
+
+        .mg-32px {
+            margin: 32px; }
+
+        .mg-top-32px {
+            margin-top: 32px; }
+
+        .mg-right-32px {
+            margin-right: 32px; }
+
+        .mg-bottom-32px {
+            margin-bottom: 32px; }
+
+        .mg-left-32px {
+            margin-left: 32px; }
+
+        .mg-horizontal-32px {
+            margin-left: 32px;
+            margin-right: 32px; }
+
+        .mg-vertical-32px {
+            margin-top: 32px;
+            margin-bottom: 32px; }
+
+        .pd-32px {
+            padding: 32px; }
+
+        .pd-top-32px {
+            padding-top: 32px; }
+
+        .pd-right-32px {
+            padding-right: 32px; }
+
+        .pd-bottom-32px {
+            padding-bottom: 32px; }
+
+        .pd-left-32px {
+            padding-left: 32px; }
+
+        .pd-horizontal-32px {
+            padding-left: 32px;
+            padding-right: 32px; }
+
+        .pd-vertical-32px {
+            padding-top: 32px;
+            padding-bottom: 32px; }
+
+        .mg-34px {
+            margin: 34px; }
+
+        .mg-top-34px {
+            margin-top: 34px; }
+
+        .mg-right-34px {
+            margin-right: 34px; }
+
+        .mg-bottom-34px {
+            margin-bottom: 34px; }
+
+        .mg-left-34px {
+            margin-left: 34px; }
+
+        .mg-horizontal-34px {
+            margin-left: 34px;
+            margin-right: 34px; }
+
+        .mg-vertical-34px {
+            margin-top: 34px;
+            margin-bottom: 34px; }
+
+        .pd-34px {
+            padding: 34px; }
+
+        .pd-top-34px {
+            padding-top: 34px; }
+
+        .pd-right-34px {
+            padding-right: 34px; }
+
+        .pd-bottom-34px {
+            padding-bottom: 34px; }
+
+        .pd-left-34px {
+            padding-left: 34px; }
+
+        .pd-horizontal-34px {
+            padding-left: 34px;
+            padding-right: 34px; }
+
+        .pd-vertical-34px {
+            padding-top: 34px;
+            padding-bottom: 34px; }
+
+        .mg-36px {
+            margin: 36px; }
+
+        .mg-top-36px {
+            margin-top: 36px; }
+
+        .mg-right-36px {
+            margin-right: 36px; }
+
+        .mg-bottom-36px {
+            margin-bottom: 36px; }
+
+        .mg-left-36px {
+            margin-left: 36px; }
+
+        .mg-horizontal-36px {
+            margin-left: 36px;
+            margin-right: 36px; }
+
+        .mg-vertical-36px {
+            margin-top: 36px;
+            margin-bottom: 36px; }
+
+        .pd-36px {
+            padding: 36px; }
+
+        .pd-top-36px {
+            padding-top: 36px; }
+
+        .pd-right-36px {
+            padding-right: 36px; }
+
+        .pd-bottom-36px {
+            padding-bottom: 36px; }
+
+        .pd-left-36px {
+            padding-left: 36px; }
+
+        .pd-horizontal-36px {
+            padding-left: 36px;
+            padding-right: 36px; }
+
+        .pd-vertical-36px {
+            padding-top: 36px;
+            padding-bottom: 36px; }
+
+        .mg-38px {
+            margin: 38px; }
+
+        .mg-top-38px {
+            margin-top: 38px; }
+
+        .mg-right-38px {
+            margin-right: 38px; }
+
+        .mg-bottom-38px {
+            margin-bottom: 38px; }
+
+        .mg-left-38px {
+            margin-left: 38px; }
+
+        .mg-horizontal-38px {
+            margin-left: 38px;
+            margin-right: 38px; }
+
+        .mg-vertical-38px {
+            margin-top: 38px;
+            margin-bottom: 38px; }
+
+        .pd-38px {
+            padding: 38px; }
+
+        .pd-top-38px {
+            padding-top: 38px; }
+
+        .pd-right-38px {
+            padding-right: 38px; }
+
+        .pd-bottom-38px {
+            padding-bottom: 38px; }
+
+        .pd-left-38px {
+            padding-left: 38px; }
+
+        .pd-horizontal-38px {
+            padding-left: 38px;
+            padding-right: 38px; }
+
+        .pd-vertical-38px {
+            padding-top: 38px;
+            padding-bottom: 38px; }
+
+        .mg-40px {
+            margin: 40px; }
+
+        .mg-top-40px {
+            margin-top: 40px; }
+
+        .mg-right-40px {
+            margin-right: 40px; }
+
+        .mg-bottom-40px {
+            margin-bottom: 40px; }
+
+        .mg-left-40px {
+            margin-left: 40px; }
+
+        .mg-horizontal-40px {
+            margin-left: 40px;
+            margin-right: 40px; }
+
+        .mg-vertical-40px {
+            margin-top: 40px;
+            margin-bottom: 40px; }
+
+        .pd-40px {
+            padding: 40px; }
+
+        .pd-top-40px {
+            padding-top: 40px; }
+
+        .pd-right-40px {
+            padding-right: 40px; }
+
+        .pd-bottom-40px {
+            padding-bottom: 40px; }
+
+        .pd-left-40px {
+            padding-left: 40px; }
+
+        .pd-horizontal-40px {
+            padding-left: 40px;
+            padding-right: 40px; }
+
+        .pd-vertical-40px {
+            padding-top: 40px;
+            padding-bottom: 40px; }
+
+        .mg-42px {
+            margin: 42px; }
+
+        .mg-top-42px {
+            margin-top: 42px; }
+
+        .mg-right-42px {
+            margin-right: 42px; }
+
+        .mg-bottom-42px {
+            margin-bottom: 42px; }
+
+        .mg-left-42px {
+            margin-left: 42px; }
+
+        .mg-horizontal-42px {
+            margin-left: 42px;
+            margin-right: 42px; }
+
+        .mg-vertical-42px {
+            margin-top: 42px;
+            margin-bottom: 42px; }
+
+        .pd-42px {
+            padding: 42px; }
+
+        .pd-top-42px {
+            padding-top: 42px; }
+
+        .pd-right-42px {
+            padding-right: 42px; }
+
+        .pd-bottom-42px {
+            padding-bottom: 42px; }
+
+        .pd-left-42px {
+            padding-left: 42px; }
+
+        .pd-horizontal-42px {
+            padding-left: 42px;
+            padding-right: 42px; }
+
+        .pd-vertical-42px {
+            padding-top: 42px;
+            padding-bottom: 42px; }
+
+        .mg-44px {
+            margin: 44px; }
+
+        .mg-top-44px {
+            margin-top: 44px; }
+
+        .mg-right-44px {
+            margin-right: 44px; }
+
+        .mg-bottom-44px {
+            margin-bottom: 44px; }
+
+        .mg-left-44px {
+            margin-left: 44px; }
+
+        .mg-horizontal-44px {
+            margin-left: 44px;
+            margin-right: 44px; }
+
+        .mg-vertical-44px {
+            margin-top: 44px;
+            margin-bottom: 44px; }
+
+        .pd-44px {
+            padding: 44px; }
+
+        .pd-top-44px {
+            padding-top: 44px; }
+
+        .pd-right-44px {
+            padding-right: 44px; }
+
+        .pd-bottom-44px {
+            padding-bottom: 44px; }
+
+        .pd-left-44px {
+            padding-left: 44px; }
+
+        .pd-horizontal-44px {
+            padding-left: 44px;
+            padding-right: 44px; }
+
+        .pd-vertical-44px {
+            padding-top: 44px;
+            padding-bottom: 44px; }
+
+        .mg-46px {
+            margin: 46px; }
+
+        .mg-top-46px {
+            margin-top: 46px; }
+
+        .mg-right-46px {
+            margin-right: 46px; }
+
+        .mg-bottom-46px {
+            margin-bottom: 46px; }
+
+        .mg-left-46px {
+            margin-left: 46px; }
+
+        .mg-horizontal-46px {
+            margin-left: 46px;
+            margin-right: 46px; }
+
+        .mg-vertical-46px {
+            margin-top: 46px;
+            margin-bottom: 46px; }
+
+        .pd-46px {
+            padding: 46px; }
+
+        .pd-top-46px {
+            padding-top: 46px; }
+
+        .pd-right-46px {
+            padding-right: 46px; }
+
+        .pd-bottom-46px {
+            padding-bottom: 46px; }
+
+        .pd-left-46px {
+            padding-left: 46px; }
+
+        .pd-horizontal-46px {
+            padding-left: 46px;
+            padding-right: 46px; }
+
+        .pd-vertical-46px {
+            padding-top: 46px;
+            padding-bottom: 46px; }
+
+        .mg-48px {
+            margin: 48px; }
+
+        .mg-top-48px {
+            margin-top: 48px; }
+
+        .mg-right-48px {
+            margin-right: 48px; }
+
+        .mg-bottom-48px {
+            margin-bottom: 48px; }
+
+        .mg-left-48px {
+            margin-left: 48px; }
+
+        .mg-horizontal-48px {
+            margin-left: 48px;
+            margin-right: 48px; }
+
+        .mg-vertical-48px {
+            margin-top: 48px;
+            margin-bottom: 48px; }
+
+        .pd-48px {
+            padding: 48px; }
+
+        .pd-top-48px {
+            padding-top: 48px; }
+
+        .pd-right-48px {
+            padding-right: 48px; }
+
+        .pd-bottom-48px {
+            padding-bottom: 48px; }
+
+        .pd-left-48px {
+            padding-left: 48px; }
+
+        .pd-horizontal-48px {
+            padding-left: 48px;
+            padding-right: 48px; }
+
+        .pd-vertical-48px {
+            padding-top: 48px;
+            padding-bottom: 48px; }
+
+        .mg-50px {
+            margin: 50px; }
+
+        .mg-top-50px {
+            margin-top: 50px; }
+
+        .mg-right-50px {
+            margin-right: 50px; }
+
+        .mg-bottom-50px {
+            margin-bottom: 50px; }
+
+        .mg-left-50px {
+            margin-left: 50px; }
+
+        .mg-horizontal-50px {
+            margin-left: 50px;
+            margin-right: 50px; }
+
+        .mg-vertical-50px {
+            margin-top: 50px;
+            margin-bottom: 50px; }
+
+        .pd-50px {
+            padding: 50px; }
+
+        .pd-top-50px {
+            padding-top: 50px; }
+
+        .pd-right-50px {
+            padding-right: 50px; }
+
+        .pd-bottom-50px {
+            padding-bottom: 50px; }
+
+        .pd-left-50px {
+            padding-left: 50px; }
+
+        .pd-horizontal-50px {
+            padding-left: 50px;
+            padding-right: 50px; }
+
+        .pd-vertical-50px {
+            padding-top: 50px;
+            padding-bottom: 50px; }
+
+        .mg-52px {
+            margin: 52px; }
+
+        .mg-top-52px {
+            margin-top: 52px; }
+
+        .mg-right-52px {
+            margin-right: 52px; }
+
+        .mg-bottom-52px {
+            margin-bottom: 52px; }
+
+        .mg-left-52px {
+            margin-left: 52px; }
+
+        .mg-horizontal-52px {
+            margin-left: 52px;
+            margin-right: 52px; }
+
+        .mg-vertical-52px {
+            margin-top: 52px;
+            margin-bottom: 52px; }
+
+        .pd-52px {
+            padding: 52px; }
+
+        .pd-top-52px {
+            padding-top: 52px; }
+
+        .pd-right-52px {
+            padding-right: 52px; }
+
+        .pd-bottom-52px {
+            padding-bottom: 52px; }
+
+        .pd-left-52px {
+            padding-left: 52px; }
+
+        .pd-horizontal-52px {
+            padding-left: 52px;
+            padding-right: 52px; }
+
+        .pd-vertical-52px {
+            padding-top: 52px;
+            padding-bottom: 52px; }
+
+        .mg-54px {
+            margin: 54px; }
+
+        .mg-top-54px {
+            margin-top: 54px; }
+
+        .mg-right-54px {
+            margin-right: 54px; }
+
+        .mg-bottom-54px {
+            margin-bottom: 54px; }
+
+        .mg-left-54px {
+            margin-left: 54px; }
+
+        .mg-horizontal-54px {
+            margin-left: 54px;
+            margin-right: 54px; }
+
+        .mg-vertical-54px {
+            margin-top: 54px;
+            margin-bottom: 54px; }
+
+        .pd-54px {
+            padding: 54px; }
+
+        .pd-top-54px {
+            padding-top: 54px; }
+
+        .pd-right-54px {
+            padding-right: 54px; }
+
+        .pd-bottom-54px {
+            padding-bottom: 54px; }
+
+        .pd-left-54px {
+            padding-left: 54px; }
+
+        .pd-horizontal-54px {
+            padding-left: 54px;
+            padding-right: 54px; }
+
+        .pd-vertical-54px {
+            padding-top: 54px;
+            padding-bottom: 54px; }
+
+        .mg-56px {
+            margin: 56px; }
+
+        .mg-top-56px {
+            margin-top: 56px; }
+
+        .mg-right-56px {
+            margin-right: 56px; }
+
+        .mg-bottom-56px {
+            margin-bottom: 56px; }
+
+        .mg-left-56px {
+            margin-left: 56px; }
+
+        .mg-horizontal-56px {
+            margin-left: 56px;
+            margin-right: 56px; }
+
+        .mg-vertical-56px {
+            margin-top: 56px;
+            margin-bottom: 56px; }
+
+        .pd-56px {
+            padding: 56px; }
+
+        .pd-top-56px {
+            padding-top: 56px; }
+
+        .pd-right-56px {
+            padding-right: 56px; }
+
+        .pd-bottom-56px {
+            padding-bottom: 56px; }
+
+        .pd-left-56px {
+            padding-left: 56px; }
+
+        .pd-horizontal-56px {
+            padding-left: 56px;
+            padding-right: 56px; }
+
+        .pd-vertical-56px {
+            padding-top: 56px;
+            padding-bottom: 56px; }
+
+        .mg-58px {
+            margin: 58px; }
+
+        .mg-top-58px {
+            margin-top: 58px; }
+
+        .mg-right-58px {
+            margin-right: 58px; }
+
+        .mg-bottom-58px {
+            margin-bottom: 58px; }
+
+        .mg-left-58px {
+            margin-left: 58px; }
+
+        .mg-horizontal-58px {
+            margin-left: 58px;
+            margin-right: 58px; }
+
+        .mg-vertical-58px {
+            margin-top: 58px;
+            margin-bottom: 58px; }
+
+        .pd-58px {
+            padding: 58px; }
+
+        .pd-top-58px {
+            padding-top: 58px; }
+
+        .pd-right-58px {
+            padding-right: 58px; }
+
+        .pd-bottom-58px {
+            padding-bottom: 58px; }
+
+        .pd-left-58px {
+            padding-left: 58px; }
+
+        .pd-horizontal-58px {
+            padding-left: 58px;
+            padding-right: 58px; }
+
+        .pd-vertical-58px {
+            padding-top: 58px;
+            padding-bottom: 58px; }
+
+        .mg-60px {
+            margin: 60px; }
+
+        .mg-top-60px {
+            margin-top: 60px; }
+
+        .mg-right-60px {
+            margin-right: 60px; }
+
+        .mg-bottom-60px {
+            margin-bottom: 60px; }
+
+        .mg-left-60px {
+            margin-left: 60px; }
+
+        .mg-horizontal-60px {
+            margin-left: 60px;
+            margin-right: 60px; }
+
+        .mg-vertical-60px {
+            margin-top: 60px;
+            margin-bottom: 60px; }
+
+        .pd-60px {
+            padding: 60px; }
+
+        .pd-top-60px {
+            padding-top: 60px; }
+
+        .pd-right-60px {
+            padding-right: 60px; }
+
+        .pd-bottom-60px {
+            padding-bottom: 60px; }
+
+        .pd-left-60px {
+            padding-left: 60px; }
+
+        .pd-horizontal-60px {
+            padding-left: 60px;
+            padding-right: 60px; }
+
+        .pd-vertical-60px {
+            padding-top: 60px;
+            padding-bottom: 60px; }
+
+        .mg-62px {
+            margin: 62px; }
+
+        .mg-top-62px {
+            margin-top: 62px; }
+
+        .mg-right-62px {
+            margin-right: 62px; }
+
+        .mg-bottom-62px {
+            margin-bottom: 62px; }
+
+        .mg-left-62px {
+            margin-left: 62px; }
+
+        .mg-horizontal-62px {
+            margin-left: 62px;
+            margin-right: 62px; }
+
+        .mg-vertical-62px {
+            margin-top: 62px;
+            margin-bottom: 62px; }
+
+        .pd-62px {
+            padding: 62px; }
+
+        .pd-top-62px {
+            padding-top: 62px; }
+
+        .pd-right-62px {
+            padding-right: 62px; }
+
+        .pd-bottom-62px {
+            padding-bottom: 62px; }
+
+        .pd-left-62px {
+            padding-left: 62px; }
+
+        .pd-horizontal-62px {
+            padding-left: 62px;
+            padding-right: 62px; }
+
+        .pd-vertical-62px {
+            padding-top: 62px;
+            padding-bottom: 62px; }
+
+        .mg-64px {
+            margin: 64px; }
+
+        .mg-top-64px {
+            margin-top: 64px; }
+
+        .mg-right-64px {
+            margin-right: 64px; }
+
+        .mg-bottom-64px {
+            margin-bottom: 64px; }
+
+        .mg-left-64px {
+            margin-left: 64px; }
+
+        .mg-horizontal-64px {
+            margin-left: 64px;
+            margin-right: 64px; }
+
+        .mg-vertical-64px {
+            margin-top: 64px;
+            margin-bottom: 64px; }
+
+        .pd-64px {
+            padding: 64px; }
+
+        .pd-top-64px {
+            padding-top: 64px; }
+
+        .pd-right-64px {
+            padding-right: 64px; }
+
+        .pd-bottom-64px {
+            padding-bottom: 64px; }
+
+        .pd-left-64px {
+            padding-left: 64px; }
+
+        .pd-horizontal-64px {
+            padding-left: 64px;
+            padding-right: 64px; }
+
+        .pd-vertical-64px {
+            padding-top: 64px;
+            padding-bottom: 64px; }
+
+        .mg-66px {
+            margin: 66px; }
+
+        .mg-top-66px {
+            margin-top: 66px; }
+
+        .mg-right-66px {
+            margin-right: 66px; }
+
+        .mg-bottom-66px {
+            margin-bottom: 66px; }
+
+        .mg-left-66px {
+            margin-left: 66px; }
+
+        .mg-horizontal-66px {
+            margin-left: 66px;
+            margin-right: 66px; }
+
+        .mg-vertical-66px {
+            margin-top: 66px;
+            margin-bottom: 66px; }
+
+        .pd-66px {
+            padding: 66px; }
+
+        .pd-top-66px {
+            padding-top: 66px; }
+
+        .pd-right-66px {
+            padding-right: 66px; }
+
+        .pd-bottom-66px {
+            padding-bottom: 66px; }
+
+        .pd-left-66px {
+            padding-left: 66px; }
+
+        .pd-horizontal-66px {
+            padding-left: 66px;
+            padding-right: 66px; }
+
+        .pd-vertical-66px {
+            padding-top: 66px;
+            padding-bottom: 66px; }
+
+        .mg-68px {
+            margin: 68px; }
+
+        .mg-top-68px {
+            margin-top: 68px; }
+
+        .mg-right-68px {
+            margin-right: 68px; }
+
+        .mg-bottom-68px {
+            margin-bottom: 68px; }
+
+        .mg-left-68px {
+            margin-left: 68px; }
+
+        .mg-horizontal-68px {
+            margin-left: 68px;
+            margin-right: 68px; }
+
+        .mg-vertical-68px {
+            margin-top: 68px;
+            margin-bottom: 68px; }
+
+        .pd-68px {
+            padding: 68px; }
+
+        .pd-top-68px {
+            padding-top: 68px; }
+
+        .pd-right-68px {
+            padding-right: 68px; }
+
+        .pd-bottom-68px {
+            padding-bottom: 68px; }
+
+        .pd-left-68px {
+            padding-left: 68px; }
+
+        .pd-horizontal-68px {
+            padding-left: 68px;
+            padding-right: 68px; }
+
+        .pd-vertical-68px {
+            padding-top: 68px;
+            padding-bottom: 68px; }
+
+        .mg-70px {
+            margin: 70px; }
+
+        .mg-top-70px {
+            margin-top: 70px; }
+
+        .mg-right-70px {
+            margin-right: 70px; }
+
+        .mg-bottom-70px {
+            margin-bottom: 70px; }
+
+        .mg-left-70px {
+            margin-left: 70px; }
+
+        .mg-horizontal-70px {
+            margin-left: 70px;
+            margin-right: 70px; }
+
+        .mg-vertical-70px {
+            margin-top: 70px;
+            margin-bottom: 70px; }
+
+        .pd-70px {
+            padding: 70px; }
+
+        .pd-top-70px {
+            padding-top: 70px; }
+
+        .pd-right-70px {
+            padding-right: 70px; }
+
+        .pd-bottom-70px {
+            padding-bottom: 70px; }
+
+        .pd-left-70px {
+            padding-left: 70px; }
+
+        .pd-horizontal-70px {
+            padding-left: 70px;
+            padding-right: 70px; }
+
+        .pd-vertical-70px {
+            padding-top: 70px;
+            padding-bottom: 70px; }
+
+        .mg-72px {
+            margin: 72px; }
+
+        .mg-top-72px {
+            margin-top: 72px; }
+
+        .mg-right-72px {
+            margin-right: 72px; }
+
+        .mg-bottom-72px {
+            margin-bottom: 72px; }
+
+        .mg-left-72px {
+            margin-left: 72px; }
+
+        .mg-horizontal-72px {
+            margin-left: 72px;
+            margin-right: 72px; }
+
+        .mg-vertical-72px {
+            margin-top: 72px;
+            margin-bottom: 72px; }
+
+        .pd-72px {
+            padding: 72px; }
+
+        .pd-top-72px {
+            padding-top: 72px; }
+
+        .pd-right-72px {
+            padding-right: 72px; }
+
+        .pd-bottom-72px {
+            padding-bottom: 72px; }
+
+        .pd-left-72px {
+            padding-left: 72px; }
+
+        .pd-horizontal-72px {
+            padding-left: 72px;
+            padding-right: 72px; }
+
+        .pd-vertical-72px {
+            padding-top: 72px;
+            padding-bottom: 72px; }
+
+        .mg-74px {
+            margin: 74px; }
+
+        .mg-top-74px {
+            margin-top: 74px; }
+
+        .mg-right-74px {
+            margin-right: 74px; }
+
+        .mg-bottom-74px {
+            margin-bottom: 74px; }
+
+        .mg-left-74px {
+            margin-left: 74px; }
+
+        .mg-horizontal-74px {
+            margin-left: 74px;
+            margin-right: 74px; }
+
+        .mg-vertical-74px {
+            margin-top: 74px;
+            margin-bottom: 74px; }
+
+        .pd-74px {
+            padding: 74px; }
+
+        .pd-top-74px {
+            padding-top: 74px; }
+
+        .pd-right-74px {
+            padding-right: 74px; }
+
+        .pd-bottom-74px {
+            padding-bottom: 74px; }
+
+        .pd-left-74px {
+            padding-left: 74px; }
+
+        .pd-horizontal-74px {
+            padding-left: 74px;
+            padding-right: 74px; }
+
+        .pd-vertical-74px {
+            padding-top: 74px;
+            padding-bottom: 74px; }
+
+        .mg-76px {
+            margin: 76px; }
+
+        .mg-top-76px {
+            margin-top: 76px; }
+
+        .mg-right-76px {
+            margin-right: 76px; }
+
+        .mg-bottom-76px {
+            margin-bottom: 76px; }
+
+        .mg-left-76px {
+            margin-left: 76px; }
+
+        .mg-horizontal-76px {
+            margin-left: 76px;
+            margin-right: 76px; }
+
+        .mg-vertical-76px {
+            margin-top: 76px;
+            margin-bottom: 76px; }
+
+        .pd-76px {
+            padding: 76px; }
+
+        .pd-top-76px {
+            padding-top: 76px; }
+
+        .pd-right-76px {
+            padding-right: 76px; }
+
+        .pd-bottom-76px {
+            padding-bottom: 76px; }
+
+        .pd-left-76px {
+            padding-left: 76px; }
+
+        .pd-horizontal-76px {
+            padding-left: 76px;
+            padding-right: 76px; }
+
+        .pd-vertical-76px {
+            padding-top: 76px;
+            padding-bottom: 76px; }
+
+        .mg-78px {
+            margin: 78px; }
+
+        .mg-top-78px {
+            margin-top: 78px; }
+
+        .mg-right-78px {
+            margin-right: 78px; }
+
+        .mg-bottom-78px {
+            margin-bottom: 78px; }
+
+        .mg-left-78px {
+            margin-left: 78px; }
+
+        .mg-horizontal-78px {
+            margin-left: 78px;
+            margin-right: 78px; }
+
+        .mg-vertical-78px {
+            margin-top: 78px;
+            margin-bottom: 78px; }
+
+        .pd-78px {
+            padding: 78px; }
+
+        .pd-top-78px {
+            padding-top: 78px; }
+
+        .pd-right-78px {
+            padding-right: 78px; }
+
+        .pd-bottom-78px {
+            padding-bottom: 78px; }
+
+        .pd-left-78px {
+            padding-left: 78px; }
+
+        .pd-horizontal-78px {
+            padding-left: 78px;
+            padding-right: 78px; }
+
+        .pd-vertical-78px {
+            padding-top: 78px;
+            padding-bottom: 78px; }
+
+        .sr {
+            border: 0;
+            clip: rect(0 0 0 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px; }
+
+        .list-unstyled {
+            list-style: none;
+            margin: 0;
+            padding: 0; }
+        .list-unstyled li {
+            margin: 0;
+            padding: 0; }
+
+        .list-inline {
+            list-style: none;
+            margin: 0;
+            padding: 0; }
+        .list-inline li {
+            margin: 0;
+            padding: 0;
+            display: inline-block; }
+
+        .img-fluid {
+            max-width: 100%; }
+
+        .img-left {
+            float: left;
+            margin-right: 20px; }
+
+        .img-right {
+            float: right;
+            margin-left: 20px; }
+
+        .field {
+            width: 100%; }
+
+        .disabled,
+        [disabled] {
+            pointer-events: none;
+            cursor: not-allowed;
+            opacity: .5; }
+
+        /************************************************/
+        /*垂直上下居中*/
+        .vertical-middle {
+            position: relative;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%); }
+
+        /* 文字截断 */
+        .nowrap {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 100%; }
+
+        .nowrap-2 {
+            display: -webkit-box;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2; }
+
+        .nowrap-3 {
+            display: -webkit-box;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3; }
+
+        .color-red {
+            color: #ff4222; }
+
+        a.color-red:hover,
+        a.color-red:focus {
+            color: #ee2200; }
+
+        .color-green {
+            color: #29cc6d; }
+
+        a.color-green:hover,
+        a.color-green:focus {
+            color: #20a256; }
+
+        .color-yellow {
+            color: #ffffcc; }
+
+        a.color-yellow:hover,
+        a.color-yellow:focus {
+            color: #ffff99; }
+
+        .color-blue {
+            color: #1b97ff; }
+
+        a.color-blue:hover,
+        a.color-blue:focus {
+            color: #007ee7; }
+
+        .color-orange {
+            color: #ff9900; }
+
+        a.color-orange:hover,
+        a.color-orange:focus {
+            color: #cc7a00; }
+
+        .color-brown {
+            color: #ae9a69; }
+
+        a.color-brown:hover,
+        a.color-brown:focus {
+            color: #948050; }
+
+        .color-pink {
+            color: #F7665e; }
+
+        a.color-pink:hover,
+        a.color-pink:focus {
+            color: #f5382d; }
+
+        .color-navy {
+            color: #314c83; }
+
+        a.color-navy:hover,
+        a.color-navy:focus {
+            color: #23365e; }
+
+        .color-white {
+            color: #fff; }
+
+        a.color-white:hover,
+        a.color-white:focus {
+            color: #e6e6e6; }
+
+        .color-grey-1 {
+            color: #333; }
+
+        a.color-grey-1:hover,
+        a.color-grey-1:focus {
+            color: #1a1a1a; }
+
+        .color-grey-2 {
+            color: #666; }
+
+        a.color-grey-2:hover,
+        a.color-grey-2:focus {
+            color: #4d4d4d; }
+
+        .color-grey-3 {
+            color: #999; }
+
+        a.color-grey-3:hover,
+        a.color-grey-3:focus {
+            color: gray; }
+
+        .color-black {
+            color: #000; }
+
+        a.color-black:hover,
+        a.color-black:focus {
+            color: black; }
+
+        .bg-red {
+            background-color: #ff4222; }
+
+        a.bg-red:hover,
+        a.bg-red:focus {
+            background-color: #ee2200; }
+
+        .bg-green {
+            background-color: #29cc6d; }
+
+        a.bg-green:hover,
+        a.bg-green:focus {
+            background-color: #20a256; }
+
+        .bg-yellow {
+            background-color: #ffffcc; }
+
+        a.bg-yellow:hover,
+        a.bg-yellow:focus {
+            background-color: #ffff99; }
+
+        .bg-blue {
+            background-color: #1b97ff; }
+
+        a.bg-blue:hover,
+        a.bg-blue:focus {
+            background-color: #007ee7; }
+
+        .bg-orange {
+            background-color: #ff9900; }
+
+        a.bg-orange:hover,
+        a.bg-orange:focus {
+            background-color: #cc7a00; }
+
+        .bg-brown {
+            background-color: #ae9a69; }
+
+        a.bg-brown:hover,
+        a.bg-brown:focus {
+            background-color: #948050; }
+
+        .bg-pink {
+            background-color: #F7665e; }
+
+        a.bg-pink:hover,
+        a.bg-pink:focus {
+            background-color: #f5382d; }
+
+        .bg-navy {
+            background-color: #314c83; }
+
+        a.bg-navy:hover,
+        a.bg-navy:focus {
+            background-color: #23365e; }
+
+        .bg-white {
+            background-color: #fff; }
+
+        a.bg-white:hover,
+        a.bg-white:focus {
+            background-color: #e6e6e6; }
+
+        .bg-grey-1 {
+            background-color: #f5f5f5; }
+
+        a.bg-grey-1:hover,
+        a.bg-grey-1:focus {
+            background-color: gainsboro; }
+
+        .bg-grey-2 {
+            background-color: #e6e6e6; }
+
+        a.bg-grey-2:hover,
+        a.bg-grey-2:focus {
+            background-color: #cdcdcd; }
+
+        .bg-black {
+            background-color: #000; }
+
+        a.bg-black:hover,
+        a.bg-black:focus {
+            background-color: black; }
+
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <form action="" class="pure-form">
+        <div class="row">
+            <div class="col-12 text-center center">
+                <img class="img-fluid" src="zdddd.png" alt="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="pd-horizontal-20px">
+                    <input class="mg-vertical-20px" type="text" placeholder="姓名">
+                    <select class="">
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="pd-horizontal-20px">
+                    <input class="col-12 mg-vertical-20px" type="text" placeholder="考场">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="pd-horizontal-20px">
+                    <input type="button" class="no-border mg-vertical-20px col-12 font-bold font-size-h3" value="生 成">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

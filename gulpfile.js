@@ -28,8 +28,8 @@ gulp.task('watch', function () {
     browserSync.init({
         server: {
             baseDir: "./",
-            index: "test.html"
+            index: "admission-ticket.html"
         }
     });
-    gulp.watch(["dist/**/*", "test.html"]).on("change", browserSync.reload);
+    gulp.watch(["dist/**/*", "admission-ticket.html"]).on("change", browserSync.reload);
 });

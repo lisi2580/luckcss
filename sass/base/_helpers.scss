@@ -2,159 +2,170 @@
 // Base – Helpers
 // ==========================================================================
 //show outline for test
-.test {
-    outline: dotted 1px red;
+html, body {
+  height: 100%;
 }
 
+.test {
+  outline: dotted 1px red;
+}
+.height-full{
+  height: 100%;
+}
 // General Resets
 .no-margin {
-    margin: 0;
+  margin: 0;
 }
 
 .no-padding {
-    padding: 0;
+  padding: 0;
 }
 
 .no-float {
-    float: none;
+  float: none;
 }
 
 .no-background {
-    background: transparent;
+  background: transparent;
 }
 
 .no-border {
-    border: 0;
+  border: 0;
 }
 
 .no-select {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    cursor: default;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
 }
 
 .font-size-base {
-    font-size: $font-size-base;
+  font-size: $font-size-base;
 }
 
 .font-size-h6 {
-    font-size: $font-size-h6;
+  font-size: $font-size-h6;
 }
 
 .font-size-h5 {
-    font-size: $font-size-h5;
+  font-size: $font-size-h5;
 }
 
 .font-size-h4 {
-    font-size: $font-size-h4;
+  font-size: $font-size-h4;
 }
 
 .font-size-h3 {
-    font-size: $font-size-h3;
+  font-size: $font-size-h3;
 }
 
 .font-size-h2 {
-    font-size: $font-size-h2;
+  font-size: $font-size-h2;
 }
 
 .font-size-h1 {
-    font-size: $font-size-h1;
+  font-size: $font-size-h1;
 }
 
 // Font Styles
 .font-normal {
-    font-style: normal;
+  font-style: normal;
 }
 
 // Font Weights
 .font-bold {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .font-italic {
-    font-style: italic;
+  font-style: italic;
 }
 
 // Text Modifications
 .uppercase {
-    text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 .lowercase {
-    text-transform: lowercase;
+  text-transform: lowercase;
 }
 
 .capitalize {
-    text-transform: capitalize;
+  text-transform: capitalize;
 }
 
 // Text Alignments
 .text-left {
-    text-align: left;
+  text-align: left;
 }
 
 .text-right {
-    text-align: right;
+  text-align: right;
 }
 
 .text-center {
-    text-align: center;
+  text-align: center;
 }
 
 .text-justify {
-    text-align: justify;
+  text-align: justify;
 }
-
+.line-height-xs{
+  line-height: 14px;
+}
+.line-height-xl{
+  line-height: 18px;
+}
 // Positions
 .relative {
-    position: relative;
+  position: relative;
 }
 
 .absolute {
-    position: absolute;
+  position: absolute;
 }
 
 .static {
-    position: static;
+  position: static;
 }
 
 .fixed {
-    position: fixed;
+  position: fixed;
 }
 
 // Display Types
 .none {
-    display: none;
+  display: none;
 }
 
 .block {
-    display: block;
+  display: block;
 }
 
 .inline-block {
-    display: inline-block;
+  display: inline-block;
 }
 
 .inline {
-    display: inline;
+  display: inline;
 }
 
 // Floats
 .left {
-    float: left;
+  float: left;
 }
 
 .right {
-    float: right;
+  float: right;
 }
 
 // Alignment
 .center {
-    float: none;
-    margin-left: auto;
-    margin-right: auto;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 // Padding Helpers
@@ -162,155 +173,152 @@
 /*forfor*/
 
 @for $i from 0 to $layout-meter-lenght {
-    //margin shortcut //margin快捷类
-    .mg-#{$i*$layout-meter} {
-        margin: $i*$layout-meter;
-    }
-    .mg-top-#{$i*$layout-meter} {
-        margin-top: $i*$layout-meter;
-    }
-    .mg-right-#{$i*$layout-meter} {
-        margin-right: $i*$layout-meter;
-    }
-    .mg-bottom-#{$i*$layout-meter} {
-        margin-bottom: $i*$layout-meter;
-    }
-    .mg-left-#{$i*$layout-meter} {
-        margin-left: $i*$layout-meter;
-    }
-    .mg-horizontal-#{$i*$layout-meter} {
-        margin-left: $i*$layout-meter;
-        margin-right: $i*$layout-meter;
-    }
-    .mg-vertical-#{$i*$layout-meter} {
-        margin-top: $i*$layout-meter;
-        margin-bottom: $i*$layout-meter;
-    }
-    //padding shortcut //padding快捷类
-    .pd-#{$i*$layout-meter} {
-        padding: $i*$layout-meter;
-    }
-    .pd-top-#{$i*$layout-meter} {
-        padding-top: $i*$layout-meter;
-    }
-    .pd-right-#{$i*$layout-meter} {
-        padding-right: $i*$layout-meter;
-    }
-    .pd-bottom-#{$i*$layout-meter} {
-        padding-bottom: $i*$layout-meter;
-    }
-    .pd-left-#{$i*$layout-meter} {
-        padding-left: $i*$layout-meter;
-    }
-    .pd-horizontal-#{$i*$layout-meter} {
-        padding-left: $i*$layout-meter;
-        padding-right: $i*$layout-meter;
-    }
-    .pd-vertical-#{$i*$layout-meter} {
-        padding-top: $i*$layout-meter;
-        padding-bottom: $i*$layout-meter;
-    }
+  //margin shortcut //margin快捷类
+  .mg-#{$i*$layout-meter} {
+    margin: $i*$layout-meter;
+  }
+  .mg-top-#{$i*$layout-meter} {
+    margin-top: $i*$layout-meter;
+  }
+  .mg-right-#{$i*$layout-meter} {
+    margin-right: $i*$layout-meter;
+  }
+  .mg-bottom-#{$i*$layout-meter} {
+    margin-bottom: $i*$layout-meter;
+  }
+  .mg-left-#{$i*$layout-meter} {
+    margin-left: $i*$layout-meter;
+  }
+  .mg-horizontal-#{$i*$layout-meter} {
+    margin-left: $i*$layout-meter;
+    margin-right: $i*$layout-meter;
+  }
+  .mg-vertical-#{$i*$layout-meter} {
+    margin-top: $i*$layout-meter;
+    margin-bottom: $i*$layout-meter;
+  }
+  //padding shortcut //padding快捷类
+  .pd-#{$i*$layout-meter} {
+    padding: $i*$layout-meter;
+  }
+  .pd-top-#{$i*$layout-meter} {
+    padding-top: $i*$layout-meter;
+  }
+  .pd-right-#{$i*$layout-meter} {
+    padding-right: $i*$layout-meter;
+  }
+  .pd-bottom-#{$i*$layout-meter} {
+    padding-bottom: $i*$layout-meter;
+  }
+  .pd-left-#{$i*$layout-meter} {
+    padding-left: $i*$layout-meter;
+  }
+  .pd-horizontal-#{$i*$layout-meter} {
+    padding-left: $i*$layout-meter;
+    padding-right: $i*$layout-meter;
+  }
+  .pd-vertical-#{$i*$layout-meter} {
+    padding-top: $i*$layout-meter;
+    padding-bottom: $i*$layout-meter;
+  }
 }
 
 // Hide only visually, but have it available for screenreaders: : h5bp.com/v
 .sr {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
 
 // Lists
 .list-unstyled {
-    list-style: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  li {
     margin: 0;
     padding: 0;
-    li {
-        margin: 0;
-        padding: 0;
-    }
+  }
 }
 
 .list-inline {
-    list-style: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  li {
     margin: 0;
     padding: 0;
-    li {
-        margin: 0;
-        padding: 0;
-        display: inline-block;
-    }
+    display: inline-block;
+  }
 }
 
 // Images
 .img-fluid {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 // Image Positions
 .img-left {
-    float: left;
-    margin-right: 20px;
+  float: left;
+  margin-right: 20px;
 }
 
 .img-right {
-    float: right;
-    margin-left: 20px;
+  float: right;
+  margin-left: 20px;
 }
 
 // Form
 .field {
-    width: 100%;
+  width: 100%;
 }
 
 // Disable Element
 .disabled,
 [disabled] {
-    pointer-events: none;
-    cursor: not-allowed;
-    opacity: .5;
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: .5;
 }
 
-
 /************************************************/
-
 
 /*垂直上下居中*/
 
 .vertical-middle {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
-
 
 /* 文字截断 */
 
 .nowrap {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
 }
 
 .nowrap-2 {
-    display: -webkit-box;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .nowrap-3 {
-    display: -webkit-box;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 
 //文本颜色

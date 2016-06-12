@@ -1,5 +1,4 @@
 .button {
-  position: relative;
   display: inline-block;
   padding-left: 14px;
   padding-right: 14px;
@@ -24,6 +23,7 @@
 }
 
 //@include button-variant(default, $btn-default-bg, $btn-default-color, $btn-default-active-bg, $btn-default-active-color);
+@include button-variant(default, $btn-default-bg, $btn-default-color, $btn-default-active-bg, $btn-default-active-color);
 @include button-variant(green, $color-green, $color-white, darken($color-green, 10%), $color-white);
 @include button-variant(blue, $color-blue, $color-white, darken($color-blue, 10%), $color-white);
 @include button-variant(red, $color-red, $color-white, darken($color-red, 10%), $color-white);
@@ -36,6 +36,8 @@
   border-radius: $btn-border-radius-xs;
   padding-top: $btn-padding-vertical-xs;
   padding-bottom: $btn-padding-vertical-xs;
+  padding-left: $btn-padding-horizontal-xs;
+  padding-right: $btn-padding-horizontal-xs;
 }
 
 .button-xl {
@@ -44,4 +46,6 @@
   border-radius: $btn-border-radius-xl;
   padding-top: $btn-padding-vertical-xl;
   padding-bottom: $btn-padding-vertical-xl;
+  padding-left: $btn-padding-horizontal-xl;
+  padding-right: $btn-padding-horizontal-xl;
 }
