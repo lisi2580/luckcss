@@ -35,6 +35,8 @@ $font-size-h4: 16px; // ~16px
 $font-size-h5: $font-size-base;
 $font-size-h6: ceil(($font-size-base * 0.85)); // ~12px
 
+//flex网格列数
+$flex-column: 12;
 // Grid Containers [网格
 $container: 100% !default;
 $container-m: 720px !default;
@@ -79,7 +81,7 @@ $badge-font-size: 10px;
 $badge-font-weight: bold;
 $badge-line-height: 18px;
 $badge-color: #fff;
-$badge-border-radius:2px;
+$badge-border-radius: 2px;
 $badge-text-transform: none;
 $badge-hover-color: #fff;
 $badge-notification-font-size: 12px;
@@ -115,4 +117,4 @@ $btn-padding-horizontal-base: 12px !default;
 $btn-padding-vertical-xl: 10px !default;
 $btn-padding-horizontal-xl: 16px !default;
 $btn-padding-vertical-xs: 2px !default;
-$btn-padding-horizontal-xs: 6px !default;
+$btn-padding-horizontal-xs: 3px !default;
