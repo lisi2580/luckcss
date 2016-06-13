@@ -18,7 +18,7 @@ gulp.task('sass', function () {
     return gulp.src('./sass/luck.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer({
-            browsers: ['iOS 7', 'Android >= 4.0', 'last 2 Explorer versions']
+            browsers: ['iOS 7', 'Android >= 4.0']
         }))
         .pipe(gulp.dest('./dist/'));
 });
@@ -30,8 +30,8 @@ gulp.task('watch', function () {
     browserSync.init({
         server: {
             baseDir: "./",
-            index: "admission-ticket.html"
+            index: "test.html"
         }
     });
-    gulp.watch(["dist/**/*", "admission-ticket.html"]).on("change", browserSync.reload);
+    gulp.watch(["dist/**/*", "test.html"]).on("change", browserSync.reload);
 });

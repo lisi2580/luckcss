@@ -21,11 +21,11 @@
 }
 
 .flex-column {
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .flex-row {
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .flex-around {
@@ -70,7 +70,7 @@
 
 // flex的对齐方式
 @mixin build-align($type) {
-  @if $type == column {
+  @if $type == row {
     &.flex-left {
       justify-content: flex-start;
     }
@@ -89,7 +89,7 @@
     &.flex-middle {
       align-items: center;
     }
-  } @else if $type == row {
+  } @else if $type == column {
     &.flex-left {
       align-items: flex-start;
     }
