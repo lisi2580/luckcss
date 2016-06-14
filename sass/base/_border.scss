@@ -15,7 +15,7 @@
 .border-radius{
     @include border-radius;
 }
-/*
+/**/
 
 @media screen and (-webkit-min-device-pixel-ratio : 2) {
     .border{position: relative; border: 0;}
@@ -61,7 +61,6 @@
         background-image: $border-t,$border-r,$border-b,$border-l;
         -webkit-background-size: 100% 1px,1px 100% ,100% 1px, 1px 100%;
         background-size: 100% 1px,1px 100% ,100% 1px, 1px 100%;
-        background-size: 100% 1px,1px 100% ,100% 1px, 1px 100%;
         background-repeat: no-repeat;
         background-position: top, right, bottom, left;
         padding: 1px;
@@ -69,4 +68,4 @@
         z-index: 10;
         pointer-events: none;
     }
-}*/
+}

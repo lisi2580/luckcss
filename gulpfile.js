@@ -9,12 +9,12 @@ var sass = require('gulp-sass');
 var sequence = require('gulp-sequence');
 var autoprefixer = require('gulp-autoprefixer');
 
-gulp.task('clean', function () {
+gulp.task('clean', function() {
     return gulp.src('dist/')
         .pipe(clean());
 });
 
-gulp.task('sass', function () {
+gulp.task('sass', function() {
     return gulp.src('./sass/luck.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer({
@@ -23,15 +23,15 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('./dist/'));
 });
 
-gulp.task('watch', function () {
+gulp.task('watch', function() {
 
     gulp.watch('./sass/**/*', ['sass']);
 
     browserSync.init({
         server: {
             baseDir: "./",
-            index: "test.html"
+            index: "doc/luckcss.html"
         }
     });
-    gulp.watch(["dist/**/*", "test.html"]).on("change", browserSync.reload);
+    gulp.watch(["dist/**/*", "doc/luckcss.html"]).on("change", browserSync.reload);
 });

@@ -1,19 +1,18 @@
 /* ==========================================================================
 // luck css
 gaopeng.aaron.li
-0.1
+https://github.com/day318/luckcss
 ========================================================================== */
-
-@import "base/normalize.scss";
+//@import "base/normalize.scss";
 @import "base/_variables";
 @import "base/_mixins";
 @import "base/_helpers";
 @import "base/_buttons";
 @import "base/_border";
 @import "base/_badge";
-//@import "base/_grid";
 @import "base/flex";
 @import "base/flex-grid";
+//@import "base/_grid";//包含响应式
 @import "base/_grid-non-responsive";
 @import "base/_animations";
 @import "base/arrow";

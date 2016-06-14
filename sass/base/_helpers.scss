@@ -9,9 +9,11 @@ html, body {
 .test {
   outline: dotted 1px red;
 }
-.height-full{
+
+.height-full {
   height: 100%;
 }
+
 // General Resets
 .no-margin {
   margin: 0;
@@ -72,6 +74,7 @@ html, body {
 // Font Styles
 .font-normal {
   font-style: normal;
+  font-weight: normal;
 }
 
 // Font Weights
@@ -112,12 +115,15 @@ html, body {
 .text-justify {
   text-align: justify;
 }
-.line-height-xs{
+
+.line-height-xs {
   line-height: 14px;
 }
-.line-height-xl{
+
+.line-height-xl {
   line-height: 18px;
 }
+
 // Positions
 .relative {
   position: relative;
@@ -168,11 +174,8 @@ html, body {
   margin-right: auto;
 }
 
-// Padding Helpers
-
-/*forfor*/
-
-@for $i from 0 to $layout-meter-lenght {
+// margin Padding Helpers
+@for $i from 0 through $layout-meter-lenght {
   //margin shortcut //margin快捷类
   .mg-#{$i*$layout-meter} {
     margin: $i*$layout-meter;
@@ -180,20 +183,41 @@ html, body {
   .mg-top-#{$i*$layout-meter} {
     margin-top: $i*$layout-meter;
   }
+  .mg-t-#{$i*$layout-meter} {
+    margin-top: $i*$layout-meter;
+  }
   .mg-right-#{$i*$layout-meter} {
+    margin-right: $i*$layout-meter;
+  }
+  .mg-r-#{$i*$layout-meter} {
     margin-right: $i*$layout-meter;
   }
   .mg-bottom-#{$i*$layout-meter} {
     margin-bottom: $i*$layout-meter;
   }
+  .mg-b-#{$i*$layout-meter} {
+    margin-bottom: $i*$layout-meter;
+  }
   .mg-left-#{$i*$layout-meter} {
+    margin-left: $i*$layout-meter;
+  }
+  .mg-l-#{$i*$layout-meter} {
     margin-left: $i*$layout-meter;
   }
   .mg-horizontal-#{$i*$layout-meter} {
     margin-left: $i*$layout-meter;
     margin-right: $i*$layout-meter;
   }
+  .mg-lr-#{$i*$layout-meter} {
+    margin-left: $i*$layout-meter;
+    margin-right: $i*$layout-meter;
+  }
+
   .mg-vertical-#{$i*$layout-meter} {
+    margin-top: $i*$layout-meter;
+    margin-bottom: $i*$layout-meter;
+  }
+  .mg-tb-#{$i*$layout-meter} {
     margin-top: $i*$layout-meter;
     margin-bottom: $i*$layout-meter;
   }
@@ -204,20 +228,40 @@ html, body {
   .pd-top-#{$i*$layout-meter} {
     padding-top: $i*$layout-meter;
   }
+  .pd-t-#{$i*$layout-meter} {
+    padding-top: $i*$layout-meter;
+  }
   .pd-right-#{$i*$layout-meter} {
+    padding-right: $i*$layout-meter;
+  }
+  .pd-r-#{$i*$layout-meter} {
     padding-right: $i*$layout-meter;
   }
   .pd-bottom-#{$i*$layout-meter} {
     padding-bottom: $i*$layout-meter;
   }
+  .pd-b-#{$i*$layout-meter} {
+    padding-bottom: $i*$layout-meter;
+  }
   .pd-left-#{$i*$layout-meter} {
+    padding-left: $i*$layout-meter;
+  }
+  .pd-l-#{$i*$layout-meter} {
     padding-left: $i*$layout-meter;
   }
   .pd-horizontal-#{$i*$layout-meter} {
     padding-left: $i*$layout-meter;
     padding-right: $i*$layout-meter;
   }
+  .pd-lr-#{$i*$layout-meter} {
+    padding-left: $i*$layout-meter;
+    padding-right: $i*$layout-meter;
+  }
   .pd-vertical-#{$i*$layout-meter} {
+    padding-top: $i*$layout-meter;
+    padding-bottom: $i*$layout-meter;
+  }
+  .pd-tb-#{$i*$layout-meter} {
     padding-top: $i*$layout-meter;
     padding-bottom: $i*$layout-meter;
   }
@@ -235,34 +279,11 @@ html, body {
   width: 1px;
 }
 
-// Lists
-.list-unstyled {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  li {
-    margin: 0;
-    padding: 0;
-  }
-}
-
-.list-inline {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  li {
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-  }
-}
 
 // Images
 .img-fluid {
   max-width: 100%;
 }
-
-
 
 // Form
 .field {
