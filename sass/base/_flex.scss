@@ -104,14 +104,101 @@
   align-self: stretch;
 }
 
-.flex-col-auto {
+
+.flex-col-auto, [class*=flex-col] {
   flex: 1;
 }
 
-$col-num:12;
-/*请使用flex-item-* */
-@for $i from 1 through $col-num {
+@for $i from 1 through $columns {
   .flex-col-#{$i} {
-    flex: 0 0 $i / $col-num * 100%;
+    flex: 0 0 $i / $columns * 100%;
+  }
+
+  .width-#{$i} {
+    width: $i / $columns * 100%;
   }
 }
+
+.flex-column, .flex-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-around {
+  justify-content: space-around;
+}
+
+.flex-between {
+  justify-content: space-between;
+}
+
+.flex-baseline {
+  align-items: baseline;
+}
+
+.flex-strech {
+  align-items: stretch;
+}
+
+// flex的对齐方式
+@mixin build-align($type) {
+  @if $type == row {
+    &.flex-left {
+      justify-content: flex-start;
+    }
+    &.flex-right {
+      justify-content: flex-end;
+    }
+    &.flex-top {
+      align-items: flex-start;
+    }
+    &.flex-bottom {
+      align-items: flex-end;
+    }
+    &.flex-center {
+      justify-content: center;
+    }
+    &.flex-middle {
+      align-items: center;
+    }
+  } @else if $type == column {
+    &.flex-left {
+      align-items: flex-start;
+    }
+    &.flex-right {
+      align-items: flex-end;
+    }
+    &.flex-top {
+      justify-content: flex-start;
+    }
+    &.flex-bottom {
+      justify-content: flex-end;
+    }
+    &.flex-center {
+      align-items: center;
+    }
+    &.flex-middle {
+      justify-content: center;
+    }
+  }
+
+}
+
+.flex-column {
+  @include build-align(column);
+}
+
+.flex-row {
+  @include build-align(row);
+}
+
+
+
