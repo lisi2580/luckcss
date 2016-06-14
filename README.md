@@ -1,2 +1,2 @@
 # luckcss
-a css library
+a css helper library

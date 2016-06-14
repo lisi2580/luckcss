@@ -7,13 +7,13 @@ gaopeng.aaron.li
 @import "base/normalize.scss";
 @import "base/_variables";
 @import "base/_mixins";
+@import "base/_helpers";
 @import "base/_buttons";
 @import "base/_border";
 @import "base/_badge";
 //@import "base/_grid";
-//@import "base/flex";
+@import "base/flex";
 @import "base/flex-grid";
 @import "base/_grid-non-responsive";
 @import "base/_animations";
-@import "base/_helpers";
 @import "base/arrow";
