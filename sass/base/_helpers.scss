@@ -14,6 +14,10 @@ html, body {
   height: 100%;
 }
 
+.width-full {
+  width: 100%;
+}
+
 // General Resets
 .no-margin {
   margin: 0;
@@ -279,16 +283,11 @@ html, body {
   width: 1px;
 }
 
-
 // Images
 .img-fluid {
   max-width: 100%;
 }
 
-// Form
-.field {
-  width: 100%;
-}
 
 // Disable Element
 .disabled,
@@ -332,6 +331,14 @@ html, body {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
+
+
+@for $i from 1 through $columns {
+  .width-#{$i} {
+    width: $i / $columns * 100%;
+  }
+}
+
 
 //文本颜色
 @include text-color-variant('.color-red', $color-red);

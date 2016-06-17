@@ -1,12 +1,4 @@
 
-
-
-
-
-/* ========================================================================
-   Component: Badge
- ========================================================================== */
-
 .badge {
   display: inline-block;
   padding: 0 $badge-padding-horizontal;
@@ -21,14 +13,11 @@
   text-transform: $badge-text-transform;
 }
 
-/*
- * Keep color when badge is a link
- */
+
 
 a.badge:hover { color: $badge-hover-color; }
 
-/* Modifier: `badge-notification`;
- ========================================================================== */
+
 
 .badge-notification {
   box-sizing: border-box;
