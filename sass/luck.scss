@@ -4,14 +4,13 @@ gaopeng.aaron.li
 https://github.com/day318/luckcss
 ========================================================================== */
 //@import "base/normalize.scss";
-@import "base/_variables";
-@import "base/_mixins";
-@import "base/_buttons";
-@import "base/_border";
-@import "base/_badge";
-@import "base/flex";
-//@import "base/_grid";//包含响应式
-@import "base/_grid-non-responsive";
-@import "base/_animations";
-@import "base/arrow";
-@import "base/_helpers";
+/*12列布局*/
+/* width-1 ~ width-12 */
+/* col-1 ~ col-12 */
+@import "_variables";
+@import "_mixins";
+@import "_grid";
+@import "_helpers";
+@import "_animations";
+@import "_arrow";
+@import "_flex";

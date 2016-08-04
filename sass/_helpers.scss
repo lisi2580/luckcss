@@ -18,7 +18,7 @@ html, body {
   width: 100%;
 }
 
-// General Resets
+
 .no-margin {
   margin: 0;
 }
@@ -75,13 +75,13 @@ html, body {
   font-size: $font-size-h1;
 }
 
-// Font Styles
+
 .font-normal {
   font-style: normal;
   font-weight: normal;
 }
 
-// Font Weights
+
 .font-bold {
   font-weight: bold;
 }
@@ -90,20 +90,20 @@ html, body {
   font-style: italic;
 }
 
-// Text Modifications
+.underline {
+  text-decoration: underline;
+}
 .uppercase {
   text-transform: uppercase;
 }
-
 .lowercase {
   text-transform: lowercase;
 }
-
 .capitalize {
   text-transform: capitalize;
 }
 
-// Text Alignments
+
 .text-left {
   text-align: left;
 }
@@ -120,15 +120,6 @@ html, body {
   text-align: justify;
 }
 
-.line-height-xs {
-  line-height: 14px;
-}
-
-.line-height-xl {
-  line-height: 18px;
-}
-
-// Positions
 .relative {
   position: relative;
 }
@@ -145,7 +136,7 @@ html, body {
   position: fixed;
 }
 
-// Display Types
+
 .none {
   display: none;
 }
@@ -162,7 +153,6 @@ html, body {
   display: inline;
 }
 
-// Floats
 .left {
   float: left;
 }
@@ -171,7 +161,6 @@ html, body {
   float: right;
 }
 
-// Alignment
 .center {
   float: none;
   margin-left: auto;
@@ -184,43 +173,29 @@ html, body {
   .mg-#{$i*$layout-meter} {
     margin: $i*$layout-meter;
   }
-  .mg-top-#{$i*$layout-meter} {
-    margin-top: $i*$layout-meter;
-  }
+
   .mg-t-#{$i*$layout-meter} {
     margin-top: $i*$layout-meter;
   }
-  .mg-right-#{$i*$layout-meter} {
-    margin-right: $i*$layout-meter;
-  }
+
   .mg-r-#{$i*$layout-meter} {
     margin-right: $i*$layout-meter;
   }
-  .mg-bottom-#{$i*$layout-meter} {
-    margin-bottom: $i*$layout-meter;
-  }
+
   .mg-b-#{$i*$layout-meter} {
     margin-bottom: $i*$layout-meter;
   }
-  .mg-left-#{$i*$layout-meter} {
-    margin-left: $i*$layout-meter;
-  }
+
   .mg-l-#{$i*$layout-meter} {
     margin-left: $i*$layout-meter;
   }
-  .mg-horizontal-#{$i*$layout-meter} {
-    margin-left: $i*$layout-meter;
-    margin-right: $i*$layout-meter;
-  }
+
   .mg-lr-#{$i*$layout-meter} {
     margin-left: $i*$layout-meter;
     margin-right: $i*$layout-meter;
   }
 
-  .mg-vertical-#{$i*$layout-meter} {
-    margin-top: $i*$layout-meter;
-    margin-bottom: $i*$layout-meter;
-  }
+
   .mg-tb-#{$i*$layout-meter} {
     margin-top: $i*$layout-meter;
     margin-bottom: $i*$layout-meter;
@@ -229,42 +204,28 @@ html, body {
   .pd-#{$i*$layout-meter} {
     padding: $i*$layout-meter;
   }
-  .pd-top-#{$i*$layout-meter} {
-    padding-top: $i*$layout-meter;
-  }
+
   .pd-t-#{$i*$layout-meter} {
     padding-top: $i*$layout-meter;
   }
-  .pd-right-#{$i*$layout-meter} {
-    padding-right: $i*$layout-meter;
-  }
+
   .pd-r-#{$i*$layout-meter} {
     padding-right: $i*$layout-meter;
   }
-  .pd-bottom-#{$i*$layout-meter} {
-    padding-bottom: $i*$layout-meter;
-  }
+
   .pd-b-#{$i*$layout-meter} {
     padding-bottom: $i*$layout-meter;
   }
-  .pd-left-#{$i*$layout-meter} {
-    padding-left: $i*$layout-meter;
-  }
+
   .pd-l-#{$i*$layout-meter} {
     padding-left: $i*$layout-meter;
   }
-  .pd-horizontal-#{$i*$layout-meter} {
-    padding-left: $i*$layout-meter;
-    padding-right: $i*$layout-meter;
-  }
+
   .pd-lr-#{$i*$layout-meter} {
     padding-left: $i*$layout-meter;
     padding-right: $i*$layout-meter;
   }
-  .pd-vertical-#{$i*$layout-meter} {
-    padding-top: $i*$layout-meter;
-    padding-bottom: $i*$layout-meter;
-  }
+
   .pd-tb-#{$i*$layout-meter} {
     padding-top: $i*$layout-meter;
     padding-bottom: $i*$layout-meter;
@@ -288,15 +249,6 @@ html, body {
   max-width: 100%;
 }
 
-
-// Disable Element
-.disabled,
-[disabled] {
-  pointer-events: none;
-  cursor: not-allowed;
-  opacity: .5;
-}
-
 /************************************************/
 
 /*垂直上下居中*/
@@ -310,10 +262,11 @@ html, body {
 /* 文字截断 */
 
 .nowrap {
+  display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
-  max-width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
 }
 
 .nowrap-2 {
@@ -333,37 +286,3 @@ html, body {
 }
 
 
-@for $i from 1 through $columns {
-  .width-#{$i} {
-    width: $i / $columns * 100%;
-  }
-}
-
-
-//文本颜色
-@include text-color-variant('.color-red', $color-red);
-@include text-color-variant('.color-green', $color-green);
-@include text-color-variant('.color-yellow', $color-yellow);
-@include text-color-variant('.color-blue', $color-blue);
-@include text-color-variant('.color-orange', $color-orange);
-@include text-color-variant('.color-brown', $color-brown);
-@include text-color-variant('.color-pink', $color-pink);
-@include text-color-variant('.color-navy', $color-navy);
-@include text-color-variant('.color-white', $color-white);
-@include text-color-variant('.color-grey-1', $font-color-1);
-@include text-color-variant('.color-grey-2', $font-clolr-2);
-@include text-color-variant('.color-grey-3', $font-clolr-3);
-@include text-color-variant('.color-black', $color-black);
-//背景颜色
-@include bg-variant('.bg-red', $color-red);
-@include bg-variant('.bg-green', $color-green);
-@include bg-variant('.bg-yellow', $color-yellow);
-@include bg-variant('.bg-blue', $color-blue);
-@include bg-variant('.bg-orange', $color-orange);
-@include bg-variant('.bg-brown', $color-brown);
-@include bg-variant('.bg-pink', $color-pink);
-@include bg-variant('.bg-navy', $color-navy);
-@include bg-variant('.bg-white', $color-white);
-@include bg-variant('.bg-grey-1', $bg-color-1);
-@include bg-variant('.bg-grey-2', $bg-color-2);
-@include bg-variant('.bg-black', $color-black);
