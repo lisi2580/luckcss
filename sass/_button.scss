@@ -14,11 +14,12 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   overflow: hidden;
   border: solid 1px $btn-border-base;
-
+&:disabled,
+&[disabled],
   &.disabled {
     @include opacity(.65);
-    background-color: $btn-default-disabled-bg-color !important;
-    color: $btn-default-disabled-color !important;
+    //background-color: $btn-default-disabled-bg-color !important;
+    //color: $btn-default-disabled-color !important;
   }
 }
 

@@ -14,11 +14,9 @@
   -webkit-tap-highlight-color: transparent;
   overflow: hidden;
   border: solid 1px transparent; }
-  .button.disabled {
+  .button:disabled, .button[disabled], .button.disabled {
     opacity: 0.65;
-    filter: alpha(opacity=65);
-    background-color: #f7f7f7 !important;
-    color: #C9C9C9 !important; }
+    filter: alpha(opacity=65); }
 
 .button-default {
   background-color: #F7F7F7;
@@ -152,7 +150,7 @@
 .button-xl {
   font-size: 18px;
   line-height: 1.33333;
-  border-radius: 6px;
+  border-radius: 4px;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 16px;
@@ -186,7 +184,7 @@
   border-radius: 2px; }
 
 .border-radius-xl {
-  border-radius: 6px; }
+  border-radius: 4px; }
 
 .badge {
   display: inline-block;
