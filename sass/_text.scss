@@ -1,3 +1,33 @@
+@mixin text-color-variant($parent, $color) {
+  #{$parent} {
+    color: $color;
+  }
+  a#{$parent}:hover,
+  a#{$parent}:focus {
+    color: darken($color, 10%);
+  }
+}
+
+//background
+@mixin bg-variant($parent, $color) {
+  #{$parent} {
+    background-color: $color;
+  }
+  a#{$parent}:hover,
+  a#{$parent}:focus {
+    background-color: darken($color, 10%);
+  }
+}
+@mixin color($c) {
+  .color-#{$c} {
+    color: #{$c};
+  }
+}
+@mixin line-height($lh) {
+  .lh-#{$lh} {
+    line-height: #{$lh};
+  }
+}
 
 //文本颜色
 @include text-color-variant('.color-red', $color-red);
@@ -22,3 +52,46 @@
 @include bg-variant('.bg-grey-1', $bg-color-1);
 @include bg-variant('.bg-grey-2', $bg-color-2);
 @include bg-variant('.bg-black', $color-black);
+
+.font-size-h6 {
+  font-size: $font-size-h6;
+}
+
+.font-size-h5 {
+  font-size: $font-size-h5;
+}
+
+.font-size-h4 {
+  font-size: $font-size-h4;
+}
+
+.font-size-h3 {
+  font-size: $font-size-h3;
+}
+
+.font-size-h2 {
+  font-size: $font-size-h2;
+}
+
+.font-size-h1 {
+  font-size: $font-size-h1;
+}
+
+//------------------------
+
+@include color(333);
+@include color(666);
+@include color(999);
+//-------------------------
+
+
+@include line-height(14px); /*16像素行距*/
+@include line-height(16px); /*16像素行距*/
+@include line-height(18px); /*18像素行距*/
+@include line-height(20px); /*20像素行距*/
+@include line-height(22px); /*22像素行距*/
+@include line-height(24px); /*24像素行距*/
+@include line-height(26px); /*26像素行距*/
+@include line-height(28px); /*28像素行距*/
+@include line-height(30px); /*30像素行距*/
+//------------------------

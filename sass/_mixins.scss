@@ -63,26 +63,9 @@
 
 // Typography
 // [converter] $parent hack
-@mixin text-color-variant($parent, $color) {
-  #{$parent} {
-    color: $color;
-  }
-  a#{$parent}:hover,
-  a#{$parent}:focus {
-    color: darken($color, 10%);
-  }
-}
 
-//background
-@mixin bg-variant($parent, $color) {
-  #{$parent} {
-    background-color: $color;
-  }
-  a#{$parent}:hover,
-  a#{$parent}:focus {
-    background-color: darken($color, 10%);
-  }
-}
+
+
 
 @mixin button-variant($parent, $background-color, $color, $active-background-color,$active-color) {
   .button-#{$parent} {

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .button {
   display: inline-block;
   padding-left: 14px;
@@ -375,3 +376,67 @@ a.bg-grey-2:focus {
 a.bg-black:hover,
 a.bg-black:focus {
   background-color: black; }
+
+.font-size-h6 {
+  font-size: 12px; }
+
+.font-size-h5 {
+  font-size: 14px; }
+
+.font-size-h4 {
+  font-size: 16px; }
+
+.font-size-h3 {
+  font-size: 22px; }
+
+.font-size-h2 {
+  font-size: 30px; }
+
+.font-size-h1 {
+  font-size: 36px; }
+
+.color-333 {
+  color: 333; }
+
+.color-666 {
+  color: 666; }
+
+.color-999 {
+  color: 999; }
+
+.lh-14px {
+  line-height: 14px; }
+
+/*16像素行距*/
+.lh-16px {
+  line-height: 16px; }
+
+/*16像素行距*/
+.lh-18px {
+  line-height: 18px; }
+
+/*18像素行距*/
+.lh-20px {
+  line-height: 20px; }
+
+/*20像素行距*/
+.lh-22px {
+  line-height: 22px; }
+
+/*22像素行距*/
+.lh-24px {
+  line-height: 24px; }
+
+/*24像素行距*/
+.lh-26px {
+  line-height: 26px; }
+
+/*26像素行距*/
+.lh-28px {
+  line-height: 28px; }
+
+/*28像素行距*/
+.lh-30px {
+  line-height: 30px; }
+
+/*30像素行距*/

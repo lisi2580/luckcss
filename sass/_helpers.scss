@@ -18,7 +18,6 @@ html, body {
   width: 100%;
 }
 
-
 .no-margin {
   margin: 0;
 }
@@ -47,40 +46,48 @@ html, body {
   cursor: default;
 }
 
-.font-size-base {
-  font-size: $font-size-base;
+
+
+.font-12 {
+  font-size: 12px
 }
 
-.font-size-h6 {
-  font-size: $font-size-h6;
+.font-14 {
+  font-size: 14px
 }
 
-.font-size-h5 {
-  font-size: $font-size-h5;
+.font-16 {
+  font-size: 16px
 }
 
-.font-size-h4 {
-  font-size: $font-size-h4;
+.font-18 {
+  font-size: 18px
 }
 
-.font-size-h3 {
-  font-size: $font-size-h3;
+.font-20 {
+  font-size: 20px
 }
 
-.font-size-h2 {
-  font-size: $font-size-h2;
+.font-24 {
+  font-size: 24px
 }
 
-.font-size-h1 {
-  font-size: $font-size-h1;
+.font-26 {
+  font-size: 26px
 }
 
+.font-28 {
+  font-size: 28px
+}
+
+.font-30 {
+  font-size: 30px
+}
 
 .font-normal {
   font-style: normal;
   font-weight: normal;
 }
-
 
 .font-bold {
   font-weight: bold;
@@ -93,16 +100,18 @@ html, body {
 .underline {
   text-decoration: underline;
 }
+
 .uppercase {
   text-transform: uppercase;
 }
+
 .lowercase {
   text-transform: lowercase;
 }
+
 .capitalize {
   text-transform: capitalize;
 }
-
 
 .text-left {
   text-align: left;
@@ -135,7 +144,6 @@ html, body {
 .fixed {
   position: fixed;
 }
-
 
 .none {
   display: none;
@@ -194,7 +202,6 @@ html, body {
     margin-left: $i*$layout-meter;
     margin-right: $i*$layout-meter;
   }
-
 
   .mg-tb-#{$i*$layout-meter} {
     margin-top: $i*$layout-meter;
