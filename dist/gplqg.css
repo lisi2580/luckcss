@@ -233,176 +233,74 @@ a.badge:hover {
 .color-red {
   color: #ff4222; }
 
-a.color-red:hover,
-a.color-red:focus {
-  color: #ee2200; }
-
 .color-green {
   color: #29cc6d; }
-
-a.color-green:hover,
-a.color-green:focus {
-  color: #20a256; }
 
 .color-yellow {
   color: #ffffcc; }
 
-a.color-yellow:hover,
-a.color-yellow:focus {
-  color: #ffff99; }
-
 .color-blue {
   color: #1b97ff; }
-
-a.color-blue:hover,
-a.color-blue:focus {
-  color: #007ee7; }
 
 .color-orange {
   color: #ff9900; }
 
-a.color-orange:hover,
-a.color-orange:focus {
-  color: #cc7a00; }
-
 .color-pink {
   color: #F7665e; }
-
-a.color-pink:hover,
-a.color-pink:focus {
-  color: #f5382d; }
 
 .color-white {
   color: #fff; }
 
-a.color-white:hover,
-a.color-white:focus {
-  color: #e6e6e6; }
-
 .color-grey-1 {
   color: #333; }
-
-a.color-grey-1:hover,
-a.color-grey-1:focus {
-  color: #1a1a1a; }
 
 .color-grey-2 {
   color: #666; }
 
-a.color-grey-2:hover,
-a.color-grey-2:focus {
-  color: #4d4d4d; }
-
 .color-grey-3 {
   color: #999; }
-
-a.color-grey-3:hover,
-a.color-grey-3:focus {
-  color: gray; }
 
 .color-black {
   color: #000; }
 
-a.color-black:hover,
-a.color-black:focus {
-  color: black; }
+.color-333 {
+  color: #333; }
+
+.color-666 {
+  color: #666; }
+
+.color-999 {
+  color: #999; }
 
 .bg-red {
   background-color: #ff4222; }
 
-a.bg-red:hover,
-a.bg-red:focus {
-  background-color: #ee2200; }
-
 .bg-green {
   background-color: #29cc6d; }
-
-a.bg-green:hover,
-a.bg-green:focus {
-  background-color: #20a256; }
 
 .bg-yellow {
   background-color: #ffffcc; }
 
-a.bg-yellow:hover,
-a.bg-yellow:focus {
-  background-color: #ffff99; }
-
 .bg-blue {
   background-color: #1b97ff; }
-
-a.bg-blue:hover,
-a.bg-blue:focus {
-  background-color: #007ee7; }
 
 .bg-orange {
   background-color: #ff9900; }
 
-a.bg-orange:hover,
-a.bg-orange:focus {
-  background-color: #cc7a00; }
-
 .bg-pink {
   background-color: #F7665e; }
-
-a.bg-pink:hover,
-a.bg-pink:focus {
-  background-color: #f5382d; }
 
 .bg-white {
   background-color: #fff; }
 
-a.bg-white:hover,
-a.bg-white:focus {
-  background-color: #e6e6e6; }
-
 .bg-grey-1 {
   background-color: #f5f5f5; }
-
-a.bg-grey-1:hover,
-a.bg-grey-1:focus {
-  background-color: gainsboro; }
 
 .bg-grey-2 {
   background-color: #e6e6e6; }
 
-a.bg-grey-2:hover,
-a.bg-grey-2:focus {
-  background-color: #cdcdcd; }
-
 .bg-black {
   background-color: #000; }
-
-a.bg-black:hover,
-a.bg-black:focus {
-  background-color: black; }
-
-.font-size-h6 {
-  font-size: 12px; }
-
-.font-size-h5 {
-  font-size: 14px; }
-
-.font-size-h4 {
-  font-size: 16px; }
-
-.font-size-h3 {
-  font-size: 22px; }
-
-.font-size-h2 {
-  font-size: 30px; }
-
-.font-size-h1 {
-  font-size: 36px; }
-
-.color-333 {
-  color: 333; }
-
-.color-666 {
-  color: 666; }
-
-.color-999 {
-  color: 999; }
 
 .lh-14px {
   line-height: 14px; }
@@ -440,3 +338,20 @@ a.bg-black:focus {
   line-height: 30px; }
 
 /*30像素行距*/
+.font-size-h6 {
+  font-size: 12px; }
+
+.font-size-h5 {
+  font-size: 14px; }
+
+.font-size-h4 {
+  font-size: 16px; }
+
+.font-size-h3 {
+  font-size: 22px; }
+
+.font-size-h2 {
+  font-size: 30px; }
+
+.font-size-h1 {
+  font-size: 36px; }

@@ -1,26 +1,12 @@
-@mixin text-color-variant($parent, $color) {
-  #{$parent} {
-    color: $color;
-  }
-  a#{$parent}:hover,
-  a#{$parent}:focus {
-    color: darken($color, 10%);
-  }
-}
-
 //background
-@mixin bg-variant($parent, $color) {
-  #{$parent} {
-    background-color: $color;
-  }
-  a#{$parent}:hover,
-  a#{$parent}:focus {
-    background-color: darken($color, 10%);
+@mixin bg-color($name, $value) {
+  .bg-#{$name} {
+    background-color: $value;
   }
 }
-@mixin color($c) {
-  .color-#{$c} {
-    color: #{$c};
+@mixin color($name,$value) {
+  .color-#{$name} {
+    color: $value
   }
 }
 @mixin line-height($lh) {
@@ -30,29 +16,46 @@
 }
 
 //文本颜色
-@include text-color-variant('.color-red', $color-red);
-@include text-color-variant('.color-green', $color-green);
-@include text-color-variant('.color-yellow', $color-yellow);
-@include text-color-variant('.color-blue', $color-blue);
-@include text-color-variant('.color-orange', $color-orange);
-@include text-color-variant('.color-pink', $color-pink);
-@include text-color-variant('.color-white', $color-white);
-@include text-color-variant('.color-grey-1', $font-color-1);
-@include text-color-variant('.color-grey-2', $font-clolr-2);
-@include text-color-variant('.color-grey-3', $font-clolr-3);
-@include text-color-variant('.color-black', $color-black);
+@include color('red', $color-red);
+@include color('green', $color-green);
+@include color('yellow', $color-yellow);
+@include color('blue', $color-blue);
+@include color('orange', $color-orange);
+@include color('pink', $color-pink);
+@include color('white', $color-white);
+@include color('grey-1', $font-color-1);
+@include color('grey-2', $font-clolr-2);
+@include color('grey-3', $font-clolr-3);
+@include color('black', $color-black);
+@include color(333,#333);
+@include color(666,#666);
+@include color(999,#999);
 //背景颜色
-@include bg-variant('.bg-red', $color-red);
-@include bg-variant('.bg-green', $color-green);
-@include bg-variant('.bg-yellow', $color-yellow);
-@include bg-variant('.bg-blue', $color-blue);
-@include bg-variant('.bg-orange', $color-orange);
-@include bg-variant('.bg-pink', $color-pink);
-@include bg-variant('.bg-white', $color-white);
-@include bg-variant('.bg-grey-1', $bg-color-1);
-@include bg-variant('.bg-grey-2', $bg-color-2);
-@include bg-variant('.bg-black', $color-black);
+@include bg-color('red', $color-red);
+@include bg-color('green', $color-green);
+@include bg-color('yellow', $color-yellow);
+@include bg-color('blue', $color-blue);
+@include bg-color('orange', $color-orange);
+@include bg-color('pink', $color-pink);
+@include bg-color('white', $color-white);
+@include bg-color('grey-1', $bg-color-1);
+@include bg-color('grey-2', $bg-color-2);
+@include bg-color('black', $color-black);
 
+
+//------------------------
+
+
+@include line-height(14px); /*16像素行距*/
+@include line-height(16px); /*16像素行距*/
+@include line-height(18px); /*18像素行距*/
+@include line-height(20px); /*20像素行距*/
+@include line-height(22px); /*22像素行距*/
+@include line-height(24px); /*24像素行距*/
+@include line-height(26px); /*26像素行距*/
+@include line-height(28px); /*28像素行距*/
+@include line-height(30px); /*30像素行距*/
+//------------------------
 .font-size-h6 {
   font-size: $font-size-h6;
 }
@@ -77,21 +80,5 @@
   font-size: $font-size-h1;
 }
 
-//------------------------
 
-@include color(333);
-@include color(666);
-@include color(999);
 //-------------------------
-
-
-@include line-height(14px); /*16像素行距*/
-@include line-height(16px); /*16像素行距*/
-@include line-height(18px); /*18像素行距*/
-@include line-height(20px); /*20像素行距*/
-@include line-height(22px); /*22像素行距*/
-@include line-height(24px); /*24像素行距*/
-@include line-height(26px); /*26像素行距*/
-@include line-height(28px); /*28像素行距*/
-@include line-height(30px); /*30像素行距*/
-//------------------------
