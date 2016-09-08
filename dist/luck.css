@@ -183,11 +183,11 @@ https://github.com/day318/luckcss
 .width-12 {
   width: 100%; }
 
-html, body {
-  height: 100%; }
-
 .test {
   outline: dotted 1px red; }
+
+html, body {
+  height: 100%; }
 
 .height-full {
   height: 100%; }
@@ -1759,6 +1759,12 @@ html, body {
 .img-fluid {
   max-width: 100%; }
 
+.no-visible {
+  visibility: hidden; }
+
+.visible {
+  visibility: inherit; }
+
 /************************************************/
 /*垂直上下居中*/
 .vertical-middle {
@@ -1788,6 +1794,13 @@ html, body {
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3; }
+
+.border-box {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  /* Firefox */
+  -webkit-box-sizing: border-box;
+  /* Safari */ }
 
 .animate {
   -webkit-animation-duration: 0.8s;

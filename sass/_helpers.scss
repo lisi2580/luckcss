@@ -2,12 +2,14 @@
 // Base – Helpers
 // ==========================================================================
 //show outline for test
-html, body {
-  height: 100%;
-}
-
 .test {
   outline: dotted 1px red;
+}
+
+//*{box-sizing: border-box;}
+//*:before,*:after {box-sizing: border-box;}
+html, body {
+  height: 100%;
 }
 
 .height-full {
@@ -45,7 +47,8 @@ html, body {
   user-select: none;
   cursor: default;
 }
-.no-default-appearance{
+
+.no-default-appearance {
   &[type="number"] {
     -moz-appearance: textfield;
   }
@@ -55,7 +58,6 @@ html, body {
     margin: 0;
   }
 }
-
 
 .font-12px {
   font-size: 12px
@@ -74,6 +76,10 @@ html, body {
 }
 
 .font-20px {
+  font-size: 20px
+}
+
+.font-22px {
   font-size: 20px
 }
 
@@ -265,6 +271,14 @@ html, body {
   max-width: 100%;
 }
 
+.no-visible {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: inherit;
+}
+
 /************************************************/
 
 /*垂直上下居中*/
@@ -301,4 +315,8 @@ html, body {
   -webkit-line-clamp: 3;
 }
 
-
+.border-box {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box; /* Firefox */
+  -webkit-box-sizing: border-box; /* Safari */
+}
