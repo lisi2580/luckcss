@@ -1,7 +1,10 @@
-// ==========================================================================
-// Base – Helpers
-// ==========================================================================
-//show outline for test
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  // IE8 filter
+  $opacity-ie: ($opacity * 100);
+  filter: alpha(opacity=$opacity-ie);
+}
+
 .test {
   outline: dotted 1px red;
 }
@@ -18,14 +21,6 @@ html, body {
 
 .width-full {
   width: 100%;
-}
-
-.no-margin {
-  margin: 0;
-}
-
-.no-padding {
-  padding: 0;
 }
 
 .no-float {
@@ -254,21 +249,10 @@ html, body {
   }
 }
 
-// Hide only visually, but have it available for screenreaders: : h5bp.com/v
-.sr {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
 // Images
 .img-fluid {
   max-width: 100%;
+  display: block;
 }
 
 .no-visible {
@@ -277,16 +261,6 @@ html, body {
 
 .visible {
   visibility: inherit;
-}
-
-/************************************************/
-
-/*垂直上下居中*/
-
-.vertical-middle {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 /* 文字截断 */

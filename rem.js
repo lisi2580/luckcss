@@ -7,14 +7,14 @@
     var doc = win.document;
     var docEl = doc.documentElement;
     var tid;
-    var max = 540;
+    var max = 640;
 
     function refreshRem() {
         var width = docEl.getBoundingClientRect().width;
         if (width > max) { // 最大宽度
             width = max;
         }
-        var rem = width / 10; // 将屏幕宽度分成10份， 1份为1rem
+        var rem = width / 6.4; //  在640设计稿中，rem:px = 1:100
         docEl.style.fontSize = rem + 'px';
     }
 

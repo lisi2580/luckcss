@@ -1,21 +1,27 @@
-// ==========================================================================
-// Animations – Selective animations from Animate.css - http://daneden.me/animate
-// ==========================================================================
-// Animations
+
 .animate {
-  @include animate($duration);
-}
-.animate-infinite {
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-}
-// Fade In
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  animation-duration: 1s;
+  animation-fill-mode: both;
 }
 
-.fade-in { animation-name: fadeIn; }
+.animate-infinite {
+  animation-iteration-count: infinite;
+}
+
+
+// Fade In
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation-name: fadeIn;
+}
 
 // Fade In Down
 @keyframes fadeInDown {
@@ -29,7 +35,9 @@
   }
 }
 
-.fade-in-down { animation-name: fadeInDown; }
+.fade-in-down {
+  animation-name: fadeInDown;
+}
 
 // Fade In Down Big
 @keyframes fadeInDownBig {
@@ -43,7 +51,9 @@
   }
 }
 
-.fade-in-down-big { animation-name: fadeInDownBig; }
+.fade-in-down-big {
+  animation-name: fadeInDownBig;
+}
 
 // Fade In Left
 @keyframes fadeInLeft {
@@ -57,7 +67,9 @@
   }
 }
 
-.fade-in-left { animation-name: fadeInLeft; }
+.fade-in-left {
+  animation-name: fadeInLeft;
+}
 
 // Fade In Left Big
 @keyframes fadeInLeftBig {
@@ -71,7 +83,9 @@
   }
 }
 
-.fade-in-left-big { animation-name: fadeInLeftBig; }
+.fade-in-left-big {
+  animation-name: fadeInLeftBig;
+}
 
 // Fade In Right
 @keyframes fadeInRight {
@@ -86,7 +100,9 @@
   }
 }
 
-.fade-in-right { animation-name: fadeInRight; }
+.fade-in-right {
+  animation-name: fadeInRight;
+}
 
 // Fade In Right Big
 @keyframes fadeInRightBig {
@@ -100,7 +116,9 @@
   }
 }
 
-.fade-in-right-big { animation-name: fadeInRightBig; }
+.fade-in-right-big {
+  animation-name: fadeInRightBig;
+}
 
 // Fade In Up
 @keyframes fadeInUp {
@@ -114,7 +132,9 @@
   }
 }
 
-.fade-in-up { animation-name: fadeInUp; }
+.fade-in-up {
+  animation-name: fadeInUp;
+}
 
 // Fade In Up Big
 @keyframes fadeInUpBig {
@@ -129,38 +149,45 @@
   }
 }
 
-.fade-in-up-big { animation-name: fadeInUpBig; }
+.fade-in-up-big {
+  animation-name: fadeInUpBig;
+}
 
 /* Keyframes: Shake
  ========================================================================== */
 
-@-webkit-keyframes shake {
-  0%, 100% { -webkit-transform: translateX(0); }
-  10% { -webkit-transform: translateX(-9px); }
-  20% { -webkit-transform: translateX(8px); }
-  30% { -webkit-transform: translateX(-7px); }
-  40% { -webkit-transform: translateX(6px); }
-  50% { -webkit-transform: translateX(-5px); }
-  60% { -webkit-transform: translateX(4px); }
-  70% { -webkit-transform: translateX(-3px); }
-  80% { -webkit-transform: translateX(2px); }
-  90% { -webkit-transform: translateX(-1px); }
-}
-
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  10% { transform: translateX(-9px); }
-  20% { transform: translateX(8px); }
-  30% { transform: translateX(-7px); }
-  40% { transform: translateX(6px); }
-  50% { transform: translateX(-5px); }
-  60% { transform: translateX(4px); }
-  70% { transform: translateX(-3px); }
-  80% { transform: translateX(2px); }
-  90% { transform: translateX(-1px); }
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10% {
+    transform: translateX(-9px);
+  }
+  20% {
+    transform: translateX(8px);
+  }
+  30% {
+    transform: translateX(-7px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  60% {
+    transform: translateX(4px);
+  }
+  70% {
+    transform: translateX(-3px);
+  }
+  80% {
+    transform: translateX(2px);
+  }
+  90% {
+    transform: translateX(-1px);
+  }
 }
-
-.horizontal-shake {
-  -webkit-animation-name: shake;
+.shake {
   animation-name: shake;
 }

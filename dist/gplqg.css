@@ -16,8 +16,8 @@
   overflow: hidden;
   border: solid 1px transparent; }
   .button:disabled, .button[disabled], .button.disabled {
-    opacity: 0.65;
-    filter: alpha(opacity=65); }
+    pointer-events: none;
+    opacity: 0.65; }
 
 .button-default {
   background-color: #F7F7F7;

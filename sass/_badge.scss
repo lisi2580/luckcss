@@ -26,7 +26,12 @@ a.badge:hover { color: $badge-hover-color; }
   font-size: $badge-notification-font-size;
   line-height: $badge-notification-line-height;
 }
-
+@mixin badge-variant($parent, $background-color, $color) {
+  .badge-#{$parent} {
+    background-color: $background-color;
+    color: $color;
+  }
+}
 //批量生成
 @include badge-variant("green", $color-green, $color-white);
 @include badge-variant("red", $color-red, $color-white);

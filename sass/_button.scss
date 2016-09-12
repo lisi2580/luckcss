@@ -1,3 +1,6 @@
+
+
+
 .button {
   display: inline-block;
   padding-left: 14px;
@@ -17,13 +20,33 @@
 &:disabled,
 &[disabled],
   &.disabled {
-    @include opacity(.65);
-    //background-color: $btn-default-disabled-bg-color !important;
-    //color: $btn-default-disabled-color !important;
+  	pointer-events: none;
+    opacity: 0.65;
+  }
+}
+@mixin button-variant($parent, $background-color, $color, $active-background-color,$active-color) {
+  .button-#{$parent} {
+    background-color: $background-color;
+    color: $color;
+    border: solid 1px transparent;
+  }
+  .button-#{$parent}:hover,
+  .button-#{$parent}:focus {
+    background-color: lighten($background-color, 10%);
+    color: $color;
+  }
+  .button-#{$parent}:active,
+  .button-#{$parent}.active {
+    background-color: $active-background-color;
+    color: $active-color;
+  }
+  .button-#{$parent}.profile {
+    background: $color-white;
+    color: $background-color;
+    border: solid 1px $background-color;
   }
 }
 
-//@include button-variant(default, $btn-default-bg, $btn-default-color, $btn-default-active-bg, $btn-default-active-color);
 @include button-variant(default, $btn-default-bg, $btn-default-color, $btn-default-active-bg, $btn-default-active-color);
 @include button-variant(green, $color-green, $color-white, darken($color-green, 10%), $color-white);
 @include button-variant(blue, $color-blue, $color-white, darken($color-blue, 10%), $color-white);

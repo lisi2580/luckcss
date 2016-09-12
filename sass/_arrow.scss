@@ -26,3 +26,7 @@
 .icon-aarow-right {
   @include set-arrow(right, 6px, #ededed, 2px);
 }
+
+.icon-aarow-left {
+  @include set-arrow(left, 6px, #ededed, 2px);
+}
