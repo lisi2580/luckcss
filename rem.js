@@ -32,3 +32,6 @@
     refreshRem();
 
 })(window);
+
+var w = document.documentElement.getBoundingClientRect().width;
+document.documentElement.style.fontSize = ( w > 640 ? 640 : w ) / 6.4 + 'px';
