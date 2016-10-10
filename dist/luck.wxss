@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /* ==========================================================================
-// luck css
+// luck wxss
 gaopeng.aaron.li
-https://github.com/day318/luckcss
+https://github.com/good318/luckcss/tree/xcx-luck
 ========================================================================== */
 .test {
   outline: dotted 1px red; }

@@ -75,8 +75,7 @@
 
 ### 4.文字
 有8种大小的字体可直接使用，他们分别是：20, 18, 17, 16,14 13 , 12, 11
-`.font-size-11,.font-size-12,.font-size-13,.font-size-14,.font-size-16,.font-size-18 .font-size-20`。 对应的是h1到h6段落的文字大小。 （通常基准文字大小与`.font-size-h5`相同的。）
-
+`.font-size-11,.font-size-12,.font-size-13,.font-size-14,.font-size-16,.font-size-18 .font-size-20`。 
 另外还有文本颜色的快捷样式：
 - `.color-red` 红
 - `.color-green` 绿
