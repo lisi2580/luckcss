@@ -34,10 +34,8 @@
 
 ### 2.快捷样式
 
-
 - `.width-full` 宽度100%
 - `.height-full` 高度100%（提示：仅在父容器有高度属性时有效）
-- 
 - `.text-center` 文本居中对齐
 - `.text-left` 文本左对齐
 - `.text-right` 文本右对齐
@@ -49,21 +47,17 @@
 - `.lowercase` 转换字母小写
 - `.capitalize` 首字母大写
 - `.relative` 相对定位
-- 
 - `.none` 隐藏元素（display:none）
 - `.block` 块级元素
 - `.inline-block` 行内块级元素
 - `.inline` 行内元素
-- 
 - `.nowrap` 文字最多显示1行，超出部分以`...`代替
 - `.nowrap-2` 文字最多显示2行，超出部分以`...`代替
 - `.nowrap-3` 文字最多显示3行，超出部分以`...`代替
-- 
 - `.border-t` 向元素添加顶边框
 - `.border-r` 向元素添加右边框
 - `.border-b` 向元素添加底边框
 - `.border-l` 向元素添加左边框
-- 
 - `.mg-t-0rpx ... mg-t-30rpx` 向元素添加对于量的margin-top值
 - `.mg-r-0rpx ... mg-r-30rpx` 向元素添加对于量的margin-right值
 - `.mg-b-0rpx ... mg-b-30rpx` 向元素添加对于量的margin-bottom值
