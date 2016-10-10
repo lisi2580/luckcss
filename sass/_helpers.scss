@@ -1,18 +1,15 @@
-@mixin opacity($opacity) {
-  opacity: $opacity;
-  // IE8 filter
-  $opacity-ie: ($opacity * 100);
-  filter: alpha(opacity=$opacity-ie);
-}
+
 
 .test {
   outline: dotted 1px red;
 }
 
-//*{box-sizing: border-box;}
-//*:before,*:after {box-sizing: border-box;}
-html, body {
-  height: 100%;
+.border-box {
+  box-sizing: border-box;
+}
+
+.content-box {
+  box-sizing: content-box;
 }
 
 .height-full {
@@ -23,10 +20,6 @@ html, body {
   width: 100%;
 }
 
-.no-float {
-  float: none;
-}
-
 .no-background {
   background: transparent;
 }
@@ -34,27 +27,6 @@ html, body {
 .no-border {
   border: 0;
 }
-
-.no-select {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: default;
-}
-
-.no-default-appearance {
-  &[type="number"] {
-    -moz-appearance: textfield;
-  }
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: none !important;
-    margin: 0;
-  }
-}
-
-
 
 .font-normal {
   font-style: normal;
@@ -132,24 +104,11 @@ html, body {
 .inline {
   display: inline;
 }
-
-.left {
-  float: left;
-}
-
-.right {
-  float: right;
-}
-
-.center {
-  float: none;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-// margin Padding Helpers
+//shortcut-layout [快捷布局
+$layout-meter: 2rpx;
+$layout-meter-lenght: 15;
 @for $i from 0 through $layout-meter-lenght {
-  //margin shortcut //margin快捷类
+  //margin快捷类
   .mg-#{$i*$layout-meter} {
     margin: $i*$layout-meter;
   }
@@ -179,7 +138,7 @@ html, body {
     margin-top: $i*$layout-meter;
     margin-bottom: $i*$layout-meter;
   }
-  //padding shortcut //padding快捷类
+  //padding快捷类
   .pd-#{$i*$layout-meter} {
     padding: $i*$layout-meter;
   }
@@ -249,10 +208,4 @@ html, body {
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
-}
-
-.border-box {
-  box-sizing: border-box;
-  -moz-box-sizing: border-box; /* Firefox */
-  -webkit-box-sizing: border-box; /* Safari */
 }

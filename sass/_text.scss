@@ -1,83 +1,66 @@
 //background
-@mixin bg-color($name, $value) {
-  .bg-#{$name} {
+@mixin background-color($name, $value) {
+  .background-color-#{$name} {
+    background-color: $value;
+  }
+  .bc-#{$name} {
     background-color: $value;
   }
 }
+
 @mixin color($name,$value) {
   .color-#{$name} {
     color: $value
   }
+  .c-#{$name} {
+    color: $value
+  }
 }
+
 @mixin line-height($lh) {
+  .line-height-#{$lh} {
+    line-height: #{$lh};
+  }
   .lh-#{$lh} {
     line-height: #{$lh};
   }
 }
 
-//文本颜色
-@include color('red', $color-red);
-@include color('green', $color-green);
-@include color('yellow', $color-yellow);
-@include color('blue', $color-blue);
-@include color('orange', $color-orange);
-@include color('pink', $color-pink);
-@include color('white', $color-white);
-@include color('grey-1', $font-color-1);
-@include color('grey-2', $font-clolr-2);
-@include color('grey-3', $font-clolr-3);
-@include color('black', $color-black);
-@include color(333,#333);
-@include color(666,#666);
-@include color(999,#999);
+@mixin font-size($size) {
+  .font-size-#{$size} {
+    font-size: #{$size}rpx;
+  }
+  .fs-#{$size} {
+    font-size: #{$size}rpx;
+  }
+}
+
+//文字颜色
+@include color('red', #ff4222);
+@include color('green', #29cc6d);
+@include color('yellow', #ffffcc);
+@include color('blue', #1b97ff);
+@include color('orange', #ff9900);
+@include color('white', #fff);
+@include color('black', #000);
+@include color(333, #333);
+@include color(666, #666);
+@include color(999, #999);
+
 //背景颜色
-@include bg-color('red', $color-red);
-@include bg-color('green', $color-green);
-@include bg-color('yellow', $color-yellow);
-@include bg-color('blue', $color-blue);
-@include bg-color('orange', $color-orange);
-@include bg-color('pink', $color-pink);
-@include bg-color('white', $color-white);
-@include bg-color('grey-1', $bg-color-1);
-@include bg-color('grey-2', $bg-color-2);
-@include bg-color('black', $color-black);
+@include background-color('red', #ff4222);
+@include background-color('green', #29cc6d);
+@include background-color('yellow', #ffffcc);
+@include background-color('blue', #1b97ff);
+@include background-color('orange', #ff9900);
+@include background-color('white', #fff);
+@include background-color('black', #000);
 
-
-//------------------------
-
-
-@include line-height(14px); /*16像素行距*/
-@include line-height(16px); /*16像素行距*/
-@include line-height(18px); /*18像素行距*/
-@include line-height(20px); /*20像素行距*/
-@include line-height(22px); /*22像素行距*/
-@include line-height(24px); /*24像素行距*/
-@include line-height(26px); /*26像素行距*/
-@include line-height(28px); /*28像素行距*/
-@include line-height(30px); /*30像素行距*/
-//------------------------
-.font-size-h6 {
-  font-size: $font-size-h6;
-}
-
-.font-size-h5 {
-  font-size: $font-size-h5;
-}
-
-.font-size-h4 {
-  font-size: $font-size-h4;
-}
-
-.font-size-h3 {
-  font-size: $font-size-h3;
-}
-
-.font-size-h2 {
-  font-size: $font-size-h2;
-}
-
-.font-size-h1 {
-  font-size: $font-size-h1;
-}
-
-//-------------------------
+//文字大小
+@include font-size(11);
+@include font-size(12);
+@include font-size(13);
+@include font-size(14);
+@include font-size(16);
+@include font-size(18);
+@include font-size(20);

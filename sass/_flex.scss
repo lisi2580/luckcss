@@ -1,149 +1,36 @@
 // Flex Types
-.flex {
+$columns: 12;
+
+.flex-column, .flex-row {
   display: flex;
 }
 
-.flex-direction-row {
-  flex-direction: row;
-  -webkit-box-orient: horizontal;
-  -moz-box-orient: horizontal;
-  box-orient: horizontal;
-
-}
-
-.flex-direction-column {
+.flex-column {
   flex-direction: column;
-  -webkit-box-orient: vertical;
-  -moz-box-orient: vertical;
-  box-orient: vertical;
 }
 
-.flex-jc-space-around {
-  justify-content: space-around;
-}
-
-.flex-jc-space-between {
-  justify-content: space-between;
-}
-
-.flex-jc-start {
-  justify-content: flex-start;
-}
-
-.flex-jc-center {
-  -webkit-justify-content: center;
-  justify-content: center;
-}
-
-.flex-jc-end {
-  justify-content: flex-end;
+.flex-row {
+  flex-direction: row;
 }
 
 .flex-wrap {
   flex-wrap: wrap;
 }
 
-.flex-nowrap {
-  flex-wrap: nowrap;
-}
-
-.flex-ai-start {
-  align-items: flex-start;
-}
-
-.flex-ai-end {
-  align-items: flex-end;
-}
-
-.flex-ai-center {
-  align-items: center;
-}
-
-.flex-ai-baseline {
-  align-items: baseline;
-}
-
-.flex-ai-stretch {
+.flex-strech {
   align-items: stretch;
-}
-
-.flex-ac-start {
-  align-content: flex-start;
-}
-
-.flex-ac-end {
-  align-content: flex-end;
-}
-
-.flex-ac-center {
-  align-content: center;
-}
-
-.flex-ac-space-between {
-  align-content: space-between;
-}
-
-.flex-ac-space-around {
-  align-content: space-around;
-}
-
-.flex-ac-stretch {
-  align-content: stretch;
-}
-
-.flex-align-self-start {
-  align-self: flex-start;
-}
-
-.flex-align-self-end {
-  align-self: flex-end;
-}
-
-.flex-align-self-center {
-  align-self: center;
-}
-
-.flex-align-self-baseline {
-  align-self: baseline;
-}
-
-.flex-align-self-stretch {
-  align-self: stretch;
-}
-
-.flex-column, .flex-row {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.flex-column {
-  flex-direction: column;
-  -webkit-box-orient: vertical;
-  -moz-box-orient: vertical;
-  box-orient: vertical;
-}
-
-.flex-row {
-  flex-direction: row;
-  -webkit-box-orient: horizontal;
-  -moz-box-orient: horizontal;
-  box-orient: horizontal;
-}
-
-.flex-around {
-  justify-content: space-around;
 }
 
 .flex-between {
   justify-content: space-between;
 }
 
-.flex-baseline {
-  align-items: baseline;
+.flex-around {
+  justify-content: space-around;
 }
 
-.flex-strech {
-  align-items: stretch;
+.flex-baseline {
+  align-items: baseline;
 }
 
 // flex的对齐方式
@@ -188,6 +75,22 @@
     }
   }
 
+}
+
+.align-self-start {
+  align-self: flex-start;
+}
+
+.align-self-end {
+  align-self: flex-end;
+}
+
+.align-self-center {
+  align-self: center;
+}
+
+.align-self-baseline {
+  align-self: baseline;
 }
 
 .flex-column {

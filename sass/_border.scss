@@ -1,4 +1,5 @@
-/* 1px hack */
+$border-weight: 1px;
+$bordercolor: #ededed;
 
 .border-t {
   border-top: 1px solid $bordercolor;
@@ -26,14 +27,3 @@
   border: 1px solid $bordercolor;
 }
 
-.border-radius {
-  border-radius: $border-radius-base;
-}
-
-.border-radius-xs {
-  border-radius: $border-radius-xs;
-}
-
-.border-radius-xl {
-  border-radius: $border-radius-xl;
-}
