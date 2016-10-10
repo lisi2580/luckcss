@@ -66,14 +66,9 @@
 - `.mg-tb-0rpx ... mg-tb-30rpx` 向元素添加对于量的margin-top值和margin-bottom值
 
 
-### 3.动画
-向元素添加`.animate`和`.fade-in`后，元素将执行一次淡入动画。
 
-当然这里有多种动画类型可选`.fade-in-down,.fade-in-down-big,.fade-in-left,.fade-in-left-big,.fade-in-right,.fade-in-right-big,.fade-in-up,.fade-in-up-big,.shake`
 
-开源的[animate.css](https://github.com/daneden/animate.css)有更多不错的效果，可以去看看。
-
-### 4.文字
+### 3.文字
 有8种大小的字体可直接使用，他们分别是：20, 18, 17, 16,14 13 , 12, 11
 `.font-size-11,.font-size-12,.font-size-13,.font-size-14,.font-size-16,.font-size-18 .font-size-20`。 
 另外还有文本颜色的快捷样式：
