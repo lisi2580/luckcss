@@ -69,8 +69,8 @@
 
 
 ### 3.文字
-有8种大小的字体可直接使用，他们分别是：20, 18, 17, 16,14 13 , 12, 11
-`.font-size-11,.font-size-12,.font-size-13,.font-size-14,.font-size-16,.font-size-18 .font-size-20`。 
+有8种大小的字体可直接使用，他们分别是：20, 22, 24, 26, 28, 32, 36, 40
+`.font-size-20,.font-size-22,.font-size-24,.font-size-28,.font-size-32,.font-size-36 .font-size-40`。 
 另外还有文本颜色的快捷样式：
 - `.color-red` 红
 - `.color-green` 绿
@@ -81,3 +81,11 @@
 - `.color-333` 文本颜色：#333
 - `.color-666` 文本颜色：#666
 - `.color-999` 文本颜色：#999
+
+
+### 4.按钮
+
+想view标签添加 .btn .typ1,可设置按钮样式
+
+
+    <view class="btn type1"></view>
