@@ -89,3 +89,12 @@
 
 
     <view class="btn type1"></view>
+    
+    
+    
+### 5.动画
+向元素添加`.animate`和`.fade-in`后，元素将执行一次淡入动画。
+
+当然这里有多种动画类型可选`.fade-in-down,.fade-in-down-big,.fade-in-left,.fade-in-left-big,.fade-in-right,.fade-in-right-big,.fade-in-up,.fade-in-up-big,.shake`
+
+开源的[animate.css](https://github.com/daneden/animate.css)有更多不错的效果，可以去看看。
