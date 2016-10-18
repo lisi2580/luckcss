@@ -39,20 +39,21 @@
 @include color('red', #ff4222);
 @include color('green', #29cc6d);
 @include color('yellow', #ffffcc);
-@include color('blue', #1b97ff);
-@include color('orange', #ff9900);
+@include color('blue', #489aff);
+@include color('orange', #ff9239);
 @include color('white', #fff);
 @include color('black', #000);
 @include color(333, #333);
 @include color(666, #666);
 @include color(999, #999);
+@include color(ccc, #ccc);
 
 //背景颜色
 @include background-color('red', #ff4222);
 @include background-color('green', #29cc6d);
 @include background-color('yellow', #ffffcc);
-@include background-color('blue', #1b97ff);
-@include background-color('orange', #ff9900);
+@include background-color('blue', #489aff);
+@include background-color('orange', #ff9239);
 @include background-color('white', #fff);
 @include background-color('black', #000);
 @include background-color('333', #333);

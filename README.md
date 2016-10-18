@@ -85,7 +85,13 @@
 
 ### 4.按钮
 
-想view标签添加 .btn .typ1,可设置按钮样式
+想view标签添加 .btn .s-orange-outlined(小-橙-空心),可设置按钮样式
+
+其他按钮类 
+
+- `.s-white-outlined`
+- `.s-gray-outlined`
+- `.m-orange-outlined`
 
 
     <view class="btn type1"></view>
@@ -98,3 +104,4 @@
 当然这里有多种动画类型可选`.fade-in-down,.fade-in-down-big,.fade-in-left,.fade-in-left-big,.fade-in-right,.fade-in-right-big,.fade-in-up,.fade-in-up-big,.shake`
 
 开源的[animate.css](https://github.com/daneden/animate.css)有更多不错的效果，可以去看看。
+
