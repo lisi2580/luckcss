@@ -25,6 +25,9 @@ https://github.com/good318/luckcss/tree/xcx-luck
 .no-background {
   background: transparent; }
 
+.no-word-break {
+  word-break: keep-all; }
+
 .no-border {
   border: 0; }
 
@@ -834,6 +837,13 @@ https://github.com/good318/luckcss/tree/xcx-luck
 
 /* 文字截断 */
 .nowrap {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1; }
+
+.nowrap-1 {
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
