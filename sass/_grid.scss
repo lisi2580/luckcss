@@ -1,33 +1,32 @@
 // ==========================================================================
 // Base – Non-Responsive Grid
 // ==========================================================================
-
+// Grid Containers [网格
+$columns: 12;//布局列数
+$grid-gutter: 0px !default;
 // Micro Clearfix - http://nicolasgallagher.com/micro-clearfix-hack/
-.clear:before, .clear:after { content: " "; display: table; } .clear:after { clear: both; }
-.row:before, .row:after { content: ""; display: table; } .row:after { clear: both; }
+.clear:before, .clear:after{ content: " "; display: table; }
 
-.row {
+.clear:after{ clear: both; }
+
+.row:before, .row:after{ content: ""; display: table; }
+
+.row:after{ clear: both; }
+
+.row{
   position: relative;
   margin-left: -$grid-gutter;
   margin-right: -$grid-gutter;
 }
 
 // Mobile Container
-.container {
+.container{
   padding-left: $grid-gutter;
   padding-right: $grid-gutter;
-  margin-left: auto;
-  margin-right: auto;
-  width: $container;
+  //margin-left: auto;
+  //margin-right: auto;
+  width: 100%;
 }
-.container-full {
-  padding-left: 0;
-  padding-right: 0;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-// Grid Columns - Global Rules
 
 .col-1{
   padding-left: $grid-gutter;
@@ -35,31 +34,32 @@
   position: relative;
   float: left;
 }
+
 // Grid
 
-@for $i from 1 through $columns {
-  .col-#{$i} {
+@for $i from 1 through $columns{
+  .col-#{$i}{
     width: ($i / $columns) * 100%;
     @extend .col-1;
   }
 }
 
 // Push Offsets
-@for $i from 1 through $columns - 1 {
-  .push-#{$i} {
+@for $i from 1 through $columns - 1{
+  .push-#{$i}{
     left: ($i / $columns) * 100%;
   }
 }
 
 // Pull Offsets
-@for $i from 1 through $columns - 1 {
-  .pull-#{$i} {
+@for $i from 1 through $columns - 1{
+  .pull-#{$i}{
     left: -($i / $columns) * 100%;
   }
 }
 
-@for $i from 1 through $columns {
-  .width-#{$i} {
+@for $i from 1 through $columns{
+  .width-#{$i}{
     width: ($i / $columns) * 100%;
   }
 }
