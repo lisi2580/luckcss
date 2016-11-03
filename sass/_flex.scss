@@ -64,22 +64,6 @@
   align-self: stretch;
 }
 
-.flex-around{
-  justify-content: space-around;
-}
-
-.flex-between{
-  justify-content: space-between;
-}
-
-.flex-baseline{
-  align-items: baseline;
-}
-
-.flex-strech{
-  align-items: stretch;
-}
-
 // flex的对齐方式
 @mixin build-align($type) {
   @if $type == row{
