@@ -4,6 +4,7 @@
 // Grid Containers [网格
 $columns: 12;//布局列数
 $grid-gutter: 0px !default;
+
 // Micro Clearfix - http://nicolasgallagher.com/micro-clearfix-hack/
 .clear:before, .clear:after{ content: " "; display: table; }
 
@@ -19,14 +20,6 @@ $grid-gutter: 0px !default;
   margin-right: -$grid-gutter;
 }
 
-// Mobile Container
-.container{
-  padding-left: $grid-gutter;
-  padding-right: $grid-gutter;
-  //margin-left: auto;
-  //margin-right: auto;
-  width: 100%;
-}
 
 .col-1{
   padding-left: $grid-gutter;

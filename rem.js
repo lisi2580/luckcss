@@ -2,8 +2,7 @@
  * Created by aaron on 2016/4/4.
  * 添加此代码后，可将rem作为动态单位使用。
  */
-;
-(function (win) {
+;(function (win) {
     var doc = win.document;
     var docEl = doc.documentElement;
     var tid;

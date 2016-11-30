@@ -1,6 +1,6 @@
 @mixin opacity($opacity) {
   opacity: $opacity;
-  // IE8 filter
+  // IE filter
   $opacity-ie: ($opacity * 100);
   filter: alpha(opacity=$opacity-ie);
 }
@@ -133,8 +133,16 @@ $layout-meter-lenght: 30;
   display: inline;
 }
 
+.float-left{
+  float: left;
+}
+
 .left{
   float: left;
+}
+
+.float-right{
+  float: right;
 }
 
 .right{
@@ -147,9 +155,7 @@ $layout-meter-lenght: 30;
   margin-right: auto;
 }
 
-// margin Padding Helpers
 @for $i from 0 through $layout-meter-lenght{
-  //margin shortcut //margin快捷类
   .mg-#{$i*$layout-meter}{
     margin: $i*$layout-meter;
   }
@@ -235,7 +241,7 @@ $layout-meter-lenght: 30;
   -webkit-line-clamp: 1;
 }
 
-.nowrap1{
+.nowrap-1{
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;

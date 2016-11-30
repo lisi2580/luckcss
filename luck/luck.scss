@@ -3,13 +3,11 @@
 gaopeng.aaron.li
 https://github.com/day318/luckcss
 ========================================================================== */
-//@import "base/normalize.scss";
-/*12列布局*/
-/* width-1 ~ width-12 */
-/* col-1 ~ col-12 */
+
+@import "_reset";
 @import "_grid";
 @import "_border";
-@import "_helpers";
+@import "_helper";
 @import "_animations";
 @import "_arrow";
 @import "_flex";
