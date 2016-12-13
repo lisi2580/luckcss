@@ -33,10 +33,16 @@
 
 - 添加 `.flex-row` 后，子元素将横向排列。
 - 添加 `.flex-column` 后，子元素将垂直排列。
+
 - 添加 `.flex-center` 后，子元素将水平居中。
 - 添加 `.flex-between` 后，子元素将两端对齐。
 - 添加 `.flex-around` 后，子元素将平均分布。
 - 添加 `.flex-strech` 后，子元素将。
+- 添加 `.flex-middle` 后，子元素将垂直居中。
+- 添加 `.flex-top` 后，子元素将顶部对齐。
+- 添加 `.flex-left` 后，子元素将左对齐（默认）。
+- 添加 `.flex-right` 后，子元素将右对齐。
+- 添加 `.flex-bottom` 后，子元素将底对齐。
 - `.flex-col-1 ... .flex-col-12` 是类似于`.col-*` 的栅格系统，其中`.flex-col-auto`能自适应剩余的宽度
 
 例：
@@ -65,6 +71,7 @@
 - `.font-normal` 清除字的体斜体和粗体样式
 - `.font-italic` 斜体字
 - `.font-bold` 字体加粗
+- `.break-word` 强制换行
 - `.underline` 添加下划线
 - `.uppercase` 转换字母大写
 - `.lowercase` 转换字母小写
@@ -77,6 +84,7 @@
 - `.inline` 行内元素
 - 
 - `.nowrap` 文字最多显示1行，超出部分以`...`代替
+- `.nowrap-1` 文字最多显示1行，超出部分以`...`代替
 - `.nowrap-2` 文字最多显示2行，超出部分以`...`代替
 - `.nowrap-3` 文字最多显示3行，超出部分以`...`代替
 - 
@@ -84,7 +92,11 @@
 - `.border-r` 向元素添加右边框
 - `.border-b` 向元素添加底边框
 - `.border-l` 向元素添加左边框
-- 
+- `.border-none` 清除边框
+
+
+- `.width-full` 设置元素宽度100%
+- `.height-full` 设置元素高度100%
 - `.mg-t-0px ... mg-t-30px` 向元素添加对于量的margin-top值
 - `.mg-r-0px ... mg-r-30px` 向元素添加对于量的margin-right值
 - `.mg-b-0px ... mg-b-30px` 向元素添加对于量的margin-bottom值
@@ -111,7 +123,9 @@
 - `.color-blue` 蓝
 - `.color-pink` 粉
 - `.color-white` 白
+- `.color-fff` 白
 - `.color-black` 黑
+- `.color-000` 黑
 - `.color-333` 文本颜色：#333
 - `.color-666` 文本颜色：#666
 - `.color-999` 文本颜色：#999
