@@ -15,7 +15,7 @@ gulp.task('luck', function () {
     return gulp.src('./luck/luck.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer({
-            browsers: ['iOS 7', 'Android >= 4.0', '> 1%']
+            browsers: ['> 1%', 'iOS 7','last 2 versions']
         }))
         .pipe(gulp.dest('./dist/'));
 });

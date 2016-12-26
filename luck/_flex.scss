@@ -1,7 +1,7 @@
 // Flex Types
 
 
-.flex-column, .flex-row{
+.flex,.flex-column, .flex-row{
   display: flex;
   flex-wrap: wrap;
 }
@@ -13,7 +13,7 @@
   box-orient: vertical;
 }
 
-.flex-row{
+.flex,.flex-row{
   flex-direction: row;
   -webkit-box-orient: horizontal;
   -moz-box-orient: horizontal;

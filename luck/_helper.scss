@@ -1,6 +1,6 @@
-
-//shortcut-layout [快捷布局
+//shortcut-layout [快捷布局]
 $layout-meter: 1px;
+$layout-meter-rem: 0.01rem; //基于6.4rem全宽
 $layout-meter-lenght: 30;
 
 .test{
@@ -23,13 +23,12 @@ $layout-meter-lenght: 30;
   float: none;
 }
 
-
 .bg-transparent{
   background: transparent;
 }
 
 .border-none{
-  border:none;
+  border: none;
 }
 
 .no-select{
@@ -39,6 +38,7 @@ $layout-meter-lenght: 30;
   user-select: none;
   cursor: default;
 }
+
 .select-none{
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -163,63 +163,63 @@ $layout-meter-lenght: 30;
 
 @for $i from 0 through $layout-meter-lenght{
   .mg-#{$i*$layout-meter}{
-    margin: $i*$layout-meter;
+    margin: $i*$layout-meter-rem;
   }
 
   .mg-t-#{$i*$layout-meter}{
-    margin-top: $i*$layout-meter;
+    margin-top: $i*$layout-meter-rem;
   }
 
   .mg-r-#{$i*$layout-meter}{
-    margin-right: $i*$layout-meter;
+    margin-right: $i*$layout-meter-rem;
   }
 
   .mg-b-#{$i*$layout-meter}{
-    margin-bottom: $i*$layout-meter;
+    margin-bottom: $i*$layout-meter-rem;
   }
 
   .mg-l-#{$i*$layout-meter}{
-    margin-left: $i*$layout-meter;
+    margin-left: $i*$layout-meter-rem;
   }
 
   .mg-lr-#{$i*$layout-meter}{
-    margin-left: $i*$layout-meter;
-    margin-right: $i*$layout-meter;
+    margin-left: $i*$layout-meter-rem;
+    margin-right: $i*$layout-meter-rem;
   }
 
   .mg-tb-#{$i*$layout-meter}{
-    margin-top: $i*$layout-meter;
-    margin-bottom: $i*$layout-meter;
+    margin-top: $i*$layout-meter-rem;
+    margin-bottom: $i*$layout-meter-rem;
   }
   //padding shortcut //padding快捷类
   .pd-#{$i*$layout-meter}{
-    padding: $i*$layout-meter;
+    padding: $i*$layout-meter-rem;
   }
 
   .pd-t-#{$i*$layout-meter}{
-    padding-top: $i*$layout-meter;
+    padding-top: $i*$layout-meter-rem;
   }
 
   .pd-r-#{$i*$layout-meter}{
-    padding-right: $i*$layout-meter;
+    padding-right: $i*$layout-meter-rem;
   }
 
   .pd-b-#{$i*$layout-meter}{
-    padding-bottom: $i*$layout-meter;
+    padding-bottom: $i*$layout-meter-rem;
   }
 
   .pd-l-#{$i*$layout-meter}{
-    padding-left: $i*$layout-meter;
+    padding-left: $i*$layout-meter-rem;
   }
 
   .pd-lr-#{$i*$layout-meter}{
-    padding-left: $i*$layout-meter;
-    padding-right: $i*$layout-meter;
+    padding-left: $i*$layout-meter-rem;
+    padding-right: $i*$layout-meter-rem;
   }
 
   .pd-tb-#{$i*$layout-meter}{
-    padding-top: $i*$layout-meter;
-    padding-bottom: $i*$layout-meter;
+    padding-top: $i*$layout-meter-rem;
+    padding-bottom: $i*$layout-meter-rem;
   }
 }
 
